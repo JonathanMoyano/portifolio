@@ -31,77 +31,80 @@ const ExperienciasPage = () => {
   const [filteredExperiences, setFilteredExperiences] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const experiences = useMemo(() => [
-    {
-      id: 1,
-      area: 'tech',
-      role: 'Desenvolvedor Full Stack Sênior',
-      company: 'Tech Solutions',
-      period: '2020 - Presente',
-      location: 'São Paulo, SP',
-      type: 'Tempo Integral',
-      description: 'Liderança técnica no desenvolvimento de soluções web escaláveis.',
-      highlights: [
-        'Liderança de equipe com 5 desenvolvedores',
-        'Implementação de CI/CD e práticas DevOps',
-        'Redução de 40% no tempo de deploy',
-        'Mentoria de desenvolvedores júnior',
-      ],
-      technologies: ['React', 'Node.js', 'AWS', 'Docker', 'TypeScript'],
-      achievements: ['Prêmio de Inovação 2022', 'Certificação AWS Solutions Architect'],
-      impact: [
-        { metric: 'Performance', value: '+45%' },
-        { metric: 'Deploys/Dia', value: '15+' },
-        { metric: 'Uptime', value: '99.9%' },
-      ],
-    },
-    {
-      id: 2,
-      area: 'fire',
-      role: 'Líder de Brigada',
-      company: 'Indústria Segura',
-      period: '2016 - 2020',
-      location: 'Guarulhos, SP',
-      type: 'Tempo Integral',
-      description: 'Gestão de equipe de bombeiros civis e coordenação de emergências.',
-      highlights: [
-        'Coordenação de equipe com 12 bombeiros',
-        'Elaboração de planos de emergência',
-        'Treinamento de 500+ brigadistas',
-        'Gestão de simulados mensais',
-      ],
-      certifications: ['NR-23', 'NR-33', 'NR-35'],
-      achievements: ['Zero acidentes em 3 anos consecutivos', 'Prêmio Segurança Total 2019'],
-      impact: [
-        { metric: 'Tempo Resposta', value: '-60%' },
-        { metric: 'Brigadistas', value: '500+' },
-        { metric: 'Acidentes', value: '0' },
-      ],
-    },
-    {
-      id: 3,
-      area: 'commerce',
-      role: 'Gerente de Comércio Exterior',
-      company: 'Global Trade Inc',
-      period: '2014 - 2016',
-      location: 'Santos, SP',
-      type: 'Tempo Integral',
-      description: 'Gestão de operações de importação e exportação.',
-      highlights: [
-        'Gestão de portfolio de US$10M+',
-        'Negociação com fornecedores internacionais',
-        'Otimização de processos logísticos',
-        'Desenvolvimento de novos mercados',
-      ],
-      regions: ['Ásia', 'Europa', 'América do Norte'],
-      achievements: ['Redução de 30% nos custos logísticos', 'Expansão para 5 novos mercados'],
-      impact: [
-        { metric: 'Volume', value: '$10M+' },
-        { metric: 'Economia', value: '30%' },
-        { metric: 'Mercados', value: '15+' },
-      ],
-    },
-  ]);
+  const experiences = useMemo(
+    () => [
+      {
+        id: 1,
+        area: 'tech',
+        role: 'Desenvolvedor Full Stack Sênior',
+        company: 'Tech Solutions',
+        period: '2020 - Presente',
+        location: 'São Paulo, SP',
+        type: 'Tempo Integral',
+        description: 'Liderança técnica no desenvolvimento de soluções web escaláveis.',
+        highlights: [
+          'Liderança de equipe com 5 desenvolvedores',
+          'Implementação de CI/CD e práticas DevOps',
+          'Redução de 40% no tempo de deploy',
+          'Mentoria de desenvolvedores júnior',
+        ],
+        technologies: ['React', 'Node.js', 'AWS', 'Docker', 'TypeScript'],
+        achievements: ['Prêmio de Inovação 2022', 'Certificação AWS Solutions Architect'],
+        impact: [
+          { metric: 'Performance', value: '+45%' },
+          { metric: 'Deploys/Dia', value: '15+' },
+          { metric: 'Uptime', value: '99.9%' },
+        ],
+      },
+      {
+        id: 2,
+        area: 'fire',
+        role: 'Líder de Brigada',
+        company: 'Indústria Segura',
+        period: '2016 - 2020',
+        location: 'Guarulhos, SP',
+        type: 'Tempo Integral',
+        description: 'Gestão de equipe de bombeiros civis e coordenação de emergências.',
+        highlights: [
+          'Coordenação de equipe com 12 bombeiros',
+          'Elaboração de planos de emergência',
+          'Treinamento de 500+ brigadistas',
+          'Gestão de simulados mensais',
+        ],
+        certifications: ['NR-23', 'NR-33', 'NR-35'],
+        achievements: ['Zero acidentes em 3 anos consecutivos', 'Prêmio Segurança Total 2019'],
+        impact: [
+          { metric: 'Tempo Resposta', value: '-60%' },
+          { metric: 'Brigadistas', value: '500+' },
+          { metric: 'Acidentes', value: '0' },
+        ],
+      },
+      {
+        id: 3,
+        area: 'commerce',
+        role: 'Gerente de Comércio Exterior',
+        company: 'Global Trade Inc',
+        period: '2014 - 2016',
+        location: 'Santos, SP',
+        type: 'Tempo Integral',
+        description: 'Gestão de operações de importação e exportação.',
+        highlights: [
+          'Gestão de portfolio de US$10M+',
+          'Negociação com fornecedores internacionais',
+          'Otimização de processos logísticos',
+          'Desenvolvimento de novos mercados',
+        ],
+        regions: ['Ásia', 'Europa', 'América do Norte'],
+        achievements: ['Redução de 30% nos custos logísticos', 'Expansão para 5 novos mercados'],
+        impact: [
+          { metric: 'Volume', value: '$10M+' },
+          { metric: 'Economia', value: '30%' },
+          { metric: 'Mercados', value: '15+' },
+        ],
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
     // Simula carregamento inicial

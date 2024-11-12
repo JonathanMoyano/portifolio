@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, RefreshCw } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
@@ -15,41 +15,44 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
   const [error, setError] = useState(null);
   const { currentLanguage } = useAccessibility();
 
-  const translations = {
-    pt: {
-      play: 'Reproduzir',
-      pause: 'Pausar',
-      loading: 'Carregando áudio...',
-      error: 'Erro ao carregar o áudio',
-      transcript: 'Ver transcrição',
-      skipForward: 'Avançar 10 segundos',
-      skipBack: 'Retroceder 10 segundos',
-      mute: 'Mutar',
-      unmute: 'Desmutar',
-    },
-    en: {
-      play: 'Play',
-      pause: 'Pause',
-      loading: 'Loading audio...',
-      error: 'Error loading audio',
-      transcript: 'View transcript',
-      skipForward: 'Skip forward 10 seconds',
-      skipBack: 'Skip back 10 seconds',
-      mute: 'Mute',
-      unmute: 'Unmute',
-    },
-    es: {
-      play: 'Reproducir',
-      pause: 'Pausar',
-      loading: 'Cargando audio...',
-      error: 'Error al cargar el audio',
-      transcript: 'Ver transcripción',
-      skipForward: 'Adelantar 10 segundos',
-      skipBack: 'Retroceder 10 segundos',
-      mute: 'Silenciar',
-      unmute: 'Activar sonido',
-    },
-  };
+  const translations = useMemo(
+    () => ({
+      pt: {
+        play: 'Reproduzir',
+        pause: 'Pausar',
+        loading: 'Carregando áudio...',
+        error: 'Erro ao carregar o áudio',
+        transcript: 'Ver transcrição',
+        skipForward: 'Avançar 10 segundos',
+        skipBack: 'Retroceder 10 segundos',
+        mute: 'Mutar',
+        unmute: 'Desmutar',
+      },
+      en: {
+        play: 'Play',
+        pause: 'Pause',
+        loading: 'Loading audio...',
+        error: 'Error loading audio',
+        transcript: 'View transcript',
+        skipForward: 'Skip forward 10 seconds',
+        skipBack: 'Skip back 10 seconds',
+        mute: 'Mute',
+        unmute: 'Unmute',
+      },
+      es: {
+        play: 'Reproducir',
+        pause: 'Pausar',
+        loading: 'Cargando audio...',
+        error: 'Error al cargar el audio',
+        transcript: 'Ver transcripción',
+        skipForward: 'Adelantar 10 segundos',
+        skipBack: 'Retroceder 10 segundos',
+        mute: 'Silenciar',
+        unmute: 'Activar sonido',
+      },
+    }),
+    []
+  );
 
   useEffect(() => {
     const audio = audioRef.current;
