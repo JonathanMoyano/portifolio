@@ -23,10 +23,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useAccessibility } from '@/components/layout/Layout';
 
 const ExperienciasPage = () => {
-  const { currentLanguage } = useAccessibility();
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedId, setExpandedId] = useState(null);

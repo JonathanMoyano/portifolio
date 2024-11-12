@@ -11,7 +11,7 @@ import { Ship, Plane, TrendingUp, BarChart, CheckCircle2, ArrowUpRight } from 'l
 
 const ComercioPage = () => {
   const { currentLanguage } = useAccessibility();
-  const t = translations[currentLanguage];
+  const t = translations[currentLanguage].comercio;
   const [selectedRegion, setSelectedRegion] = useState(null);
 
   // Dados de exemplo para o gráfico
@@ -26,64 +26,49 @@ const ComercioPage = () => {
 
   const regions = [
     {
-      name: 'América do Norte',
+      name: t.northAmerica,
       flag: '🇺🇸',
-      countries: ['EUA', 'Canadá', 'México'],
-      operations: ['Importação', 'Exportação'],
-      mainProducts: ['Tecnologia', 'Automóveis', 'Máquinas'],
+      countries: [t.usa, t.canada, t.mexico],
+      operations: [t.import, t.export],
+      mainProducts: [t.technology, t.automobiles, t.machinery],
       volume: '$5M+',
     },
     {
-      name: 'Europa',
+      name: t.europe,
       flag: '🇪🇺',
-      countries: ['Alemanha', 'França', 'Itália', 'Espanha'],
-      operations: ['Importação', 'Exportação'],
-      mainProducts: ['Químicos', 'Farmacêuticos', 'Alimentos'],
+      countries: [t.germany, t.france, t.italy, t.spain],
+      operations: [t.import, t.export],
+      mainProducts: [t.chemicals, t.pharmaceuticals, t.food],
       volume: '$3M+',
     },
     {
-      name: 'Ásia',
+      name: t.asia,
       flag: '🇨🇳',
-      countries: ['China', 'Japão', 'Coreia do Sul'],
-      operations: ['Importação'],
-      mainProducts: ['Eletrônicos', 'Componentes', 'Matéria-prima'],
+      countries: [t.china, t.japan, t.southKorea],
+      operations: [t.import],
+      mainProducts: [t.electronics, t.components, t.rawMaterials],
       volume: '$4M+',
     },
   ];
 
   const expertise = [
     {
-      category: 'Importação',
+      category: t.import,
       icon: <Ship className="h-6 w-6" />,
       color: 'text-blue-500',
-      items: [
-        'Análise de NCM',
-        'Licenciamento de Importação',
-        'Desembaraço Aduaneiro',
-        'Gestão de Fornecedores',
-      ],
+      items: [t.ncmAnalysis, t.importLicensing, t.customsClearance, t.supplierManagement],
     },
     {
-      category: 'Exportação',
+      category: t.export,
       icon: <Plane className="h-6 w-6" />,
       color: 'text-green-500',
-      items: [
-        'Registro de Exportação',
-        'Drawback',
-        'Certificados de Origem',
-        'Logística Internacional',
-      ],
+      items: [t.exportRegistration, t.drawback, t.originCertificates, t.internationalLogistics],
     },
     {
-      category: 'Negociação',
+      category: t.negotiation,
       icon: <TrendingUp className="h-6 w-6" />,
       color: 'text-purple-500',
-      items: [
-        'Contratos Internacionais',
-        'Incoterms',
-        'Análise de Mercado',
-        'Estratégia Comercial',
-      ],
+      items: [t.internationalContracts, t.incoterms, t.marketAnalysis, t.commercialStrategy],
     },
   ];
 
@@ -96,11 +81,9 @@ const ComercioPage = () => {
         className="mx-auto mb-12 max-w-6xl text-center"
       >
         <h1 className="mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
-          Comércio Exterior
+          {t.title}
         </h1>
-        <p className="mb-8 text-xl text-gray-300">
-          Conectando negócios globalmente com expertise e estratégia
-        </p>
+        <p className="mb-8 text-xl text-gray-300">{t.subtitle}</p>
         <div className="ml-4">
           <DownloadCV area="comercio" />
         </div>
@@ -117,7 +100,7 @@ const ComercioPage = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BarChart className="text-blue-500" />
-              Performance Operacional
+              {t.operationalPerformance}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -138,14 +121,14 @@ const ComercioPage = () => {
                     dataKey="importacao"
                     stroke="#3b82f6"
                     strokeWidth={2}
-                    name="Importação"
+                    name={t.imports}
                   />
                   <Line
                     type="monotone"
                     dataKey="exportacao"
                     stroke="#22d3ee"
                     strokeWidth={2}
-                    name="Exportação"
+                    name={t.exports}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -161,7 +144,7 @@ const ComercioPage = () => {
         transition={{ delay: 0.3 }}
         className="mx-auto mb-12 max-w-6xl"
       >
-        <h2 className="mb-6 text-2xl font-semibold">Áreas de Expertise</h2>
+        <h2 className="mb-6 text-2xl font-semibold">{t.areasOfExpertise}</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {expertise.map((area, index) => (
             <Card key={index} className="border-neutral-700 bg-neutral-800">
@@ -189,7 +172,7 @@ const ComercioPage = () => {
         transition={{ delay: 0.4 }}
         className="mx-auto mb-12 max-w-6xl"
       >
-        <h2 className="mb-6 text-2xl font-semibold">Operações Globais</h2>
+        <h2 className="mb-6 text-2xl font-semibold">{t.globalOperations}</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {regions.map((region, index) => (
             <Card
@@ -206,7 +189,7 @@ const ComercioPage = () => {
                 <div className="space-y-4">
                   <div>
                     <Badge variant="secondary" className="mb-2">
-                      Volume: {region.volume}
+                      {t.volume}: {region.volume}
                     </Badge>
                     <div className="flex flex-wrap gap-2">
                       {region.operations.map((op, i) => (
@@ -217,7 +200,7 @@ const ComercioPage = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="mb-2 text-sm text-gray-400">Principais Produtos:</p>
+                    <p className="mb-2 text-sm text-gray-400">{t.mainProducts}:</p>
                     <div className="flex flex-wrap gap-2">
                       {region.mainProducts.map((product, i) => (
                         <Badge key={i} variant="secondary">
@@ -228,7 +211,7 @@ const ComercioPage = () => {
                   </div>
                   {selectedRegion === index && (
                     <div className="mt-4 border-t border-neutral-700 pt-4">
-                      <p className="mb-2 text-sm text-gray-400">Países:</p>
+                      <p className="mb-2 text-sm text-gray-400">{t.countries}:</p>
                       <div className="flex flex-wrap gap-2">
                         {region.countries.map((country, i) => (
                           <Badge key={i} className="bg-blue-500/10 text-blue-400">
@@ -254,16 +237,14 @@ const ComercioPage = () => {
       >
         <Card className="border-none bg-gradient-to-r from-blue-900 to-cyan-900">
           <CardContent className="p-8 text-center">
-            <h3 className="mb-4 text-2xl font-semibold">Expandindo seus Horizontes?</h3>
-            <p className="mb-6 text-gray-300">
-              Descubra como posso ajudar sua empresa a alcançar novos mercados globais
-            </p>
+            <h3 className="mb-4 text-2xl font-semibold">{t.expandingHorizons}</h3>
+            <p className="mb-6 text-gray-300">{t.discoverHelp}</p>
             <Button
               size="lg"
               className="bg-white text-black hover:bg-gray-100"
               onClick={() => (window.location.href = '/contato')}
             >
-              Iniciar Projeto
+              {t.startProject}
               <ArrowUpRight className="ml-2 h-5 w-5" />
             </Button>
           </CardContent>

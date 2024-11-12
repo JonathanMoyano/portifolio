@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import DownloadCV from '@/components/shared/DownloadCV';
 import {
@@ -9,21 +8,14 @@ import {
   BookOpen,
   CheckCircle2,
   AlertTriangle,
-  ArrowRight,
   Clock,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useAccessibility } from '@/components/layout/Layout';
-import { translations } from '@/utils/constants';
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const BombeiroPage = () => {
-  const { currentLanguage } = useAccessibility();
-  const t = translations[currentLanguage];
-  const [activeTab, setActiveTab] = useState('certifications');
-
   const stats = [
     {
       icon: <Shield />,
@@ -54,22 +46,60 @@ const BombeiroPage = () => {
   const certifications = [
     {
       title: 'Bombeiro Civil Profissional',
-      institution: 'Corpo de Bombeiros Militar',
-      date: '2014',
-      validUntil: '2024',
+      institution: 'FATE13',
+      date: '2013',
+      validUntil: '2023',
       description:
         'Formação completa em prevenção e combate a incêndio, primeiros socorros e salvamento.',
       skills: ['Combate a Incêndio', 'Primeiros Socorros', 'Salvamento em Altura', 'APH'],
     },
     {
-      title: 'Especialização em Emergências Químicas',
-      institution: 'CETESB',
-      date: '2015',
-      validUntil: '2025',
-      description: 'Especialização no atendimento a emergências com produtos perigosos.',
-      skills: ['Produtos Perigosos', 'Contenção', 'Descontaminação', 'Análise de Riscos'],
+      title: 'Curso de Heliponto',
+      institution: 'BLEVE',
+      date: '2018',
+      validUntil: '2023',
+      description: 'Treinamento para operações em helipontos.',
+      skills: ['Segurança em Helipontos', 'Sinalização', 'Controle de Acesso'],
     },
-    // Adicione mais certificações conforme necessário
+    {
+      title: 'Curso de Primeiros Socorros com DEA',
+      institution: 'UNILUS',
+      date: '2018',
+      validUntil: '2023',
+      description:
+        'Treinamento avançado em primeiros socorros com uso de desfibrilador externo automático (DEA).',
+      skills: ['Suporte Básico de Vida', 'Uso de DEA', 'Emergências Médicas'],
+    },
+    {
+      title: 'NR35 - Trabalho em Altura',
+      institution: 'Universo',
+      date: '2021',
+      validUntil: '2023',
+      description:
+        'Curso de segurança para trabalhos em altura, conforme norma regulamentadora NR35.',
+      skills: ['Segurança em Altura', 'Uso de EPI', 'Resgate em Altura'],
+    },
+    {
+      title: 'NR33 - Espaços Confinados',
+      institution: 'Universo',
+      date: '2021',
+      validUntil: '2023',
+      description:
+        'Curso de segurança para trabalhos em espaços confinados, conforme norma regulamentadora NR33.',
+      skills: [
+        'Segurança em Espaços Confinados',
+        'Monitoramento de Atmosferas',
+        'Resgate em Espaços Confinados',
+      ],
+    },
+    {
+      title: 'A.P.H Tático',
+      institution: 'FATE13',
+      date: '2013',
+      validUntil: '2023',
+      description: 'Curso de atendimento pré-hospitalar em situações táticas.',
+      skills: ['APH Tático', 'Resgate em Ambientes Hostis', 'Suporte Avançado de Vida'],
+    },
   ];
 
   const operations = [
@@ -97,7 +127,30 @@ const BombeiroPage = () => {
         'Coordenação com órgãos ambientais',
       ],
     },
-    // Adicione mais operações conforme necessário
+    {
+      title: 'Inspeção de Equipamentos de Combate a Incêndio',
+      date: '2018-2019',
+      type: 'Prevenção',
+      description: 'Inspeções periódicas em equipamentos de combate a incêndio no Grupo Boticário.',
+      outcome: 'Garantia da operacionalidade e conformidade dos equipamentos',
+      learnings: [
+        'Importância da manutenção preventiva',
+        'Identificação de não conformidades',
+        'Documentação e registros das inspeções',
+      ],
+    },
+    {
+      title: 'Atendimento Pré-Hospitalar',
+      date: '2019-2022',
+      type: 'Emergência Médica',
+      description: 'Prestação de primeiros socorros ao público no Grupo Mendes.',
+      outcome: 'Atendimento rápido e eficaz a vítimas de mal súbito e traumas',
+      learnings: [
+        'Avaliação inicial da vítima',
+        'Estabilização e imobilização',
+        'Encaminhamento adequado aos serviços de saúde',
+      ],
+    },
   ];
 
   return (
@@ -248,21 +301,7 @@ const BombeiroPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mx-auto mt-12 max-w-2xl text-center"
-      >
-        <Card className="border-none bg-gradient-to-r from-red-900 to-orange-900">
-          <CardContent className="p-6">
-            <h3 className="mb-4 text-xl font-semibold">Precisa de Treinamento?</h3>
-            <p className="mb-4 text-gray-300">
-              Ofereço treinamentos personalizados em prevenção e combate a incêndio, primeiros
-              socorros e brigada de emergência.
-            </p>
-            <Button className="bg-white text-black hover:bg-gray-100">
-              Solicitar Proposta
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </CardContent>
-        </Card>
-      </motion.div>
+      ></motion.div>
     </div>
   );
 };

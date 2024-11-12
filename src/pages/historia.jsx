@@ -186,9 +186,9 @@ const HistoriaPage = () => {
         <Card className="border-none bg-gradient-to-r from-purple-900 to-pink-900">
           <CardContent className="p-8">
             <p className="mb-4 text-xl italic text-gray-100">
-              "Uma frase inspiradora que resume sua jornada virá aqui"
+              Uma frase inspiradora que resume sua jornada virá aqui
             </p>
-            <p className="text-gray-400">— Seu Nome</p>
+            <p className="text-gray-400">— Jonathan Souza Moyano</p>
           </CardContent>
         </Card>
       </motion.div>
