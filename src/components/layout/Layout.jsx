@@ -1,142 +1,154 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
-import Navigation from "@/components/shared/Navigation";
-import { useRouter } from "next/router";
+import React, { useState, useEffect, createContext, useContext } from 'react';
+import Header from '@/components/shared/Header';
+import Footer from '@/components/shared/Footer';
+import Navigation from '@/components/shared/Navigation';
+import { useRouter } from 'next/router';
 
 // Contexto de Acessibilidade
-export const AccessibilityContext = createContext();
+export const AccessibilityContext = createContext(null);
 
-const Layout = ({ children }) => {
-  const router = useRouter();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+// Provedor de Acessibilidade
+export const AccessibilityProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [currentLanguage, setCurrentLanguage] = useState("pt");
+  const [currentLanguage, setCurrentLanguage] = useState('pt');
   const [fontSize, setFontSize] = useState(16);
   const [contrast, setContrast] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  // Gerenciar loading entre mudanças de página
+  // Marcar quando estiver no cliente
   useEffect(() => {
-    const handleStart = () => setIsLoading(true);
-    const handleComplete = () => setIsLoading(false);
-
-    router.events.on("routeChangeStart", handleStart);
-    router.events.on("routeChangeComplete", handleComplete);
-    router.events.on("routeChangeError", handleComplete);
-
-    return () => {
-      router.events.off("routeChangeStart", handleStart);
-      router.events.off("routeChangeComplete", handleComplete);
-      router.events.off("routeChangeError", handleComplete);
-    };
-  }, [router]);
-
-  // Persistir preferências de acessibilidade
-  useEffect(() => {
-    const savedPreferences = localStorage.getItem("accessibility-preferences");
-    if (savedPreferences) {
-      const { fontSize, contrast, language, darkMode } =
-        JSON.parse(savedPreferences);
-      setFontSize(fontSize);
-      setContrast(contrast);
-      setCurrentLanguage(language);
-      setIsDarkMode(darkMode);
-    }
+    setIsClient(true);
   }, []);
 
-  // Salvar preferências quando mudarem
+  // Persistir preferências de acessibilidade - apenas no cliente
   useEffect(() => {
-    const preferences = {
-      fontSize,
-      contrast,
-      language: currentLanguage,
-      darkMode: isDarkMode,
-    };
-    localStorage.setItem(
-      "accessibility-preferences",
-      JSON.stringify(preferences)
-    );
-  }, [fontSize, contrast, currentLanguage, isDarkMode]);
+    if (isClient) {
+      try {
+        const savedPreferences = localStorage.getItem('accessibility-preferences');
+        if (savedPreferences) {
+          const {
+            fontSize: savedFontSize,
+            contrast: savedContrast,
+            language,
+            darkMode,
+          } = JSON.parse(savedPreferences);
+          setFontSize(savedFontSize);
+          setContrast(savedContrast);
+          setCurrentLanguage(language);
+          setIsDarkMode(darkMode);
+        }
+      } catch (error) {
+        console.error('Erro ao carregar preferências:', error);
+      }
+    }
+  }, [isClient]);
 
-  // Aplicar tamanho de fonte ao documento
+  // Salvar preferências quando mudarem - apenas no cliente
   useEffect(() => {
-    document.documentElement.style.fontSize = `${fontSize}px`;
-  }, [fontSize]);
+    if (isClient) {
+      try {
+        const preferences = {
+          fontSize,
+          contrast,
+          language: currentLanguage,
+          darkMode: isDarkMode,
+        };
+        localStorage.setItem('accessibility-preferences', JSON.stringify(preferences));
+      } catch (error) {
+        console.error('Erro ao salvar preferências:', error);
+      }
+    }
+  }, [fontSize, contrast, currentLanguage, isDarkMode, isClient]);
 
-  const accessibilityValue = {
+  // Aplicar tamanho de fonte ao documento - apenas no cliente
+  useEffect(() => {
+    if (isClient) {
+      document.documentElement.style.fontSize = `${fontSize}px`;
+    }
+  }, [fontSize, isClient]);
+
+  const value = {
+    isDarkMode,
+    setIsDarkMode,
+    currentLanguage,
+    setCurrentLanguage,
     fontSize,
     setFontSize,
     contrast,
     setContrast,
-    currentLanguage,
-    setCurrentLanguage,
-    isDarkMode,
-    setIsDarkMode,
   };
 
-  return (
-    <AccessibilityContext.Provider value={accessibilityValue}>
-      <div
-        className={`
-        min-h-screen
-        ${isDarkMode ? "dark" : ""}
-        ${contrast ? "high-contrast" : ""}
-      `}
-      >
-        <div className="relative" style={{ fontSize: `${fontSize}px` }}>
-          <Navigation
-            isOpen={isSidebarOpen}
-            onClose={() => setIsSidebarOpen(false)}
-            currentPath={router.pathname}
-          />
-
-          <Header
-            toggleSidebar={() => setIsSidebarOpen(true)}
-            isDarkMode={isDarkMode}
-            toggleTheme={() => setIsDarkMode((prev) => !prev)}
-            currentLanguage={currentLanguage}
-            setLanguage={setCurrentLanguage}
-            fontSize={fontSize}
-            setFontSize={setFontSize}
-            contrast={contrast}
-            setContrast={setContrast}
-          />
-
-          <main className="md:ml-64 pt-16 min-h-screen transition-all duration-300">
-            {/* Loading Indicator */}
-            {isLoading && (
-              <div className="fixed top-0 left-0 w-full h-1 z-50">
-                <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 animate-loading"></div>
-              </div>
-            )}
-
-            {/* Page Content */}
-            <div
-              className={`fade-in transition-all duration-300 ${
-                contrast ? "contrast-high" : ""
-              }`}
-            >
-              {children}
-            </div>
-          </main>
-
-          <Footer />
-        </div>
-      </div>
-    </AccessibilityContext.Provider>
-  );
+  return <AccessibilityContext.Provider value={value}>{children}</AccessibilityContext.Provider>;
 };
 
 // Hook personalizado para usar o contexto de acessibilidade
 export const useAccessibility = () => {
   const context = useContext(AccessibilityContext);
   if (!context) {
-    throw new Error(
-      "useAccessibility must be used within an AccessibilityProvider"
-    );
+    throw new Error('useAccessibility must be used within an AccessibilityProvider');
   }
   return context;
+};
+
+// Componente Layout Principal
+const Layout = ({ children }) => {
+  const router = useRouter();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { isDarkMode, contrast, fontSize } = useAccessibility();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Gerenciar loading entre mudanças de página
+  useEffect(() => {
+    const handleStart = () => setIsLoading(true);
+    const handleComplete = () => setIsLoading(false);
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleComplete);
+      router.events.off('routeChangeError', handleComplete);
+    };
+  }, [router]);
+
+  if (!isMounted) {
+    return null; // ou um loading placeholder
+  }
+
+  return (
+    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''} ${contrast ? 'high-contrast' : ''}`}>
+      <div className="relative" style={{ fontSize: `${fontSize}px` }}>
+        <Navigation
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+          currentPath={router.pathname}
+        />
+
+        <Header toggleSidebar={() => setIsSidebarOpen(true)} />
+
+        <main className="min-h-screen pt-16 transition-all duration-300 md:ml-64">
+          {isLoading && (
+            <div className="fixed left-0 top-0 z-50 h-1 w-full">
+              <div className="animate-loading h-full bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600" />
+            </div>
+          )}
+
+          <div className={`transition-all duration-300 fade-in ${contrast ? 'contrast-high' : ''}`}>
+            {children}
+          </div>
+        </main>
+
+        <Footer />
+      </div>
+    </div>
+  );
 };
 
 export default Layout;

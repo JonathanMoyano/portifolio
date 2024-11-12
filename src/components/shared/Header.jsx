@@ -1,15 +1,6 @@
-import React from "react";
-import {
-  Globe,
-  Eye,
-  ZoomIn,
-  ZoomOut,
-  Sun,
-  Moon,
-  Menu,
-  CircleDot,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Globe, Eye, ZoomIn, ZoomOut, Sun, Moon, Menu, CircleDot } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,14 +8,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useAccessibility } from "../layout/Layout";
+} from '@/components/ui/dropdown-menu';
+import { useAccessibility } from '../layout/Layout';
 
 const Header = ({ toggleSidebar }) => {
   const {
     isDarkMode,
     setIsDarkMode,
-    fontSize,
     setFontSize,
     contrast,
     setContrast,
@@ -34,49 +24,49 @@ const Header = ({ toggleSidebar }) => {
 
   const translations = {
     pt: {
-      accessibility: "Acessibilidade",
-      increaseText: "Aumentar Texto",
-      decreaseText: "Diminuir Texto",
-      contrast: "Alto Contraste",
-      normalContrast: "Contraste Normal",
-      darkMode: "Modo Escuro",
-      lightMode: "Modo Claro",
-      languages: "Idiomas",
-      colorBlind: "Daltonismo",
-      normal: "Normal",
-      protanopia: "Protanopia",
-      deuteranopia: "Deuteranopia",
-      tritanopia: "Tritanopia",
+      accessibility: 'Acessibilidade',
+      increaseText: 'Aumentar Texto',
+      decreaseText: 'Diminuir Texto',
+      contrast: 'Alto Contraste',
+      normalContrast: 'Contraste Normal',
+      darkMode: 'Modo Escuro',
+      lightMode: 'Modo Claro',
+      languages: 'Idiomas',
+      colorBlind: 'Daltonismo',
+      normal: 'Normal',
+      protanopia: 'Protanopia',
+      deuteranopia: 'Deuteranopia',
+      tritanopia: 'Tritanopia',
     },
     en: {
-      accessibility: "Accessibility",
-      increaseText: "Increase Text",
-      decreaseText: "Decrease Text",
-      contrast: "High Contrast",
-      normalContrast: "Normal Contrast",
-      darkMode: "Dark Mode",
-      lightMode: "Light Mode",
-      languages: "Languages",
-      colorBlind: "Color Blind",
-      normal: "Normal",
-      protanopia: "Protanopia",
-      deuteranopia: "Deuteranopia",
-      tritanopia: "Tritanopia",
+      accessibility: 'Accessibility',
+      increaseText: 'Increase Text',
+      decreaseText: 'Decrease Text',
+      contrast: 'High Contrast',
+      normalContrast: 'Normal Contrast',
+      darkMode: 'Dark Mode',
+      lightMode: 'Light Mode',
+      languages: 'Languages',
+      colorBlind: 'Color Blind',
+      normal: 'Normal',
+      protanopia: 'Protanopia',
+      deuteranopia: 'Deuteranopia',
+      tritanopia: 'Tritanopia',
     },
     es: {
-      accessibility: "Accesibilidad",
-      increaseText: "Aumentar Texto",
-      decreaseText: "Reducir Texto",
-      contrast: "Alto Contraste",
-      normalContrast: "Contraste Normal",
-      darkMode: "Modo Oscuro",
-      lightMode: "Modo Claro",
-      languages: "Idiomas",
-      colorBlind: "Daltonismo",
-      normal: "Normal",
-      protanopia: "Protanopia",
-      deuteranopia: "Deuteranopia",
-      tritanopia: "Tritanopia",
+      accessibility: 'Accesibilidad',
+      increaseText: 'Aumentar Texto',
+      decreaseText: 'Reducir Texto',
+      contrast: 'Alto Contraste',
+      normalContrast: 'Contraste Normal',
+      darkMode: 'Modo Oscuro',
+      lightMode: 'Modo Claro',
+      languages: 'Idiomas',
+      colorBlind: 'Daltonismo',
+      normal: 'Normal',
+      protanopia: 'Protanopia',
+      deuteranopia: 'Deuteranopia',
+      tritanopia: 'Tritanopia',
     },
   };
 
@@ -88,8 +78,8 @@ const Header = ({ toggleSidebar }) => {
   };
 
   return (
-    <header className="fixed top-0 right-0 w-full md:w-[calc(100%-256px)] h-16 bg-neutral-900/80 backdrop-blur-sm border-b border-neutral-800 z-50">
-      <div className="h-full px-4 flex items-center justify-between">
+    <header className="fixed right-0 top-0 z-50 h-16 w-full border-b border-neutral-800 bg-neutral-900/80 backdrop-blur-sm md:w-[calc(100%-256px)]">
+      <div className="flex h-full items-center justify-between px-4">
         {/* Mobile Menu Button */}
         <Button
           variant="ghost"
@@ -102,7 +92,7 @@ const Header = ({ toggleSidebar }) => {
         </Button>
 
         {/* Right Side Controls */}
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="ml-auto flex items-center gap-2">
           {/* Language Selector */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -114,13 +104,13 @@ const Header = ({ toggleSidebar }) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setCurrentLanguage("pt")}>
+              <DropdownMenuItem onClick={() => setCurrentLanguage('pt')}>
                 🇧🇷 Português
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setCurrentLanguage("en")}>
+              <DropdownMenuItem onClick={() => setCurrentLanguage('en')}>
                 🇺🇸 English
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setCurrentLanguage("es")}>
+              <DropdownMenuItem onClick={() => setCurrentLanguage('es')}>
                 🇪🇸 Español
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -134,9 +124,7 @@ const Header = ({ toggleSidebar }) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>
-                {translations[currentLanguage].accessibility}
-              </DropdownMenuLabel>
+              <DropdownMenuLabel>{translations[currentLanguage].accessibility}</DropdownMenuLabel>
               <DropdownMenuSeparator />
 
               {/* Font Size Controls */}
@@ -161,23 +149,21 @@ const Header = ({ toggleSidebar }) => {
 
               {/* Color Blind Modes */}
               <DropdownMenuSeparator />
-              <DropdownMenuLabel>
-                {translations[currentLanguage].colorBlind}
-              </DropdownMenuLabel>
+              <DropdownMenuLabel>{translations[currentLanguage].colorBlind}</DropdownMenuLabel>
               <DropdownMenuItem className="flex items-center">
-                <span className="w-4 h-4 rounded-full bg-blue-500 mr-2" />
+                <span className="mr-2 h-4 w-4 rounded-full bg-blue-500" />
                 {translations[currentLanguage].normal}
               </DropdownMenuItem>
               <DropdownMenuItem className="flex items-center">
-                <span className="w-4 h-4 rounded-full bg-yellow-500 mr-2" />
+                <span className="mr-2 h-4 w-4 rounded-full bg-yellow-500" />
                 {translations[currentLanguage].protanopia}
               </DropdownMenuItem>
               <DropdownMenuItem className="flex items-center">
-                <span className="w-4 h-4 rounded-full bg-purple-500 mr-2" />
+                <span className="mr-2 h-4 w-4 rounded-full bg-purple-500" />
                 {translations[currentLanguage].deuteranopia}
               </DropdownMenuItem>
               <DropdownMenuItem className="flex items-center">
-                <span className="w-4 h-4 rounded-full bg-red-500 mr-2" />
+                <span className="mr-2 h-4 w-4 rounded-full bg-red-500" />
                 {translations[currentLanguage].tritanopia}
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -195,11 +181,7 @@ const Header = ({ toggleSidebar }) => {
                 : translations[currentLanguage].darkMode
             }
           >
-            {isDarkMode ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
+            {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
         </div>
       </div>
