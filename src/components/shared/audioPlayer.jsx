@@ -1,16 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
-import {
-  Play,
-  Pause,
-  SkipBack,
-  SkipForward,
-  Volume2,
-  VolumeX,
-  RefreshCw,
-} from "lucide-react";
-import { Slider } from "@/components/ui/slider";
-import { Button } from "@/components/ui/button";
-import { useAccessibility } from "../layout/Layout";
+import React, { useState, useRef, useEffect } from 'react';
+import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, RefreshCw } from 'lucide-react';
+import { Slider } from '@/components/ui/slider';
+import { Button } from '@/components/ui/button';
+import { useAccessibility } from '../layout/Layout';
 
 const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
   const audioRef = useRef(null);
@@ -25,37 +17,37 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
 
   const translations = {
     pt: {
-      play: "Reproduzir",
-      pause: "Pausar",
-      loading: "Carregando áudio...",
-      error: "Erro ao carregar o áudio",
-      transcript: "Ver transcrição",
-      skipForward: "Avançar 10 segundos",
-      skipBack: "Retroceder 10 segundos",
-      mute: "Mutar",
-      unmute: "Desmutar",
+      play: 'Reproduzir',
+      pause: 'Pausar',
+      loading: 'Carregando áudio...',
+      error: 'Erro ao carregar o áudio',
+      transcript: 'Ver transcrição',
+      skipForward: 'Avançar 10 segundos',
+      skipBack: 'Retroceder 10 segundos',
+      mute: 'Mutar',
+      unmute: 'Desmutar',
     },
     en: {
-      play: "Play",
-      pause: "Pause",
-      loading: "Loading audio...",
-      error: "Error loading audio",
-      transcript: "View transcript",
-      skipForward: "Skip forward 10 seconds",
-      skipBack: "Skip back 10 seconds",
-      mute: "Mute",
-      unmute: "Unmute",
+      play: 'Play',
+      pause: 'Pause',
+      loading: 'Loading audio...',
+      error: 'Error loading audio',
+      transcript: 'View transcript',
+      skipForward: 'Skip forward 10 seconds',
+      skipBack: 'Skip back 10 seconds',
+      mute: 'Mute',
+      unmute: 'Unmute',
     },
     es: {
-      play: "Reproducir",
-      pause: "Pausar",
-      loading: "Cargando audio...",
-      error: "Error al cargar el audio",
-      transcript: "Ver transcripción",
-      skipForward: "Adelantar 10 segundos",
-      skipBack: "Retroceder 10 segundos",
-      mute: "Silenciar",
-      unmute: "Activar sonido",
+      play: 'Reproducir',
+      pause: 'Pausar',
+      loading: 'Cargando audio...',
+      error: 'Error al cargar el audio',
+      transcript: 'Ver transcripción',
+      skipForward: 'Adelantar 10 segundos',
+      skipBack: 'Retroceder 10 segundos',
+      mute: 'Silenciar',
+      unmute: 'Activar sonido',
     },
   };
 
@@ -83,18 +75,18 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
       setIsLoading(false);
     };
 
-    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
-    audio.addEventListener("timeupdate", handleTimeUpdate);
-    audio.addEventListener("ended", handleEnded);
-    audio.addEventListener("error", handleError);
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('error', handleError);
 
     return () => {
-      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      audio.removeEventListener("timeupdate", handleTimeUpdate);
-      audio.removeEventListener("ended", handleEnded);
-      audio.removeEventListener("error", handleError);
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
     };
-  }, [audioUrl, currentLanguage]);
+  }, [audioUrl, currentLanguage, translations]);
 
   const togglePlay = () => {
     if (audioRef.current.paused) {
@@ -141,11 +133,11 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
   return (
-    <div className="w-full bg-neutral-800 rounded-lg p-4 border border-neutral-700">
+    <div className="w-full rounded-lg border border-neutral-700 bg-neutral-800 p-4">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
       {/* Título */}
@@ -157,7 +149,7 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
               href={transcriptUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-purple-400 hover:text-purple-300 transition-colors"
+              className="text-sm text-purple-400 transition-colors hover:text-purple-300"
             >
               {translations[currentLanguage].transcript}
             </a>
@@ -166,7 +158,7 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
       )}
 
       {/* Controles principais */}
-      <div className="flex items-center justify-center gap-4 mb-4">
+      <div className="mb-4 flex items-center justify-center gap-4">
         <Button
           variant="ghost"
           size="icon"
@@ -174,27 +166,25 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
           className="text-gray-400 hover:text-white"
           aria-label={translations[currentLanguage].skipBack}
         >
-          <SkipBack className="w-5 h-5" />
+          <SkipBack className="h-5 w-5" />
         </Button>
 
         <Button
           variant="default"
           size="icon"
           onClick={togglePlay}
-          className="w-12 h-12 rounded-full bg-purple-500 hover:bg-purple-600"
+          className="h-12 w-12 rounded-full bg-purple-500 hover:bg-purple-600"
           disabled={isLoading || error}
           aria-label={
-            isPlaying
-              ? translations[currentLanguage].pause
-              : translations[currentLanguage].play
+            isPlaying ? translations[currentLanguage].pause : translations[currentLanguage].play
           }
         >
           {isLoading ? (
-            <RefreshCw className="w-6 h-6 animate-spin" />
+            <RefreshCw className="h-6 w-6 animate-spin" />
           ) : isPlaying ? (
-            <Pause className="w-6 h-6" />
+            <Pause className="h-6 w-6" />
           ) : (
-            <Play className="w-6 h-6" />
+            <Play className="h-6 w-6" />
           )}
         </Button>
 
@@ -205,7 +195,7 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
           className="text-gray-400 hover:text-white"
           aria-label={translations[currentLanguage].skipForward}
         >
-          <SkipForward className="w-5 h-5" />
+          <SkipForward className="h-5 w-5" />
         </Button>
       </div>
 
@@ -226,23 +216,17 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
       </div>
 
       {/* Controle de volume */}
-      <div className="flex items-center gap-2 mt-4">
+      <div className="mt-4 flex items-center gap-2">
         <Button
           variant="ghost"
           size="icon"
           onClick={toggleMute}
           className="text-gray-400 hover:text-white"
           aria-label={
-            isMuted
-              ? translations[currentLanguage].unmute
-              : translations[currentLanguage].mute
+            isMuted ? translations[currentLanguage].unmute : translations[currentLanguage].mute
           }
         >
-          {isMuted ? (
-            <VolumeX className="w-5 h-5" />
-          ) : (
-            <Volume2 className="w-5 h-5" />
-          )}
+          {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
         </Button>
         <Slider
           value={[isMuted ? 0 : volume]}
@@ -255,9 +239,7 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
       </div>
 
       {/* Mensagem de erro */}
-      {error && (
-        <div className="mt-4 text-center text-red-400 text-sm">{error}</div>
-      )}
+      {error && <div className="mt-4 text-center text-sm text-red-400">{error}</div>}
     </div>
   );
 };

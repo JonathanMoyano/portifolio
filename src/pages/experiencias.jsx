@@ -31,7 +31,7 @@ const ExperienciasPage = () => {
   const [filteredExperiences, setFilteredExperiences] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const experiences = [
+  const experiences = useMemo(() => [
     {
       id: 1,
       area: 'tech',
@@ -101,7 +101,7 @@ const ExperienciasPage = () => {
         { metric: 'Mercados', value: '15+' },
       ],
     },
-  ];
+  ]);
 
   useEffect(() => {
     // Simula carregamento inicial
@@ -121,7 +121,7 @@ const ExperienciasPage = () => {
       return matchesFilter && matchesSearch;
     });
     setFilteredExperiences(filtered);
-  }, [activeFilter, searchTerm]);
+  }, [activeFilter, searchTerm, experiences]);
 
   const areaColors = {
     tech: 'bg-blue-500',
