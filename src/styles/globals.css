@@ -13,24 +13,26 @@
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 210 100% 69%; /* Azul primário */
+    /* Ajustado para um azul mais vibrante */
+    --primary: 213 94% 68%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 14.9%;
+    --secondary: 217 19% 27%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 14.9%;
+    --muted: 215 14% 25%;
     --muted-foreground: 0 0% 63.9%;
 
-    --accent: 0 0% 14.9%;
+    --accent: 213 94% 68%;
     --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    /* Mudado para tons de vermelho mais escuro para destructive */
+    --destructive: 0 84% 32%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 210 100% 69%; /* Azul no efeito de anel */
+    --border: 213 20% 25%;
+    --input: 213 20% 25%;
+    --ring: 213 94% 68%;
 
     --radius: 0.75rem;
 
@@ -190,7 +192,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent;
   }
 
   .card-hover {
@@ -202,7 +204,7 @@
   }
 
   .nav-link-active {
-    @apply bg-blue-500/10 text-blue-400;
+    @apply bg-blue-500/10 text-blue-500;
   }
 
   .nav-link-inactive {
@@ -298,11 +300,11 @@
 }
 
 .prose strong {
-  @apply text-blue-400;
+  @apply text-blue-500;
 }
 
 .prose a {
-  @apply text-blue-400 transition-colors hover:text-blue-300;
+  @apply text-blue-500 transition-colors hover:text-blue-400;
 }
 
 .container-custom {

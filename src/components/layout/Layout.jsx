@@ -15,12 +15,10 @@ export const AccessibilityProvider = ({ children }) => {
   const [contrast, setContrast] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
-  // Marcar quando estiver no cliente
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Persistir preferências de acessibilidade - apenas no cliente
   useEffect(() => {
     if (isClient) {
       try {
@@ -43,7 +41,6 @@ export const AccessibilityProvider = ({ children }) => {
     }
   }, [isClient]);
 
-  // Salvar preferências quando mudarem - apenas no cliente
   useEffect(() => {
     if (isClient) {
       try {
@@ -60,7 +57,6 @@ export const AccessibilityProvider = ({ children }) => {
     }
   }, [fontSize, contrast, currentLanguage, isDarkMode, isClient]);
 
-  // Aplicar tamanho de fonte ao documento - apenas no cliente
   useEffect(() => {
     if (isClient) {
       document.documentElement.style.fontSize = `${fontSize}px`;
@@ -81,7 +77,6 @@ export const AccessibilityProvider = ({ children }) => {
   return <AccessibilityContext.Provider value={value}>{children}</AccessibilityContext.Provider>;
 };
 
-// Hook personalizado para usar o contexto de acessibilidade
 export const useAccessibility = () => {
   const context = useContext(AccessibilityContext);
   if (!context) {
@@ -90,7 +85,6 @@ export const useAccessibility = () => {
   return context;
 };
 
-// Componente Layout Principal
 const Layout = ({ children }) => {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -102,7 +96,6 @@ const Layout = ({ children }) => {
     setIsMounted(true);
   }, []);
 
-  // Gerenciar loading entre mudanças de página
   useEffect(() => {
     const handleStart = () => setIsLoading(true);
     const handleComplete = () => setIsLoading(false);
@@ -119,12 +112,12 @@ const Layout = ({ children }) => {
   }, [router]);
 
   if (!isMounted) {
-    return null; // ou um loading placeholder
+    return null;
   }
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''} ${contrast ? 'high-contrast' : ''}`}>
-      <div className="relative" style={{ fontSize: `${fontSize}px` }}>
+      <div className="flex min-h-screen flex-col" style={{ fontSize: `${fontSize}px` }}>
         <Navigation
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
@@ -133,7 +126,7 @@ const Layout = ({ children }) => {
 
         <Header toggleSidebar={() => setIsSidebarOpen(true)} />
 
-        <main className="min-h-screen pt-16 transition-all duration-300 md:ml-64">
+        <main className="flex-1 pt-16 transition-all duration-300 md:ml-64">
           {isLoading && (
             <div className="fixed left-0 top-0 z-50 h-1 w-full">
               <div className="animate-loading h-full bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600" />
@@ -145,7 +138,9 @@ const Layout = ({ children }) => {
           </div>
         </main>
 
-        <Footer />
+        <div className="transition-all duration-300 md:ml-64">
+          <Footer />
+        </div>
       </div>
     </div>
   );

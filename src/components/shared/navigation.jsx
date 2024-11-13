@@ -1,5 +1,15 @@
 import React from 'react';
-import { Home, Code, Shield, Briefcase, Mail, User, ChevronRight } from 'lucide-react';
+import {
+  Home,
+  Code,
+  Shield,
+  Briefcase,
+  Globe2,
+  Mail,
+  User,
+  ChevronRight,
+  Layers,
+} from 'lucide-react';
 import { useAccessibility } from '../layout/Layout';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
@@ -12,7 +22,8 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
       history: 'Minha História',
       tech: 'Tecnologia',
       fireman: 'Bombeiro Civil',
-      // commerce: "Comércio Exterior",
+      commerce: 'Estudos',
+      projects: 'Projetos',
       experiences: 'Experiências',
       contact: 'Contato',
       title: 'Menu Principal',
@@ -22,7 +33,8 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
       history: 'My Story',
       tech: 'Technology',
       fireman: 'Civil Firefighter',
-      // commerce: 'Foreign Trade',
+      commerce: 'Studies',
+      projects: 'Projects',
       experiences: 'Experiences',
       contact: 'Contact',
       title: 'Main Menu',
@@ -32,7 +44,8 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
       history: 'Mi Historia',
       tech: 'Tecnología',
       fireman: 'Bombero Civil',
-      // commerce: 'Comercio Exterior',
+      commerce: 'Estudos',
+      projects: 'Proyectos',
       experiences: 'Experiencias',
       contact: 'Contacto',
       title: 'Menú Principal',
@@ -56,15 +69,20 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
       path: '/tecnologia',
     },
     {
+      title: translations[currentLanguage].projects,
+      icon: <Layers className="h-5 w-5" />,
+      path: '/projetos',
+    },
+    {
       title: translations[currentLanguage].fireman,
       icon: <Shield className="h-5 w-5" />,
       path: '/bombeiro',
     },
-    // {
-    //   title: translations[currentLanguage].commerce,
-    //   icon: <Globe2 className="h-5 w-5" />,
-    //   path: '/comercio',
-    // },
+    {
+      title: translations[currentLanguage].commerce,
+      icon: <Globe2 className="h-5 w-5" />,
+      path: '/estudo',
+    },
     {
       title: translations[currentLanguage].experiences,
       icon: <Briefcase className="h-5 w-5" />,
@@ -83,7 +101,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
   const DesktopNav = () => (
     <nav className="fixed left-0 top-0 hidden h-screen w-64 flex-col border-r border-neutral-800 bg-neutral-900 p-4 md:flex">
       <div className="mb-8">
-        <h1 className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-xl font-bold text-transparent">
+        <h1 className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-xl font-bold text-transparent">
           Jonathan Souza Moyano
         </h1>
         <p className="mt-1 text-sm text-gray-400">Tecnologia, Liderança & Inovação</p>
@@ -96,7 +114,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
             href={item.path}
             className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
               isActiveLink(item.path)
-                ? 'bg-purple-500/10 text-purple-400'
+                ? 'bg-blue-500/10 text-blue-400'
                 : 'text-gray-400 hover:bg-neutral-800 hover:text-gray-100'
             }`}
             aria-current={isActiveLink(item.path) ? 'page' : undefined}
@@ -122,7 +140,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
         className="w-[300px] border-r border-neutral-800 bg-neutral-900 p-0"
       >
         <SheetHeader className="border-b border-neutral-800 p-4">
-          <SheetTitle className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-left font-bold text-transparent">
+          <SheetTitle className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-left font-bold text-transparent">
             {translations[currentLanguage].title}
           </SheetTitle>
         </SheetHeader>
@@ -133,7 +151,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
               href={item.path}
               className={`flex items-center gap-3 px-4 py-3 transition-colors ${
                 isActiveLink(item.path)
-                  ? 'bg-purple-500/10 text-purple-400'
+                  ? 'bg-blue-500/10 text-blue-400'
                   : 'text-gray-400 hover:bg-neutral-800 hover:text-gray-100'
               }`}
               onClick={onClose}

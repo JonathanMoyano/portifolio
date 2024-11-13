@@ -1,8 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { BookOpen, Cloud, Code, School } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const StudiesPage = () => {
   const education = {
@@ -111,82 +111,83 @@ const StudiesPage = () => {
     ],
   };
 
-  const categories = [
-    { id: 'academic', title: 'Formação Acadêmica' },
-    { id: 'cloud', title: 'Cloud Computing' },
-    { id: 'development', title: 'Desenvolvimento' },
-    { id: 'ai', title: 'IA & Data Science' },
-    { id: 'management', title: 'Gestão de TI' },
-  ];
-
   return (
-    <div className="min-h-screen bg-neutral-900 py-16">
-      <div className="container mx-auto px-4">
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mb-16 max-w-3xl text-center"
-        >
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-100 md:text-5xl lg:text-6xl">
-            Formação
-            <span className="mt-2 block bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
-              Acadêmica
-            </span>
-          </h1>
-          <p className="text-xl text-gray-400">
-            Desenvolvimento contínuo e aprendizado em tecnologia
-          </p>
-        </motion.div>
+    <div className="mx-auto max-w-6xl px-4 py-8">
+      {/* Header Section */}
+      <div className="mb-12">
+        <h1 className="mb-4 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-4xl font-bold text-transparent">
+          Formação Acadêmica e Certificações
+        </h1>
+        <p className="text-xl text-gray-300">
+          Desenvolvimento contínuo e aprendizado em tecnologia
+        </p>
+      </div>
 
-        {/* Education Sections */}
-        <div className="space-y-16">
-          {categories.map((category, categoryIndex) => (
-            <motion.section
-              key={category.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-            >
-              <h2 className="mb-8 text-center text-3xl font-bold text-gray-100">
-                {category.title}
-              </h2>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {education[category.id].map((item, index) => (
-                  <Card
-                    key={index}
-                    className="border-neutral-700 bg-neutral-800 transition-all duration-300 hover:border-blue-500"
-                  >
-                    <CardContent className="p-6">
-                      <div className="mb-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-gray-100">{item.title}</h3>
-                            <p className="text-sm text-gray-400">{item.institution}</p>
-                          </div>
-                        </div>
-                        <Badge
-                          variant={item.status.includes('andamento') ? 'outline' : 'secondary'}
-                          className={
-                            item.status.includes('andamento') ? 'border-blue-500 text-blue-400' : ''
-                          }
-                        >
-                          {item.status}
-                        </Badge>
-                      </div>
-                      {item.description && <p className="mt-4 text-gray-400">{item.description}</p>}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </motion.section>
+      {/* Academic Education Section */}
+      <section className="mb-12">
+        <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-gray-100">
+          <BookOpen className="h-6 w-6" />
+          Formação Acadêmica
+        </h2>
+        <div className="grid gap-6">
+          {education.academic.map((item, index) => (
+            <Card key={index} className="border-neutral-700 bg-neutral-800">
+              <CardContent className="p-6">
+                <div className="mb-4 flex items-center justify-between">
+                  <Badge variant="secondary">{item.type}</Badge>
+                  <Badge variant="outline">Em Andamento</Badge>
+                </div>
+                <div className="mb-4 flex items-center gap-2">
+                  {item.icon}
+                  <h3 className="text-xl font-semibold text-gray-100">{item.title}</h3>
+                </div>
+                <p className="mb-2 text-gray-400">{item.institution}</p>
+                <p className="mb-4 text-gray-500">{item.status}</p>
+                <p className="text-gray-300">{item.description}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
-      </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section>
+        <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-gray-100">
+          <BookOpen className="h-6 w-6" />
+          Certificações e Cursos
+        </h2>
+        <Tabs defaultValue="cloud" className="w-full">
+          <TabsList className="mb-4">
+            <TabsTrigger value="cloud">Cloud Computing</TabsTrigger>
+            <TabsTrigger value="development">Desenvolvimento</TabsTrigger>
+            <TabsTrigger value="ai">IA & Data Science</TabsTrigger>
+            <TabsTrigger value="management">Gestão de TI</TabsTrigger>
+          </TabsList>
+
+          {Object.entries(education)
+            .filter(([key]) => key !== 'academic')
+            .map(([category, items]) => (
+              <TabsContent key={category} value={category}>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {items.map((item, index) => (
+                    <Card key={index} className="border-neutral-700 bg-neutral-800">
+                      <CardContent className="p-6">
+                        <div className="mb-4 flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            {item.icon}
+                            <h3 className="font-semibold text-gray-100">{item.title}</h3>
+                          </div>
+                          <Badge variant="secondary">{item.status}</Badge>
+                        </div>
+                        <p className="text-gray-400">{item.institution}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+            ))}
+        </Tabs>
+      </section>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Code, Shield, Globe2, ArrowRight, ChevronRight, Star, ScrollText } from 'lucide-react';
+import { Code, Shield, ArrowRight, ChevronRight, Star, ScrollText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAccessibility } from '@/components/layout/Layout';
 import { translations } from '@/utils/constants';
@@ -16,11 +16,12 @@ const IndexPage = () => {
       id: 'tech',
       title: t.nav.tech,
       icon: Code,
-      color: 'from-blue-500 to-cyan-500',
-      stats: ['5+ anos', '50+ projetos', '10+ tecnologias'],
-      description: 'Desenvolvimento Full Stack com foco em soluções inovadoras e escaláveis.',
+      color: 'from-blue-500 to-blue-600',
+      stats: ['2+ anos', '50+ projetos', '10+ certificações'],
+      description:
+        'Analista de TI especializado em infraestrutura, segurança e otimização de sistemas.',
       link: '/tecnologia',
-      highlights: ['React & Node.js', 'Cloud & DevOps', 'Arquitetura de Software'],
+      highlights: ['Cloud & Infraestrutura', 'Desenvolvimento Web', 'Gestão de Projetos em TI'],
     },
     {
       id: 'fireman',
@@ -32,16 +33,6 @@ const IndexPage = () => {
         'Experiência em prevenção e combate a incêndio, salvamento e gestão de emergências.',
       link: '/bombeiro',
       highlights: ['Gestão de Emergências', 'Treinamento de Equipes', 'Prevenção de Acidentes'],
-    },
-    {
-      id: 'commerce',
-      title: t.nav.commerce,
-      icon: Globe2,
-      color: 'from-purple-500 to-pink-500',
-      stats: ['6+ anos', '20+ países', '$10M+ operados'],
-      description: 'Expertise em operações internacionais e negociações multiculturais.',
-      link: '/comercio',
-      highlights: ['Importação & Exportação', 'Logística Internacional', 'Negociações Globais'],
     },
   ];
 
@@ -61,7 +52,7 @@ const IndexPage = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-sm font-semibold uppercase tracking-wider text-purple-400"
+                className="text-sm font-semibold uppercase tracking-wider text-blue-400"
               >
                 Portfólio Profissional
               </motion.h2>
@@ -72,7 +63,7 @@ const IndexPage = () => {
                 className="font-display text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl"
               >
                 <span className="block text-white">Transformando</span>
-                <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 bg-clip-text text-transparent">
                   Desafios em Soluções
                 </span>
               </motion.h1>
@@ -84,7 +75,7 @@ const IndexPage = () => {
               className="mx-auto max-w-2xl text-lg text-gray-400 md:text-xl"
             >
               Especialista em Análise de TI com foco em infraestrutura, segurança e otimização de
-              sistemas.
+              sistemas. Estudante de Análise e Desenvolvimento de Sistemas.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -94,7 +85,7 @@ const IndexPage = () => {
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600"
+                className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:via-blue-700 hover:to-blue-800"
                 onClick={() => (window.location.href = '/historia')}
               >
                 Conheça minha história
@@ -104,7 +95,7 @@ const IndexPage = () => {
                 size="lg"
                 variant="outline"
                 onClick={() => (window.location.href = '/contato')}
-                className="border-purple-500 text-purple-400 hover:bg-purple-500/10"
+                className="border-blue-500 text-blue-400 hover:bg-blue-500/10"
               >
                 Vamos conversar
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -130,7 +121,7 @@ const IndexPage = () => {
             </p>
           </motion.div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
             {areas.map((area, index) => (
               <motion.div
                 key={area.id}
@@ -140,8 +131,8 @@ const IndexPage = () => {
               >
                 <Card
                   className={`group relative h-full overflow-hidden border-neutral-700 bg-neutral-800 
-                    ${activeCard === area.id ? 'ring-2 ring-purple-500' : ''}
-                    transition-all duration-300 hover:border-purple-500`}
+                    ${activeCard === area.id ? 'ring-2 ring-blue-500' : ''}
+                    transition-all duration-300 hover:border-blue-500`}
                   onMouseEnter={() => setActiveCard(area.id)}
                   onMouseLeave={() => setActiveCard(null)}
                   onClick={() => (window.location.href = area.link)}
@@ -167,7 +158,7 @@ const IndexPage = () => {
                     <div className="mb-6 grid grid-cols-3 gap-2">
                       {area.stats.map((stat, i) => (
                         <div key={i} className="text-center">
-                          <Star className="mx-auto mb-1 h-4 w-4 text-purple-400" />
+                          <Star className="mx-auto mb-1 h-4 w-4 text-blue-400" />
                           <span className="text-sm text-gray-300">{stat}</span>
                         </div>
                       ))}
@@ -177,7 +168,7 @@ const IndexPage = () => {
                     <ul className="mb-6 space-y-2">
                       {area.highlights.map((highlight, i) => (
                         <li key={i} className="flex items-center text-gray-300">
-                          <ChevronRight className="mr-2 h-4 w-4 text-purple-400" />
+                          <ChevronRight className="mr-2 h-4 w-4 text-blue-400" />
                           {highlight}
                         </li>
                       ))}
@@ -187,7 +178,7 @@ const IndexPage = () => {
                     <div className="absolute bottom-6 right-6">
                       <Button
                         variant="ghost"
-                        className="transition-colors group-hover:text-purple-400"
+                        className="transition-colors group-hover:text-blue-400"
                       >
                         Explorar
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -202,7 +193,7 @@ const IndexPage = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 py-20">
+      <section className="bg-gradient-to-br from-blue-900/50 to-blue-800/50 py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
