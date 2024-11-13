@@ -65,14 +65,6 @@ const ExperienciasPage = () => {
           'Implementação de sistema de controle de inventário de TI',
           'Redução de 30% no tempo de resposta para chamados técnicos',
         ],
-        certifications: [
-          'AWS Amazon Cloud Computing',
-          'Google Cloud Associate Engineer (GCP)',
-          'Microsoft Azure Data Fundamentals (DP-900)',
-          'Google Cloud Fundamentals: Core Infrastructure',
-          'Ciência de Dados 3.0 - Data Science Academy',
-          'Engenharia de Prompts na AWS com Claude',
-        ],
         impact: [
           { metric: 'Eficiência Suporte', value: '+30%' },
           { metric: 'Cobertura CFTV', value: '+40%' },
@@ -141,41 +133,6 @@ const ExperienciasPage = () => {
       },
       {
         id: 4,
-        area: 'tech',
-        role: 'Especialista em Reparos',
-        company: 'Device Now - Soluções e Tecnologia',
-        period: '2023 - Presente',
-        location: 'São Vicente, SP',
-        type: 'Autônomo',
-        description:
-          'Especialista em reparo de placas eletrônicas e implementação de soluções tecnológicas.',
-        highlights: [
-          'Reparo especializado de placas eletrônicas',
-          'Implementação de sistemas operacionais',
-          'Desenvolvimento de soluções de software',
-          'Manutenção avançada de hardware',
-        ],
-        technologies: [
-          'Eletrônica',
-          'Sistemas Operacionais',
-          'Hardware',
-          'Software',
-          'Reparos Técnicos',
-        ],
-        achievements: [
-          'Alta taxa de sucesso em reparos complexos',
-          'Desenvolvimento de procedimentos técnicos especializados',
-          'Expertise em diagnóstico e solução de problemas',
-        ],
-        impact: [
-          { metric: 'Taxa Sucesso', value: '95%' },
-          { metric: 'Clientes', value: '100+' },
-          { metric: 'Retenção', value: '90%' },
-        ],
-      },
-
-      {
-        id: 4,
         area: 'fire',
         role: 'Bombeiro Civil',
         company: 'Grupo Mendes',
@@ -207,11 +164,9 @@ const ExperienciasPage = () => {
   );
 
   useEffect(() => {
-    // Simula carregamento inicial
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -228,8 +183,7 @@ const ExperienciasPage = () => {
 
   const areaColors = {
     tech: 'bg-blue-500',
-    fire: 'bg-red-500',
-    commerce: 'bg-purple-500',
+    fire: 'bg-blue-600',
   };
 
   const formatPeriod = (period) => {
@@ -245,18 +199,18 @@ const ExperienciasPage = () => {
   };
 
   return (
-    <div className="min-h-screen px-4 py-12">
+    <div className="min-h-screen bg-neutral-900 px-4 py-12">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mx-auto mb-12 max-w-6xl"
       >
-        <h1 className="to-Blue-500 mb-6 bg-gradient-to-r from-purple-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+        <h1 className="mb-6 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
           Experiência Profissional
         </h1>
         <p className="text-xl text-gray-300">
-          Uma jornada multidisciplinar combinando tecnologia, segurança e negócios internacionais
+          Uma jornada multidisciplinar em tecnologia e segurança
         </p>
       </motion.div>
 
@@ -267,7 +221,7 @@ const ExperienciasPage = () => {
         transition={{ delay: 0.1 }}
         className="mx-auto mb-8 max-w-6xl"
       >
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2">
           <div className="relative">
             <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
             <Input
@@ -286,9 +240,7 @@ const ExperienciasPage = () => {
                     ? 'Todas as Áreas'
                     : activeFilter === 'tech'
                       ? 'Tecnologia'
-                      : activeFilter === 'fire'
-                        ? 'Bombeiro Civil'
-                        : 'Comércio Exterior'}
+                      : 'Bombeiro Civil'}
                 </div>
               </SelectValue>
             </SelectTrigger>
@@ -296,7 +248,6 @@ const ExperienciasPage = () => {
               <SelectItem value="all">Todas as Áreas</SelectItem>
               <SelectItem value="tech">Tecnologia</SelectItem>
               <SelectItem value="fire">Bombeiro Civil</SelectItem>
-              <SelectItem value="commerce">Comércio Exterior</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -313,7 +264,7 @@ const ExperienciasPage = () => {
               exit={{ opacity: 0 }}
               className="flex items-center justify-center py-20"
             >
-              <div className="h-10 w-10 animate-spin rounded-full border-4 border-purple-500 border-t-transparent" />
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
             </motion.div>
           ) : (
             <motion.div
@@ -334,9 +285,7 @@ const ExperienciasPage = () => {
                 >
                   <Card
                     className={`cursor-pointer border-neutral-700 bg-neutral-800
-                      ${
-                        expandedId === exp.id ? 'ring-2 ring-purple-500' : 'hover:border-purple-500'
-                      }
+                      ${expandedId === exp.id ? 'ring-2 ring-blue-500' : 'hover:border-blue-500'}
                       transition-all duration-300`}
                     onClick={() => setExpandedId(expandedId === exp.id ? null : exp.id)}
                   >
@@ -346,15 +295,11 @@ const ExperienciasPage = () => {
                         <div>
                           <div className="mb-2 flex items-center gap-2">
                             <Badge className={areaColors[exp.area]} variant="secondary">
-                              {exp.area === 'tech'
-                                ? 'Tecnologia'
-                                : exp.area === 'fire'
-                                  ? 'Bombeiro Civil'
-                                  : 'Comércio Exterior'}
+                              {exp.area === 'tech' ? 'Tecnologia' : 'Bombeiro Civil'}
                             </Badge>
                             <Badge variant="outline">{exp.type}</Badge>
                           </div>
-                          <h3 className="mb-1 text-xl font-semibold">{exp.role}</h3>
+                          <h3 className="mb-1 text-xl font-semibold text-gray-100">{exp.role}</h3>
                           <div className="flex items-center gap-4 text-gray-400">
                             <div className="flex items-center gap-1">
                               <Building2 className="h-4 w-4" />
@@ -383,51 +328,49 @@ const ExperienciasPage = () => {
                           >
                             {/* Highlights */}
                             <div>
-                              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold">
-                                <Star className="h-4 w-4 text-yellow-500" />
+                              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-100">
+                                <Star className="h-4 w-4 text-blue-400" />
                                 Destaques
                               </h4>
                               <ul className="grid gap-2 md:grid-cols-2">
                                 {exp.highlights.map((highlight, index) => (
                                   <li key={index} className="flex items-center gap-2 text-gray-300">
-                                    <ChevronRight className="h-4 w-4 text-purple-400" />
+                                    <ChevronRight className="h-4 w-4 text-blue-400" />
                                     {highlight}
                                   </li>
                                 ))}
                               </ul>
                             </div>
 
-                            {/* Technologies/Certifications/Regions */}
+                            {/* Technologies/Certifications */}
                             <div>
-                              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold">
-                                <Tags className="h-4 w-4 text-blue-500" />
-                                {exp.technologies
-                                  ? 'Tecnologias'
-                                  : exp.certifications
-                                    ? 'Certificações'
-                                    : 'Regiões'}
+                              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-100">
+                                <Tags className="h-4 w-4 text-blue-400" />
+                                {exp.technologies ? 'Tecnologias' : 'Certificações'}
                               </h4>
                               <div className="flex flex-wrap gap-2">
-                                {(exp.technologies || exp.certifications || exp.regions).map(
-                                  (item, index) => (
-                                    <Badge key={index} variant="secondary">
-                                      {item}
-                                    </Badge>
-                                  )
-                                )}
+                                {(exp.technologies || exp.certifications).map((item, index) => (
+                                  <Badge
+                                    key={index}
+                                    variant="secondary"
+                                    className="bg-blue-500/10 text-blue-400"
+                                  >
+                                    {item}
+                                  </Badge>
+                                ))}
                               </div>
                             </div>
 
                             {/* Achievements */}
                             <div>
-                              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold">
-                                <Award className="h-4 w-4 text-purple-400" />
+                              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-100">
+                                <Award className="h-4 w-4 text-blue-400" />
                                 Conquistas
                               </h4>
                               <ul className="space-y-2">
                                 {exp.achievements.map((achievement, index) => (
                                   <li key={index} className="flex items-center gap-2 text-gray-300">
-                                    <ChevronRight className="h-4 w-4 text-purple-400" />
+                                    <ChevronRight className="h-4 w-4 text-blue-400" />
                                     {achievement}
                                   </li>
                                 ))}
@@ -438,7 +381,7 @@ const ExperienciasPage = () => {
                             <div className="grid grid-cols-3 gap-4 border-t border-neutral-700 pt-4">
                               {exp.impact.map((metric, index) => (
                                 <div key={index} className="text-center">
-                                  <div className="text-2xl font-bold text-purple-400">
+                                  <div className="text-2xl font-bold text-blue-400">
                                     {metric.value}
                                   </div>
                                   <div className="text-sm text-gray-400">{metric.metric}</div>
@@ -449,9 +392,9 @@ const ExperienciasPage = () => {
                         )}
                       </AnimatePresence>
 
-                      {/* Expand/Collapse Button */}
+                      {/* Ver mais/menos Button */}
                       <div className="mt-4 flex justify-end">
-                        <Button variant="ghost" size="sm">
+                        <Button variant="ghost" className="text-blue-400 hover:text-blue-500">
                           {expandedId === exp.id ? 'Ver menos' : 'Ver mais'}
                           <ArrowRight
                             className={`ml-2 h-4 w-4 transition-transform duration-300 
@@ -473,11 +416,13 @@ const ExperienciasPage = () => {
                   <div className="mb-4">
                     <Search className="mx-auto h-12 w-12 text-gray-500" />
                   </div>
-                  <h3 className="mb-2 text-xl font-semibold">Nenhuma experiência encontrada</h3>
+                  <h3 className="mb-2 text-xl font-semibold text-gray-100">
+                    Nenhuma experiência encontrada
+                  </h3>
                   <p className="text-gray-400">Tente ajustar seus filtros ou termo de busca</p>
                   <Button
                     variant="outline"
-                    className="mt-4"
+                    className="mt-4 border-blue-500 text-blue-400 hover:bg-blue-500/10"
                     onClick={() => {
                       setActiveFilter('all');
                       setSearchTerm('');
@@ -491,32 +436,6 @@ const ExperienciasPage = () => {
           )}
         </AnimatePresence>
       </div>
-
-      {/* CTA Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="mx-auto mt-12 max-w-4xl"
-      >
-        <Card className="to-Blue-900 border-none bg-gradient-to-r from-purple-900">
-          <CardContent className="p-8 text-center">
-            <h3 className="mb-4 text-2xl font-semibold">Interessado em minha experiência?</h3>
-            <p className="mb-6 text-gray-300">
-              Vamos conversar sobre como posso agregar valor ao seu projeto com minha experiência
-              multidisciplinar.
-            </p>
-            <Button
-              size="lg"
-              className="bg-white text-black hover:bg-gray-100"
-              onClick={() => (window.location.href = '/contato')}
-            >
-              Entrar em Contato
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </CardContent>
-        </Card>
-      </motion.div>
     </div>
   );
 };

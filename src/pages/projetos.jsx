@@ -6,23 +6,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Trophy, Globe, Smartphone, Users, Award, Star, ExternalLink } from 'lucide-react';
 
-const ImageComponent = ({ src, alt }) => {
-  return (
-    <div className="group relative overflow-hidden rounded-lg bg-neutral-800">
-      <Image
-        src={src}
-        alt={alt}
-        width={1200}
-        height={675}
-        className="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        priority
-        placeholder="blur"
-        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMi4xMC0uLy0yPVBCPThLPS4tRGlHS1NWW1xbMkFlbWRYbFBZW1f/2wBDARUXFx4aHR4eHVdPQk9XV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1f/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-      />
-    </div>
-  );
-};
-
 const ProjectsPage = () => {
   const projectStats = [
     {
@@ -122,17 +105,26 @@ const ProjectsPage = () => {
               <div className="mb-8">
                 <h3 className="mb-4 text-xl font-semibold text-gray-100">Sobre o Projeto</h3>
                 <p className="text-gray-400">
-                  O TROK! é uma plataforma inovadora que simplifica a gestão de serviços, clientes e
-                  pagamentos para profissionais autônomos e pequenas empresas. Desenvolvido com foco
-                  na experiência do usuário e praticidade, o aplicativo oferece uma solução completa
-                  para transformar habilidades em oportunidades de negócio.
+                  Em um mundo cada vez mais conectado, a economia colaborativa surge como solução
+                  para otimizar recursos e fortalecer comunidades. O TROK! é um aplicativo inovador
+                  que revoluciona a forma como as pessoas trocam serviços e mão de obra, promovendo
+                  sustentabilidade e inclusão social.
                 </p>
               </div>
 
-              {/* Project Images */}
-              <div className="mb-8 grid gap-6 md:grid-cols-2">
-                <ImageComponent src="/images/trok-banner.jpg" alt="Banner Educacional TROK!" />
-                <ImageComponent src="/images/trok-app.jpg" alt="Demonstração do Aplicativo TROK!" />
+              {/* Educational Banner */}
+              <div className="mb-8">
+                <div className="mx-auto max-w-[582px] overflow-hidden rounded-lg bg-neutral-700/20 p-4">
+                  <Image
+                    src="/images/trok-banner.jpg"
+                    alt="Banner Educacional TROK!"
+                    width={582}
+                    height={770}
+                    className="w-full object-contain"
+                    priority
+                    quality={100}
+                  />
+                </div>
               </div>
 
               {/* Team Section */}
@@ -190,7 +182,7 @@ const ProjectsPage = () => {
                   className="bg-blue-500 hover:bg-blue-600"
                   onClick={() => window.open('https://www.trok-servicos.com.br', '_blank')}
                 >
-                  Visitar o site
+                  Visitar Website
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
                 <Button
@@ -204,11 +196,6 @@ const ProjectsPage = () => {
             </CardContent>
           </Card>
         </motion.div>
-
-        {/* Space for Future Projects */}
-        <div className="text-center text-gray-400">
-          <p>Mais projetos em breve...</p>
-        </div>
       </div>
     </div>
   );
