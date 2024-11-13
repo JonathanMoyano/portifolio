@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
@@ -36,70 +36,170 @@ const ExperienciasPage = () => {
       {
         id: 1,
         area: 'tech',
-        role: 'Desenvolvedor Full Stack Sênior',
-        company: 'Tech Solutions',
-        period: '2020 - Presente',
-        location: 'São Paulo, SP',
+        role: 'Analista de TI',
+        company: 'Colégio Jean Piaget - Santos',
+        period: 'Janeiro 2024 - Presente',
+        location: 'Santos, SP',
         type: 'Tempo Integral',
-        description: 'Liderança técnica no desenvolvimento de soluções web escaláveis.',
+        description:
+          'Liderança e gestão da equipe de TI, com especialização em otimização de sistemas e infraestrutura.',
         highlights: [
-          'Liderança de equipe com 5 desenvolvedores',
-          'Implementação de CI/CD e práticas DevOps',
-          'Redução de 40% no tempo de deploy',
-          'Mentoria de desenvolvedores júnior',
+          'Liderança e gestão da equipe de TI',
+          'Implementação e manutenção de sistemas de rede e segurança',
+          'Desenvolvimento de processos para otimização do suporte técnico',
+          'Gestão do parque tecnológico (computadores, Chromebooks e dispositivos móveis)',
+          'Gerenciamento e direcionamento dos Chamados para os Auxiliares e Assistentes de TI',
         ],
-        technologies: ['React', 'Node.js', 'AWS', 'Docker', 'TypeScript'],
-        achievements: ['Prêmio de Inovação 2022', 'Certificação AWS Solutions Architect'],
+        technologies: [
+          'AWS Amazon Cloud',
+          'Google Cloud',
+          'Microsoft Azure',
+          'Active Directory',
+          'ERP TOTVS',
+          'Sistema RM',
+          'HTML5/CSS3',
+          'JavaScript',
+        ],
+        achievements: [
+          'Modernização do sistema de CFTV, aumentando a cobertura em 40%',
+          'Implementação de sistema de controle de inventário de TI',
+          'Redução de 30% no tempo de resposta para chamados técnicos',
+        ],
+        certifications: [
+          'AWS Amazon Cloud Computing',
+          'Google Cloud Associate Engineer (GCP)',
+          'Microsoft Azure Data Fundamentals (DP-900)',
+          'Google Cloud Fundamentals: Core Infrastructure',
+          'Ciência de Dados 3.0 - Data Science Academy',
+          'Engenharia de Prompts na AWS com Claude',
+        ],
         impact: [
-          { metric: 'Performance', value: '+45%' },
-          { metric: 'Deploys/Dia', value: '15+' },
-          { metric: 'Uptime', value: '99.9%' },
+          { metric: 'Eficiência Suporte', value: '+30%' },
+          { metric: 'Cobertura CFTV', value: '+40%' },
+          { metric: 'Gestão Devices', value: '100%' },
         ],
       },
       {
         id: 2,
-        area: 'fire',
-        role: 'Líder de Brigada',
-        company: 'Indústria Segura',
-        period: '2016 - 2020',
-        location: 'Guarulhos, SP',
+        area: 'tech',
+        role: 'Assistente de TI',
+        company: 'Colégio Jean Piaget - Santos',
+        period: 'Outubro 2023 - Janeiro 2024',
+        location: 'Santos, SP',
         type: 'Tempo Integral',
-        description: 'Gestão de equipe de bombeiros civis e coordenação de emergências.',
+        description:
+          'Gestão de infraestrutura e implementação de melhorias nos sistemas de segurança.',
         highlights: [
-          'Coordenação de equipe com 12 bombeiros',
-          'Elaboração de planos de emergência',
-          'Treinamento de 500+ brigadistas',
-          'Gestão de simulados mensais',
+          'Implementação de melhorias no sistema de CFTV',
+          'Desenvolvimento de sistema de controle de inventário',
+          'Otimização do tempo de resposta para chamados técnicos',
+          'Manutenção preventiva de infraestrutura',
         ],
-        certifications: ['NR-23', 'NR-33', 'NR-35'],
-        achievements: ['Zero acidentes em 3 anos consecutivos', 'Prêmio Segurança Total 2019'],
+        technologies: [
+          'Sistemas CFTV',
+          'Sistemas de Inventário',
+          'Infraestrutura de Redes',
+          'Suporte Técnico',
+        ],
+        achievements: [
+          'Aumento de 40% na cobertura de segurança',
+          'Implementação bem-sucedida do sistema de inventário',
+          'Melhoria significativa no tempo de resposta',
+        ],
         impact: [
-          { metric: 'Tempo Resposta', value: '-60%' },
-          { metric: 'Brigadistas', value: '500+' },
-          { metric: 'Acidentes', value: '0' },
+          { metric: 'Cobertura', value: '+40%' },
+          { metric: 'Tempo Resposta', value: '-30%' },
+          { metric: 'Eficiência', value: '+35%' },
         ],
       },
       {
         id: 3,
-        area: 'commerce',
-        role: 'Gerente de Comércio Exterior',
-        company: 'Global Trade Inc',
-        period: '2014 - 2016',
+        area: 'tech',
+        role: 'Analista de Suporte Júnior',
+        company: 'Cruz Azul',
+        period: 'Outubro 2022 - Outubro 2023',
+        location: 'Santos, SP',
+        type: 'Estágio',
+        description: 'Suporte técnico e administração de sistemas corporativos.',
+        highlights: [
+          'Suporte técnico ao ERP TOTVS',
+          'Administração de Active Directory',
+          'Gerenciamento do sistema RM',
+          'Manutenção preventiva da infraestrutura de TI',
+        ],
+        technologies: ['ERP TOTVS', 'Active Directory', 'Sistema RM', 'Infraestrutura de TI'],
+        achievements: [
+          'Implementação de rotinas de manutenção preventiva',
+          'Otimização dos processos de suporte',
+          'Melhoria na gestão do Active Directory',
+        ],
+        impact: [
+          { metric: 'Uptime', value: '99.9%' },
+          { metric: 'Resolução', value: '95%' },
+          { metric: 'Satisfação', value: '98%' },
+        ],
+      },
+      {
+        id: 4,
+        area: 'tech',
+        role: 'Especialista em Reparos',
+        company: 'Device Now - Soluções e Tecnologia',
+        period: '2023 - Presente',
+        location: 'São Vicente, SP',
+        type: 'Autônomo',
+        description:
+          'Especialista em reparo de placas eletrônicas e implementação de soluções tecnológicas.',
+        highlights: [
+          'Reparo especializado de placas eletrônicas',
+          'Implementação de sistemas operacionais',
+          'Desenvolvimento de soluções de software',
+          'Manutenção avançada de hardware',
+        ],
+        technologies: [
+          'Eletrônica',
+          'Sistemas Operacionais',
+          'Hardware',
+          'Software',
+          'Reparos Técnicos',
+        ],
+        achievements: [
+          'Alta taxa de sucesso em reparos complexos',
+          'Desenvolvimento de procedimentos técnicos especializados',
+          'Expertise em diagnóstico e solução de problemas',
+        ],
+        impact: [
+          { metric: 'Taxa Sucesso', value: '95%' },
+          { metric: 'Clientes', value: '100+' },
+          { metric: 'Retenção', value: '90%' },
+        ],
+      },
+
+      {
+        id: 4,
+        area: 'fire',
+        role: 'Bombeiro Civil',
+        company: 'Grupo Mendes',
+        period: 'Março 2019 - Janeiro 2022',
         location: 'Santos, SP',
         type: 'Tempo Integral',
-        description: 'Gestão de operações de importação e exportação.',
+        description: 'Gestão de segurança e emergências em ambiente de shopping center.',
         highlights: [
-          'Gestão de portfolio de US$10M+',
-          'Negociação com fornecedores internacionais',
-          'Otimização de processos logísticos',
-          'Desenvolvimento de novos mercados',
+          'Gestão de equipe de bombeiros',
+          'Atendimento de primeiros socorros',
+          'Inspeções de segurança',
+          'Treinamento de brigadistas',
+          'Elaboração de relatórios técnicos',
         ],
-        regions: ['Ásia', 'Europa', 'América do Norte'],
-        achievements: ['Redução de 30% nos custos logísticos', 'Expansão para 5 novos mercados'],
+        certifications: ['NR-23', 'NR-33', 'NR-35', 'DEA'],
+        achievements: [
+          'Zero acidentes graves no período',
+          'Implementação de novos protocolos de segurança',
+          'Modernização do sistema de prevenção',
+        ],
         impact: [
-          { metric: 'Volume', value: '$10M+' },
-          { metric: 'Economia', value: '30%' },
-          { metric: 'Mercados', value: '15+' },
+          { metric: 'Atendimentos', value: '500+' },
+          { metric: 'Treinamentos', value: '100+' },
+          { metric: 'Inspeções', value: '1000+' },
         ],
       },
     ],
@@ -152,7 +252,7 @@ const ExperienciasPage = () => {
         animate={{ opacity: 1, y: 0 }}
         className="mx-auto mb-12 max-w-6xl"
       >
-        <h1 className="mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+        <h1 className="to-Blue-500 mb-6 bg-gradient-to-r from-purple-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
           Experiência Profissional
         </h1>
         <p className="text-xl text-gray-300">
@@ -399,7 +499,7 @@ const ExperienciasPage = () => {
         transition={{ delay: 0.2 }}
         className="mx-auto mt-12 max-w-4xl"
       >
-        <Card className="border-none bg-gradient-to-r from-purple-900 to-pink-900">
+        <Card className="to-Blue-900 border-none bg-gradient-to-r from-purple-900">
           <CardContent className="p-8 text-center">
             <h3 className="mb-4 text-2xl font-semibold">Interessado em minha experiência?</h3>
             <p className="mb-6 text-gray-300">

@@ -3,59 +3,58 @@ export const translations = {
   pt: {
     // Navegação
     nav: {
-      home: "Início",
-      history: "Minha História",
-      tech: "Tecnologia",
-      fireman: "Bombeiro Civil",
-      commerce: "Comércio Exterior",
-      experiences: "Experiências",
-      contact: "Contato",
+      home: 'Início',
+      history: 'Minha História',
+      tech: 'Tecnologia',
+      fireman: 'Bombeiro Civil',
+      commerce: 'Comércio Exterior',
+      experiences: 'Experiências',
+      contact: 'Contato',
     },
 
     // Seções comuns
     common: {
-      readMore: "Ler mais",
-      seeAll: "Ver tudo",
-      loading: "Carregando...",
-      error: "Erro ao carregar",
-      success: "Sucesso!",
-      send: "Enviar",
-      cancel: "Cancelar",
-      save: "Salvar",
-      edit: "Editar",
-      delete: "Excluir",
-      confirm: "Confirmar",
-      back: "Voltar",
+      readMore: 'Ler mais',
+      seeAll: 'Ver tudo',
+      loading: 'Carregando...',
+      error: 'Erro ao carregar',
+      success: 'Sucesso!',
+      send: 'Enviar',
+      cancel: 'Cancelar',
+      save: 'Salvar',
+      edit: 'Editar',
+      delete: 'Excluir',
+      confirm: 'Confirmar',
+      back: 'Voltar',
     },
 
     // Acessibilidade
     accessibility: {
-      menu: "Menu",
-      skipToContent: "Pular para o conteúdo",
-      increaseText: "Aumentar texto",
-      decreaseText: "Diminuir texto",
-      highContrast: "Alto contraste",
-      normalContrast: "Contraste normal",
-      darkMode: "Modo escuro",
-      lightMode: "Modo claro",
+      menu: 'Menu',
+      skipToContent: 'Pular para o conteúdo',
+      increaseText: 'Aumentar texto',
+      decreaseText: 'Diminuir texto',
+      highContrast: 'Alto contraste',
+      normalContrast: 'Contraste normal',
+      darkMode: 'Modo escuro',
+      lightMode: 'Modo claro',
     },
 
     // Seções específicas
     sections: {
       // História
       history: {
-        title: "Minha Trajetória",
-        subtitle: "Uma jornada de transformação e aprendizado contínuo",
+        title: 'Minha Trajetória',
+        subtitle: 'Uma jornada de transformação e aprendizado contínuo',
         timeline: [
           {
-            period: "2020 - Presente",
-            title: "Desenvolvedor Full Stack",
-            description:
-              "Desenvolvimento de soluções web complexas e inovadoras...",
+            period: '2020 - Presente',
+            title: 'Desenvolvedor Full Stack',
+            description: 'Desenvolvimento de soluções web complexas e inovadoras...',
             achievements: [
-              "Liderança de equipe com 5 desenvolvedores",
-              "Implementação de CI/CD",
-              "Redução de 40% no tempo de deploy",
+              'Liderança de equipe com 5 desenvolvedores',
+              'Implementação de CI/CD',
+              'Redução de 40% no tempo de deploy',
             ],
           },
           // Adicione mais períodos conforme necessário
@@ -64,60 +63,55 @@ export const translations = {
 
       // Tecnologia
       tech: {
-        title: "Experiência em Tecnologia",
-        subtitle: "Desenvolvendo soluções inovadoras",
+        title: 'Experiência em Tecnologia',
+        subtitle: 'Desenvolvendo soluções inovadoras',
         skills: {
           frontend: [
-            { name: "React", level: 90 },
-            { name: "TypeScript", level: 85 },
-            { name: "HTML/CSS", level: 95 },
+            { name: 'React', level: 90 },
+            { name: 'TypeScript', level: 85 },
+            { name: 'HTML/CSS', level: 95 },
           ],
           backend: [
-            { name: "Node.js", level: 88 },
-            { name: "Python", level: 82 },
-            { name: "SQL", level: 85 },
+            { name: 'Node.js', level: 88 },
+            { name: 'Python', level: 82 },
+            { name: 'SQL', level: 85 },
           ],
         },
       },
 
       // Bombeiro Civil
       fireman: {
-        title: "Bombeiro Civil",
-        subtitle: "Proteção e prevenção profissional",
+        title: 'Bombeiro Civil',
+        subtitle: 'Proteção e prevenção profissional',
         certifications: [
           {
-            title: "Formação Bombeiro Civil",
-            institution: "CFBC",
-            year: "2014",
-            description:
-              "Certificação completa em combate a incêndio e salvamento",
+            title: 'Formação Bombeiro Civil',
+            institution: 'CFBC',
+            year: '2014',
+            description: 'Certificação completa em combate a incêndio e salvamento',
           },
         ],
       },
 
       // Comércio Exterior
       commerce: {
-        title: "Comércio Exterior",
-        subtitle: "Negociações e operações internacionais",
-        expertise: [
-          "Importação e Exportação",
-          "Logística Internacional",
-          "Compliance Aduaneiro",
-        ],
+        title: 'Comércio Exterior',
+        subtitle: 'Negociações e operações internacionais',
+        expertise: ['Importação e Exportação', 'Logística Internacional', 'Compliance Aduaneiro'],
       },
     },
 
     // Formulário de contato
     contact: {
-      title: "Entre em Contato",
+      title: 'Entre em Contato',
       form: {
-        name: "Nome",
-        email: "E-mail",
-        subject: "Assunto",
-        message: "Mensagem",
-        send: "Enviar mensagem",
-        success: "Mensagem enviada com sucesso!",
-        error: "Erro ao enviar mensagem. Tente novamente.",
+        name: 'Nome',
+        email: 'E-mail',
+        subject: 'Assunto',
+        message: 'Mensagem',
+        send: 'Enviar mensagem',
+        success: 'Mensagem enviada com sucesso!',
+        error: 'Erro ao enviar mensagem. Tente novamente.',
       },
     },
   },
@@ -142,50 +136,49 @@ export const themeConfig = {
   },
   colors: {
     primary: {
-      light: "#9333ea",
-      dark: "#7e22ce",
+      light: '#9333ea',
+      dark: '#7e22ce',
     },
     secondary: {
-      light: "#e879f9",
-      dark: "#d946ef",
+      light: '#e879f9',
+      dark: '#d946ef',
     },
   },
 };
 
 // Configurações de mídia
 export const mediaQueries = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
 };
 
 // Rotas da aplicação
 export const routes = {
-  home: "/",
-  history: "/historia",
-  tech: "/tecnologia",
-  fireman: "/bombeiro",
-  commerce: "/comercio",
-  experiences: "/experiencias",
-  contact: "/contato",
+  home: '/',
+  history: '/historia',
+  tech: '/tecnologia',
+  fireman: '/bombeiro',
+  commerce: '/comercio',
+  experiences: '/experiencias',
+  contact: '/contato',
 };
 
 // Meta tags padrão
 export const defaultMeta = {
-  title: "Seu Nome - Portfólio Profissional",
-  description:
-    "Profissional multidisciplinar com experiência em Tecnologia, Segurança e Comércio Exterior",
-  keywords: "desenvolvedor, bombeiro civil, comércio exterior, portfólio",
-  author: "Seu Nome",
-  image: "/images/og-image.jpg",
+  title: 'Jonathan Souza Moyano - Portfólio Profissional',
+  description: 'Profissional multidisciplinar com experiência em Tecnologia e Segurança',
+  keywords: 'Analista de TI, bombeiro civil, portfólio',
+  author: 'Jonathan Souza Moyano',
+  image: '/images/og-image.jpg',
 };
 
 // Configurações de animação
 export const animations = {
   transition: {
     duration: 0.3,
-    ease: "easeInOut",
+    ease: 'easeInOut',
   },
   fadeIn: {
     initial: { opacity: 0, y: 20 },
@@ -220,6 +213,6 @@ export const apiConfig = {
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 5000,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 };

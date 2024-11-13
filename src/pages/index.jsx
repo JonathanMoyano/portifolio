@@ -55,30 +55,61 @@ const IndexPage = () => {
           transition={{ duration: 0.8 }}
           className="max-w-4xl text-center"
         >
-          <h1 className="mb-6 text-5xl font-bold md:text-7xl">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
-              Multidisciplinar
-            </span>
-            <br />
-            <span className="text-gray-100">& Inovador</span>
-          </h1>
-          <p className="mb-8 text-xl leading-relaxed text-gray-300 md:text-2xl">
-            Combinando expertise em Tecnologia, Segurança e Negócios Internacionais para criar
-            soluções únicas e impactantes.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-              onClick={() => (window.location.href = '/historia')}
+          <div className="mb-16 space-y-6">
+            <div className="space-y-2">
+              <motion.h2
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-sm font-semibold uppercase tracking-wider text-purple-400"
+              >
+                Portfólio Profissional
+              </motion.h2>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="font-display text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl"
+              >
+                <span className="block text-white">Transformando</span>
+                <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                  Desafios em Soluções
+                </span>
+              </motion.h1>
+            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mx-auto max-w-2xl text-lg text-gray-400 md:text-xl"
             >
-              Conheça minha história
-              <ScrollText className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" onClick={() => (window.location.href = '/contato')}>
-              Vamos conversar
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+              Especialista em Análise de TI com foco em infraestrutura, segurança e otimização de
+              sistemas.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="flex flex-wrap justify-center gap-4 pt-8"
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600"
+                onClick={() => (window.location.href = '/historia')}
+              >
+                Conheça minha história
+                <ScrollText className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => (window.location.href = '/contato')}
+                className="border-purple-500 text-purple-400 hover:bg-purple-500/10"
+              >
+                Vamos conversar
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
       </section>

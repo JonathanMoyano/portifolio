@@ -1,56 +1,36 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdnjs.cloudflare.com",
-      },
-      {
-        protocol: "https",
-        hostname: "**.mediafire.com",
-      },
-      {
-        protocol: "https",
-        hostname: "**.trok-servicos.com.br",
-      },
-    ],
-    unoptimized: process.env.NODE_ENV === "development" ? false : true,
-    dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
-    minimumCacheTTL: 60,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  output: "standalone",
-  poweredByHeader: false,
   reactStrictMode: true,
-  compress: true,
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
+  swcMinify: true,
+
+  // Configurações básicas
+  images: {
+    domains: ['seu-site.com'],
+    formats: ['image/avif', 'image/webp'],
   },
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "DENY",
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
-          },
-        ],
-      },
-    ];
+
+  // Remover otimizações experimentais que estão causando problemas
+  experimental: {
+    // removido optimizeCss e scrollRestoration
   },
+
+  // Configurações para i18n
+  i18n: {
+    locales: ['pt', 'en', 'es'],
+    defaultLocale: 'pt',
+  },
+
+  // Módulos que precisam ser transpilados
+  transpilePackages: [
+    '@radix-ui/react-dialog',
+    '@radix-ui/react-dropdown-menu',
+    '@radix-ui/react-progress',
+    '@radix-ui/react-slider',
+    '@radix-ui/react-slot',
+    '@radix-ui/react-tabs',
+    '@radix-ui/react-toast',
+    'lucide-react',
+  ],
 };
 
 export default nextConfig;
