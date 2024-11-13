@@ -83,7 +83,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
   const DesktopNav = () => (
     <nav className="fixed left-0 top-0 hidden h-screen w-64 flex-col border-r border-neutral-800 bg-neutral-900 p-4 md:flex">
       <div className="mb-8">
-        <h1 className="from-Blue-400 to-Blue-500 bg-gradient-to-r bg-clip-text text-xl font-bold text-transparent">
+        <h1 className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-xl font-bold text-transparent">
           Jonathan Souza Moyano
         </h1>
         <p className="mt-1 text-sm text-gray-400">Tecnologia, Liderança & Inovação</p>
@@ -96,7 +96,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
             href={item.path}
             className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
               isActiveLink(item.path)
-                ? 'bg-Blue-500/10 text-Blue-400'
+                ? 'bg-purple-500/10 text-purple-400'
                 : 'text-gray-400 hover:bg-neutral-800 hover:text-gray-100'
             }`}
             aria-current={isActiveLink(item.path) ? 'page' : undefined}
@@ -122,7 +122,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
         className="w-[300px] border-r border-neutral-800 bg-neutral-900 p-0"
       >
         <SheetHeader className="border-b border-neutral-800 p-4">
-          <SheetTitle className="from-Blue-400 to-Blue-500 bg-gradient-to-r bg-clip-text text-left font-bold text-transparent">
+          <SheetTitle className="bg-gradient-to-r from-purple-400 to-purple-500 bg-clip-text text-left font-bold text-transparent">
             {translations[currentLanguage].title}
           </SheetTitle>
         </SheetHeader>
@@ -133,7 +133,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
               href={item.path}
               className={`flex items-center gap-3 px-4 py-3 transition-colors ${
                 isActiveLink(item.path)
-                  ? 'bg-Blue-500/10 text-Blue-400'
+                  ? 'bg-purple-500/10 text-purple-400'
                   : 'text-gray-400 hover:bg-neutral-800 hover:text-gray-100'
               }`}
               onClick={onClose}
