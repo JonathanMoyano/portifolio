@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Heart, Compass, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import AudioPlayer from '@/components/shared/AudioPlayer';
+import AudioPlayer from '@/components/shared/audioPlayer';
 
 const HistoriaPage = () => {
   const [activePhase, setActivePhase] = useState('adolescencia');

@@ -11,10 +11,9 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write .",
-    "clean": "rm -rf .next node_modules",
-    "clean:cache": "rm -rf .next",
-    "type-check": "tsc --noEmit",
-    "prepare": "husky install"
+    "clean": "rimraf .next node_modules",
+    "clean:cache": "rimraf .next",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",

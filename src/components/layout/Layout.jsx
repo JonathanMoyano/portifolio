@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
-import Navigation from '@/components/shared/Navigation';
+import Header from '../shared/Header';
+import Footer from '../shared/footer';
+import Navigation from '../shared/navigation';
 import { useRouter } from 'next/router';
 
 // Contexto de Acessibilidade
