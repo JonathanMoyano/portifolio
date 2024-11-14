@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Code, Shield, ArrowRight, ChevronRight, Star, ScrollText } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Code, Shield, ArrowRight, ScrollText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAccessibility } from '@/components/layout/Layout';
 import { translations } from '@/utils/constants';
@@ -39,12 +39,14 @@ const IndexPage = () => {
   return (
     <div className="min-h-screen bg-neutral-900">
       {/* Hero Section */}
-      <section className="relative flex h-screen items-center justify-center overflow-hidden px-4">
+      <section className="relative flex h-screen items-center justify-center overflow-hidden px-6">
+        {/* Photo */}
+        <div className="absolute left-1/2 top-8 z-10 h-52 w-52 -translate-x-1/2 rounded-full bg-[url('/jonathan.jpg')] bg-cover bg-center" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl text-center"
+          className="relative z-10 max-w-4xl text-center"
         >
           <div className="mb-16 space-y-6">
             <div className="space-y-2">
@@ -60,11 +62,11 @@ const IndexPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="font-display text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl"
+                className="font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl"
               >
-                <span className="block text-white">Transformando</span>
+                <span className="block text-white">JONATHAN SOUZA MOYANO</span>
                 <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 bg-clip-text text-transparent">
-                  Desafios em Soluções
+                  Transformando em Soluções
                 </span>
               </motion.h1>
             </div>
@@ -74,8 +76,8 @@ const IndexPage = () => {
               transition={{ delay: 0.6 }}
               className="mx-auto max-w-2xl text-lg text-gray-400 md:text-xl"
             >
-              Especialista em Análise de TI com foco em infraestrutura, segurança e otimização de
-              sistemas. Estudante de Análise e Desenvolvimento de Sistemas.
+              Analista de TI especializado em infraestrutura, segurança e otimização de sistemas.
+              Estudante de Análise e Desenvolvimento de Sistemas.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -103,119 +105,6 @@ const IndexPage = () => {
             </motion.div>
           </div>
         </motion.div>
-      </section>
-
-      {/* Areas Section */}
-      <section className="px-4 py-20">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="mb-4 text-3xl font-bold text-gray-100 md:text-4xl">Áreas de Atuação</h2>
-            <p className="text-xl text-gray-400">
-              Explore minhas diferentes áreas de expertise e descubra como posso agregar valor ao
-              seu projeto
-            </p>
-          </motion.div>
-
-          <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
-            {areas.map((area, index) => (
-              <motion.div
-                key={area.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-              >
-                <Card
-                  className={`group relative h-full overflow-hidden border-neutral-700 bg-neutral-800 
-                    ${activeCard === area.id ? 'ring-2 ring-blue-500' : ''}
-                    transition-all duration-300 hover:border-blue-500`}
-                  onMouseEnter={() => setActiveCard(area.id)}
-                  onMouseLeave={() => setActiveCard(null)}
-                  onClick={() => (window.location.href = area.link)}
-                >
-                  <CardContent className="p-6">
-                    {/* Background Gradient */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
-                    />
-
-                    {/* Icon */}
-                    <div
-                      className={`h-12 w-12 rounded-lg bg-gradient-to-r ${area.color} mb-4 flex items-center justify-center`}
-                    >
-                      <area.icon className="h-6 w-6 text-white" />
-                    </div>
-
-                    {/* Content */}
-                    <h3 className="mb-4 text-2xl font-bold text-gray-100">{area.title}</h3>
-                    <p className="mb-6 text-gray-400">{area.description}</p>
-
-                    {/* Stats */}
-                    <div className="mb-6 grid grid-cols-3 gap-2">
-                      {area.stats.map((stat, i) => (
-                        <div key={i} className="text-center">
-                          <Star className="mx-auto mb-1 h-4 w-4 text-blue-400" />
-                          <span className="text-sm text-gray-300">{stat}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Highlights */}
-                    <ul className="mb-6 space-y-2">
-                      {area.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-center text-gray-300">
-                          <ChevronRight className="mr-2 h-4 w-4 text-blue-400" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Call to Action */}
-                    <div className="absolute bottom-6 right-6">
-                      <Button
-                        variant="ghost"
-                        className="transition-colors group-hover:text-blue-400"
-                      >
-                        Explorar
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="bg-gradient-to-br from-blue-900/50 to-blue-800/50 py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h2 className="mb-6 text-3xl font-bold text-gray-100 md:text-4xl">
-              Pronto para Começar?
-            </h2>
-            <p className="mb-8 text-xl text-gray-300">
-              Vamos trabalhar juntos para transformar suas ideias em realidade
-            </p>
-            <Button
-              size="lg"
-              className="bg-white text-black hover:bg-gray-100"
-              onClick={() => (window.location.href = '/contato')}
-            >
-              Iniciar Conversa
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </motion.div>
-        </div>
       </section>
     </div>
   );
