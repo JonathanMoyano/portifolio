@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  Home,
-  Code,
-  Shield,
-  Briefcase,
-  Globe2,
-  Mail,
-  User,
-  ChevronRight,
-  Layers,
-} from 'lucide-react';
+import { Home, Briefcase, Globe2, Mail, User, ChevronRight, Layers } from 'lucide-react';
 import { useAccessibility } from '../layout/Layout';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
@@ -20,9 +10,7 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
     pt: {
       home: 'Início',
       history: 'Minha História',
-      tech: 'Tecnologia',
-      fireman: 'Bombeiro Civil',
-      commerce: 'Estudos',
+      commerce: 'Formação',
       projects: 'Projetos',
       experiences: 'Experiências',
       contact: 'Contato',
@@ -31,8 +19,6 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
     en: {
       home: 'Home',
       history: 'My Story',
-      tech: 'Technology',
-      fireman: 'Civil Firefighter',
       commerce: 'Studies',
       projects: 'Projects',
       experiences: 'Experiences',
@@ -42,8 +28,6 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
     es: {
       home: 'Inicio',
       history: 'Mi Historia',
-      tech: 'Tecnología',
-      fireman: 'Bombero Civil',
       commerce: 'Estudos',
       projects: 'Proyectos',
       experiences: 'Experiencias',
@@ -64,24 +48,14 @@ const Navigation = ({ isOpen, onClose, currentPath }) => {
       path: '/historia',
     },
     {
-      title: translations[currentLanguage].tech,
-      icon: <Code className="h-5 w-5" />,
-      path: '/tecnologia',
-    },
-    {
       title: translations[currentLanguage].projects,
       icon: <Layers className="h-5 w-5" />,
       path: '/projetos',
     },
     {
-      title: translations[currentLanguage].fireman,
-      icon: <Shield className="h-5 w-5" />,
-      path: '/bombeiro',
-    },
-    {
       title: translations[currentLanguage].commerce,
       icon: <Globe2 className="h-5 w-5" />,
-      path: '/estudo',
+      path: '/formacao',
     },
     {
       title: translations[currentLanguage].experiences,

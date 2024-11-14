@@ -13,10 +13,8 @@ const Footer = () => {
       contact: 'Contato',
       rights: 'Todos os direitos reservados',
       history: 'Minha História',
-      tech: 'Tecnologia',
-      studies: 'Estudos',
+      studies: 'Formação',
       projects: 'Projetos',
-      fireman: 'Bombeiro Civil',
       location: 'São Vicente - SP, Brasil',
     },
     en: {
@@ -24,10 +22,8 @@ const Footer = () => {
       contact: 'Contact',
       rights: 'All rights reserved',
       history: 'My Story',
-      tech: 'Technology',
       studies: 'Studies',
       projects: 'Projects',
-      fireman: 'Civil Firefighter',
       location: 'São Vicente - SP, Brazil',
     },
     es: {
@@ -35,10 +31,8 @@ const Footer = () => {
       contact: 'Contacto',
       rights: 'Todos los derechos reservados',
       history: 'Mi Historia',
-      tech: 'Tecnología',
       studies: 'Estudios',
       projects: 'Proyectos',
-      fireman: 'Bombero Civil',
       location: 'São Vicente - SP, Brasil',
     },
   };
@@ -48,10 +42,8 @@ const Footer = () => {
 
   const quickLinks = [
     { href: '/historia', label: t.history },
-    { href: '/tecnologia', label: t.tech },
     { href: '/projetos', label: t.projects },
-    { href: '/estudo', label: t.studies },
-    { href: '/bombeiro', label: t.fireman },
+    { href: '/formacao', label: t.studies },
   ];
 
   const socialLinks = [

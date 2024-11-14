@@ -10,17 +10,17 @@ const ProjectsPage = () => {
   const projectStats = [
     {
       icon: Trophy,
-      title: 'Melhor Projeto',
+      title: 'Fomos o Melhor Projeto',
       subtitle: '24ª Feira de Negócios UNIBR',
     },
     {
       icon: Star,
-      title: 'Melhor Apresentação',
+      title: 'Tivemos a Melhor Apresentação',
       subtitle: '24ª Feira de Negócios UNIBR',
     },
     {
       icon: Award,
-      title: 'Melhor Execução',
+      title: 'Tivemos a Melhor Execução',
       subtitle: '24ª Feira de Negócios UNIBR',
     },
   ];
@@ -37,10 +37,6 @@ const ProjectsPage = () => {
     {
       name: 'Flavio Augusto Dos Santos',
       role: 'QA',
-    },
-    {
-      name: 'Caio Luis',
-      role: 'Designer e Marketing',
     },
   ];
 
@@ -130,7 +126,7 @@ const ProjectsPage = () => {
               {/* Team Section */}
               <div className="mb-8">
                 <h3 className="mb-4 text-xl font-semibold text-gray-100">Nosso Time</h3>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                   {teamMembers.map((member, index) => (
                     <div
                       key={index}
