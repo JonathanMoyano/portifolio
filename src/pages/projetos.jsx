@@ -70,8 +70,10 @@ const ProjectsPage = () => {
             <CardHeader className="bg-gradient-to-r from-blue-500/10 to-blue-600/10 p-6">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <CardTitle className="text-3xl font-bold text-gray-100">TROK!</CardTitle>
-                  <p className="mt-2 text-lg text-gray-400">Seu Negócio na Palma da Mão</p>
+                  <CardTitle className="text-3xl font-bold text-orange-600">TROK!</CardTitle>
+                  <p className="mt-2 text-lg font-bold text-orange-600">
+                    Seu Negócio na Palma da Mão
+                  </p>
                 </div>
                 <div className="flex gap-2">
                   <Badge className="bg-blue-500">Projeto Premiado</Badge>
