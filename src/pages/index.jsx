@@ -1,40 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
-import { Code, Shield, ArrowRight, ScrollText } from 'lucide-react';
+import { ArrowRight, ScrollText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useAccessibility } from '@/components/layout/Layout';
-import { translations } from '@/utils/constants';
 
 const IndexPage = () => {
-  const { currentLanguage } = useAccessibility();
-  const t = translations[currentLanguage];
-  const [activeCard, setActiveCard] = useState(null);
-
-  const areas = [
-    {
-      id: 'tech',
-      title: t.nav.tech,
-      icon: Code,
-      color: 'from-blue-500 to-blue-600',
-      stats: ['2+ anos', '50+ projetos', '10+ certificações'],
-      description:
-        'Analista de TI especializado em infraestrutura, segurança e otimização de sistemas.',
-      link: '/tecnologia',
-      highlights: ['Cloud & Infraestrutura', 'Desenvolvimento Web', 'Gestão de Projetos em TI'],
-    },
-    {
-      id: 'fireman',
-      title: t.nav.fireman,
-      icon: Shield,
-      color: 'from-red-500 to-orange-500',
-      stats: ['8+ anos', '100+ operações', '15+ certificações'],
-      description:
-        'Experiência em prevenção e combate a incêndio, salvamento e gestão de emergências.',
-      link: '/bombeiro',
-      highlights: ['Gestão de Emergências', 'Treinamento de Equipes', 'Prevenção de Acidentes'],
-    },
-  ];
+  const [] = useState(null);
 
   return (
     <div className="min-h-screen bg-neutral-900">
