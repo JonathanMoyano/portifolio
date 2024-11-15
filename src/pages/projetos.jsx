@@ -1,183 +1,102 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Trophy, Globe, Smartphone, Users, Award, Star, ExternalLink } from 'lucide-react';
+import { Globe, ExternalLink, Trophy, Award } from 'lucide-react';
 
 const ProjectsPage = () => {
-  const projectStats = [
+  const achievements = [
+    { icon: Trophy, title: 'Fomos o Melhor Projeto', subtitle: '24ª Feira de Negócios UNIBR' },
     {
-      icon: Trophy,
-      title: 'Fomos o Melhor Projeto',
-      subtitle: '24ª Feira de Negócios UNIBR',
-    },
-    {
-      icon: Star,
+      icon: Award,
       title: 'Tivemos a Melhor Apresentação',
       subtitle: '24ª Feira de Negócios UNIBR',
     },
-    {
-      icon: Award,
-      title: 'Tivemos a Melhor Execução',
-      subtitle: '24ª Feira de Negócios UNIBR',
-    },
-  ];
-
-  const teamMembers = [
-    {
-      name: 'Jonathan Souza Moyano',
-      role: 'Desenvolvedor',
-    },
-    {
-      name: 'Bruna Lino Moyano',
-      role: 'UX/UI Designer',
-    },
-    {
-      name: 'Flavio Augusto Dos Santos',
-      role: 'QA',
-    },
+    { icon: Award, title: 'Tivemos a Melhor Execução', subtitle: '24ª Feira de Negócios UNIBR' },
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-900 py-16">
-      <div className="container mx-auto px-4">
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-12 text-center"
-        >
-          <h1 className="mb-4 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
-            Projetos em Destaque
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-400">
-            Conheça alguns dos projetos que desenvolvi, combinando inovação, tecnologia e soluções
-            práticas para desafios reais.
-          </p>
-        </motion.div>
+    <div className="relative flex min-h-screen bg-[#0A0F1E] pb-16 md:pl-64">
+      <div className="absolute inset-0 bg-[url('/matrix.svg')] opacity-5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-indigo-500/10 to-[#0A0F1E]" />
 
-        {/* TROK Project */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16"
-        >
-          <Card className="overflow-hidden border-neutral-700 bg-neutral-800">
-            <CardHeader className="bg-gradient-to-r from-blue-500/10 to-blue-600/10 p-6">
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <CardTitle className="text-3xl font-bold text-orange-600">TROK!</CardTitle>
-                  <p className="mt-2 text-lg font-bold text-orange-600">
-                    Seu Negócio na Palma da Mão
+      <main className="container relative z-10 mx-auto flex h-screen items-center px-4">
+        <div className="mx-auto w-full max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8 text-center"
+          >
+            <h1 className="mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-5xl font-bold text-transparent sm:text-6xl">
+              Projeto em Destaque
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg text-cyan-100/60">
+              Conheça o projeto que desenvolvi, combinando inovação e tecnologia.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="rounded-xl border border-neutral-800 bg-neutral-900/70 shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/20"
+          >
+            <div className="relative h-[280px] w-full overflow-hidden rounded-t-xl">
+              <Image
+                src="/images/trokinho.png"
+                alt="Trokinho"
+                fill
+                className="object-cover"
+                priority
+                quality={100}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-neutral-900">
+                <div className="flex h-full flex-col items-center justify-center text-center">
+                  <h2 className="mb-3 text-6xl font-bold text-orange-500 drop-shadow-lg">TROK!</h2>
+                  <p className="text-shadow-lg text-4xl font-bold text-white">
+                    Seu Negócio na <span className="text-orange-500">Palma da Mão</span>
                   </p>
                 </div>
-                <div className="flex gap-2">
-                  <Badge className="bg-blue-500">Projeto Premiado</Badge>
-                  <Badge variant="outline">Em Produção</Badge>
-                </div>
               </div>
-            </CardHeader>
+            </div>
 
-            <CardContent className="p-6">
-              {/* Project Stats */}
-              <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-                {projectStats.map((stat, index) => (
+            <div className="p-6">
+              <div className="mb-6 flex justify-center gap-3">
+                <Badge className="bg-cyan-500/90 px-4 py-1 text-sm font-medium hover:bg-cyan-600">
+                  Projeto Premiado
+                </Badge>
+                <Badge
+                  variant="outline"
+                  className="border-cyan-500 px-4 py-1 text-sm font-medium text-cyan-400 hover:bg-cyan-500/10"
+                >
+                  Em Produção
+                </Badge>
+              </div>
+
+              <div className="mb-8 grid gap-4 md:grid-cols-3">
+                {achievements.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 rounded-lg bg-neutral-700/20 p-4"
+                    className="flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/20"
                   >
-                    <stat.icon className="h-8 w-8 text-blue-400" />
+                    <item.icon className="h-6 w-6 text-cyan-400" />
                     <div>
-                      <h3 className="font-semibold text-gray-100">{stat.title}</h3>
-                      <p className="text-sm text-gray-400">{stat.subtitle}</p>
+                      <h3 className="font-semibold text-cyan-100">{item.title}</h3>
+                      <p className="text-sm text-cyan-100/60">{item.subtitle}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Project Description */}
-              <div className="mb-8">
-                <h3 className="mb-4 text-xl font-semibold text-gray-100">Sobre o Projeto</h3>
-                <p className="text-gray-400">
-                  Em um mundo cada vez mais conectado, a economia colaborativa surge como solução
-                  para otimizar recursos e fortalecer comunidades. O TROK! é um aplicativo inovador
-                  que revoluciona a forma como as pessoas trocam serviços e mão de obra, promovendo
-                  sustentabilidade e inclusão social.
-                </p>
-              </div>
+              <p className="mb-8 text-center text-cyan-100/80">
+                O TROK! revoluciona a troca de serviços e mão de obra, promovendo sustentabilidade e
+                inclusão social.
+              </p>
 
-              {/* Educational Banner */}
-              <div className="mb-8">
-                <div className="mx-auto max-w-[582px] overflow-hidden rounded-lg bg-neutral-700/20 p-4">
-                  <Image
-                    src="/images/trok-banner.jpg"
-                    alt="Banner Educacional TROK!"
-                    width={582}
-                    height={770}
-                    className="w-full object-contain"
-                    priority
-                    quality={100}
-                  />
-                </div>
-              </div>
-
-              {/* Team Section */}
-              <div className="mb-8">
-                <h3 className="mb-4 text-xl font-semibold text-gray-100">Nosso Time</h3>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                  {teamMembers.map((member, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 rounded-lg bg-neutral-700/20 p-4"
-                    >
-                      <Users className="h-5 w-5 text-blue-400" />
-                      <div>
-                        <h4 className="font-semibold text-gray-100">{member.name}</h4>
-                        <p className="text-sm text-gray-400">{member.role}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Project Features */}
-              <div className="mb-8">
-                <h3 className="mb-4 text-xl font-semibold text-gray-100">
-                  Principais Funcionalidades
-                </h3>
-                <div className="grid gap-4 md:grid-cols-3">
-                  <div className="rounded-lg bg-neutral-700/20 p-4">
-                    <Smartphone className="mb-2 h-6 w-6 text-blue-400" />
-                    <h4 className="mb-2 font-semibold text-gray-100">Gestão Mobile</h4>
-                    <p className="text-sm text-gray-400">
-                      Gerencie seu negócio de qualquer lugar, a qualquer momento
-                    </p>
-                  </div>
-                  <div className="rounded-lg bg-neutral-700/20 p-4">
-                    <Users className="mb-2 h-6 w-6 text-blue-400" />
-                    <h4 className="mb-2 font-semibold text-gray-100">Gestão de Clientes</h4>
-                    <p className="text-sm text-gray-400">
-                      Cadastro e acompanhamento completo de clientes
-                    </p>
-                  </div>
-                  <div className="rounded-lg bg-neutral-700/20 p-4">
-                    <Globe className="mb-2 h-6 w-6 text-blue-400" />
-                    <h4 className="mb-2 font-semibold text-gray-100">Pagamentos Integrados</h4>
-                    <p className="text-sm text-gray-400">
-                      Receba pagamentos de forma segura e simplificada
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex justify-center gap-4">
                 <Button
-                  className="bg-blue-500 hover:bg-blue-600"
+                  className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 px-6 transition-all duration-300 hover:scale-105 hover:from-cyan-400 hover:via-blue-400 hover:to-indigo-400"
                   onClick={() => window.open('https://www.trok-servicos.com.br', '_blank')}
                 >
                   Visitar Website
@@ -185,16 +104,16 @@ const ProjectsPage = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-blue-500 text-blue-400 hover:bg-blue-500/10"
+                  className="border-cyan-500 px-6 text-cyan-400 transition-all duration-300 hover:scale-105 hover:bg-cyan-500/10"
                 >
                   Saiba Mais
                   <Globe className="ml-2 h-4 w-4" />
                 </Button>
               </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
+            </div>
+          </motion.div>
+        </div>
+      </main>
     </div>
   );
 };

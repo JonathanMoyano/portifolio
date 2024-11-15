@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, RefreshCw } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Loader2 } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
-import { useAccessibility } from '../layout/Layout';
+import { cn } from '@/lib/utils';
 
-const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
+const AudioPlayer = ({ audioUrl }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -13,46 +13,6 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
   const [isMuted, setIsMuted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { currentLanguage } = useAccessibility();
-
-  const translations = useMemo(
-    () => ({
-      pt: {
-        play: 'Reproduzir',
-        pause: 'Pausar',
-        loading: 'Carregando áudio...',
-        error: 'Erro ao carregar o áudio',
-        transcript: 'Ver transcrição',
-        skipForward: 'Avançar 10 segundos',
-        skipBack: 'Retroceder 10 segundos',
-        mute: 'Mutar',
-        unmute: 'Desmutar',
-      },
-      en: {
-        play: 'Play',
-        pause: 'Pause',
-        loading: 'Loading audio...',
-        error: 'Error loading audio',
-        transcript: 'View transcript',
-        skipForward: 'Skip forward 10 seconds',
-        skipBack: 'Skip back 10 seconds',
-        mute: 'Mute',
-        unmute: 'Unmute',
-      },
-      es: {
-        play: 'Reproducir',
-        pause: 'Pausar',
-        loading: 'Cargando audio...',
-        error: 'Error al cargar el audio',
-        transcript: 'Ver transcripción',
-        skipForward: 'Adelantar 10 segundos',
-        skipBack: 'Retroceder 10 segundos',
-        mute: 'Silenciar',
-        unmute: 'Activar sonido',
-      },
-    }),
-    []
-  );
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -63,18 +23,14 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
       setIsLoading(false);
     };
 
-    const handleTimeUpdate = () => {
-      setCurrentTime(audio.currentTime);
-    };
-
+    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
     const handleEnded = () => {
       setIsPlaying(false);
       setCurrentTime(0);
       audio.currentTime = 0;
     };
-
     const handleError = () => {
-      setError(translations[currentLanguage].error);
+      setError('Não foi possível reproduzir o áudio');
       setIsLoading(false);
     };
 
@@ -89,7 +45,7 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
       audio.removeEventListener('ended', handleEnded);
       audio.removeEventListener('error', handleError);
     };
-  }, [audioUrl, currentLanguage, translations]);
+  }, [audioUrl]);
 
   const togglePlay = () => {
     if (audioRef.current.paused) {
@@ -140,34 +96,21 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
   };
 
   return (
-    <div className="w-full rounded-lg border border-neutral-700 bg-neutral-800 p-4">
+    <div className="space-y-6">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
-      {/* Título */}
-      {title && (
-        <div className="mb-4 text-center">
-          <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
-          {transcriptUrl && (
-            <a
-              href={transcriptUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-purple-400 transition-colors hover:text-purple-300"
-            >
-              {translations[currentLanguage].transcript}
-            </a>
-          )}
-        </div>
-      )}
-
-      {/* Controles principais */}
-      <div className="mb-4 flex items-center justify-center gap-4">
+      {/* Main Controls */}
+      <div className="flex items-center justify-center gap-4">
         <Button
           variant="ghost"
           size="icon"
           onClick={() => skipTime(-10)}
-          className="text-gray-400 hover:text-white"
-          aria-label={translations[currentLanguage].skipBack}
+          className={cn(
+            'text-cyan-100/60 transition-colors hover:bg-cyan-500/10 hover:text-cyan-400',
+            isLoading && 'opacity-50'
+          )}
+          disabled={isLoading || error}
+          aria-label="Retroceder 10 segundos"
         >
           <SkipBack className="h-5 w-5" />
         </Button>
@@ -176,18 +119,21 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
           variant="default"
           size="icon"
           onClick={togglePlay}
-          className="h-12 w-12 rounded-full bg-purple-500 hover:bg-purple-600"
           disabled={isLoading || error}
-          aria-label={
-            isPlaying ? translations[currentLanguage].pause : translations[currentLanguage].play
-          }
+          className={cn(
+            'h-14 w-14 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500',
+            'transition-all duration-300 hover:scale-105 hover:from-cyan-400 hover:to-blue-400',
+            'shadow-lg shadow-cyan-500/20',
+            (isLoading || error) && 'opacity-50'
+          )}
+          aria-label={isPlaying ? 'Pausar' : 'Reproduzir'}
         >
           {isLoading ? (
-            <RefreshCw className="h-6 w-6 animate-spin" />
+            <Loader2 className="h-6 w-6 animate-spin" />
           ) : isPlaying ? (
             <Pause className="h-6 w-6" />
           ) : (
-            <Play className="h-6 w-6" />
+            <Play className="h-6 w-6 pl-0.5" />
           )}
         </Button>
 
@@ -195,39 +141,43 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
           variant="ghost"
           size="icon"
           onClick={() => skipTime(10)}
-          className="text-gray-400 hover:text-white"
-          aria-label={translations[currentLanguage].skipForward}
+          className={cn(
+            'text-cyan-100/60 transition-colors hover:bg-cyan-500/10 hover:text-cyan-400',
+            isLoading && 'opacity-50'
+          )}
+          disabled={isLoading || error}
+          aria-label="Avançar 10 segundos"
         >
           <SkipForward className="h-5 w-5" />
         </Button>
       </div>
 
-      {/* Barra de progresso */}
+      {/* Progress Bar */}
       <div className="space-y-2">
         <Slider
           value={[currentTime]}
           max={duration}
           step={1}
           onValueChange={(value) => handleTimeChange(value[0])}
-          className="w-full"
-          aria-label="Progress"
+          disabled={isLoading || error}
+          className={cn('w-full', (isLoading || error) && 'opacity-50')}
+          aria-label="Progresso"
         />
-        <div className="flex justify-between text-sm text-gray-400">
+        <div className="flex justify-between text-sm text-cyan-100/60">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
       </div>
 
-      {/* Controle de volume */}
-      <div className="mt-4 flex items-center gap-2">
+      {/* Volume Control */}
+      <div className="flex items-center gap-3">
         <Button
           variant="ghost"
           size="icon"
           onClick={toggleMute}
-          className="text-gray-400 hover:text-white"
-          aria-label={
-            isMuted ? translations[currentLanguage].unmute : translations[currentLanguage].mute
-          }
+          disabled={isLoading || error}
+          className="text-cyan-100/60 hover:bg-cyan-500/10 hover:text-cyan-400"
+          aria-label={isMuted ? 'Ativar som' : 'Mutar'}
         >
           {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
         </Button>
@@ -236,13 +186,17 @@ const AudioPlayer = ({ audioUrl, title, transcriptUrl }) => {
           max={1}
           step={0.1}
           onValueChange={handleVolumeChange}
-          className="w-24"
+          disabled={isLoading || error}
+          className={cn('w-32', (isLoading || error) && 'opacity-50')}
           aria-label="Volume"
         />
       </div>
 
-      {/* Mensagem de erro */}
-      {error && <div className="mt-4 text-center text-sm text-red-400">{error}</div>}
+      {error && (
+        <div className="mt-4 rounded-lg bg-red-500/10 p-3 text-center text-sm text-red-400">
+          {error}
+        </div>
+      )}
     </div>
   );
 };

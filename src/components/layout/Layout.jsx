@@ -1,100 +1,13 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../shared/Header';
 import Footer from '../shared/footer';
 import Navigation from '../shared/navigation';
 import { useRouter } from 'next/router';
 
-// Contexto de Acessibilidade
-export const AccessibilityContext = createContext(null);
-
-// Provedor de Acessibilidade
-export const AccessibilityProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-  const [currentLanguage, setCurrentLanguage] = useState('pt');
-  const [fontSize, setFontSize] = useState(16);
-  const [contrast, setContrast] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
-      try {
-        const savedPreferences = localStorage.getItem('accessibility-preferences');
-        if (savedPreferences) {
-          const {
-            fontSize: savedFontSize,
-            contrast: savedContrast,
-            language,
-            darkMode,
-          } = JSON.parse(savedPreferences);
-          setFontSize(savedFontSize);
-          setContrast(savedContrast);
-          setCurrentLanguage(language);
-          setIsDarkMode(darkMode);
-        }
-      } catch (error) {
-        console.error('Erro ao carregar preferências:', error);
-      }
-    }
-  }, [isClient]);
-
-  useEffect(() => {
-    if (isClient) {
-      try {
-        const preferences = {
-          fontSize,
-          contrast,
-          language: currentLanguage,
-          darkMode: isDarkMode,
-        };
-        localStorage.setItem('accessibility-preferences', JSON.stringify(preferences));
-      } catch (error) {
-        console.error('Erro ao salvar preferências:', error);
-      }
-    }
-  }, [fontSize, contrast, currentLanguage, isDarkMode, isClient]);
-
-  useEffect(() => {
-    if (isClient) {
-      document.documentElement.style.fontSize = `${fontSize}px`;
-    }
-  }, [fontSize, isClient]);
-
-  const value = {
-    isDarkMode,
-    setIsDarkMode,
-    currentLanguage,
-    setCurrentLanguage,
-    fontSize,
-    setFontSize,
-    contrast,
-    setContrast,
-  };
-
-  return <AccessibilityContext.Provider value={value}>{children}</AccessibilityContext.Provider>;
-};
-
-export const useAccessibility = () => {
-  const context = useContext(AccessibilityContext);
-  if (!context) {
-    throw new Error('useAccessibility must be used within an AccessibilityProvider');
-  }
-  return context;
-};
-
 const Layout = ({ children }) => {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { isDarkMode, contrast, fontSize } = useAccessibility();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleStart = () => setIsLoading(true);
@@ -111,13 +24,9 @@ const Layout = ({ children }) => {
     };
   }, [router]);
 
-  if (!isMounted) {
-    return null;
-  }
-
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''} ${contrast ? 'high-contrast' : ''}`}>
-      <div className="flex min-h-screen flex-col" style={{ fontSize: `${fontSize}px` }}>
+    <div className="min-h-screen bg-[#0A0F1E]">
+      <div className="flex min-h-screen flex-col">
         <Navigation
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
@@ -133,9 +42,7 @@ const Layout = ({ children }) => {
             </div>
           )}
 
-          <div className={`transition-all duration-300 fade-in ${contrast ? 'contrast-high' : ''}`}>
-            {children}
-          </div>
+          <div className="transition-all duration-300">{children}</div>
         </main>
 
         <div className="transition-all duration-300 md:ml-64">

@@ -13,7 +13,6 @@
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
-    /* Ajustado para um azul mais vibrante */
     --primary: 213 94% 68%;
     --primary-foreground: 0 0% 98%;
 
@@ -26,7 +25,6 @@
     --accent: 213 94% 68%;
     --accent-foreground: 0 0% 98%;
 
-    /* Mudado para tons de vermelho mais escuro para destructive */
     --destructive: 0 84% 32%;
     --destructive-foreground: 0 0% 98%;
 
@@ -61,28 +59,6 @@
   h5,
   h6 {
     @apply font-bold tracking-tight;
-  }
-}
-
-.high-contrast {
-  --background: 0 0% 0%;
-  --foreground: 0 0% 100%;
-  --card: 0 0% 0%;
-  --card-foreground: 0 0% 100%;
-  --border: 0 0% 100%;
-
-  * {
-    border-color: white !important;
-  }
-
-  img {
-    filter: grayscale(100%) contrast(200%);
-  }
-
-  a:focus,
-  button:focus {
-    outline: 3px solid white !important;
-    outline-offset: 2px;
   }
 }
 
