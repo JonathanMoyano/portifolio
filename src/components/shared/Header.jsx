@@ -1,26 +1,20 @@
+// components/shared/Header.jsx
 import React from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = ({ toggleSidebar }) => {
   return (
-    <header className="fixed right-0 top-0 z-50 h-16 w-full border-b border-neutral-800 bg-[#0A0F1E]/80 backdrop-blur-xl md:w-[calc(100%-256px)]">
-      <div className="flex h-full items-center justify-between px-4">
+    <header className="fixed left-0 right-0 top-0 z-40 border-b border-neutral-800 bg-[#0A0F1E]/80 backdrop-blur-sm md:pl-64">
+      <div className="flex h-16 items-center px-4 md:px-6">
         <Button
           variant="ghost"
-          size="icon"
-          className="text-cyan-400 transition-colors hover:bg-cyan-500/10 hover:text-cyan-300 md:hidden"
+          className="mr-2 px-2 text-cyan-400 hover:bg-cyan-500/10 md:hidden"
           onClick={toggleSidebar}
-          aria-label="Menu"
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="h-6 w-6" />
+          <span className="sr-only">Toggle sidebar</span>
         </Button>
-
-        <div className="hidden md:block">
-          <h1 className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-lg font-bold text-transparent">
-            Portfólio Profissional
-          </h1>
-        </div>
       </div>
     </header>
   );
