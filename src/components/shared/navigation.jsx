@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Home, Briefcase, Globe2, Mail, User, ChevronRight, Layers } from 'lucide-react';
+import { Home, User, Layers, Briefcase, Mail, ChevronRight, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { motion } from 'framer-motion';
 
 const Navigation = ({ isOpen, onClose }) => {
   const router = useRouter();
+  const [expandedItems, setExpandedItems] = useState({});
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const menuItems = [
     {
@@ -16,28 +22,34 @@ const Navigation = ({ isOpen, onClose }) => {
       description: 'Página inicial do portfólio',
     },
     {
-      title: 'Minha História',
+      title: 'Sobre',
       icon: User,
-      href: '/historia',
-      description: 'Conheça minha trajetória',
+      href: '/sobre',
+      description: 'Conheça mais sobre mim',
+      subItems: [
+        { title: 'Perfil', href: '/sobre/perfil' },
+        { title: 'História', href: '/sobre/historia' },
+      ],
     },
     {
       title: 'Projetos',
       icon: Layers,
       href: '/projetos',
-      description: 'Portfólio de trabalhos',
+      description: 'Meus projetos',
+      subItems: [
+        { title: 'TROK!', href: '/projetos/trok' },
+        { title: 'Portfólio', href: '/projetos/portfolio' },
+      ],
     },
     {
-      title: 'Formação',
-      icon: Globe2,
-      href: '/formacao',
-      description: 'Educação e certificações',
-    },
-    {
-      title: 'Experiências',
+      title: 'Experiência',
       icon: Briefcase,
-      href: '/experiencias',
-      description: 'Carreira profissional',
+      href: '/experiencia',
+      description: 'Experiência profissional',
+      subItems: [
+        { title: 'Histórico Profissional', href: '/experiencia/historico-profissional' },
+        { title: 'Certificações', href: '/experiencia/certificacoes' },
+      ],
     },
     {
       title: 'Contato',
@@ -47,28 +59,63 @@ const Navigation = ({ isOpen, onClose }) => {
     },
   ];
 
-  const NavLink = ({ item }) => {
+  const toggleExpanded = (title) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
+
+  const NavLink = ({ item, isSubItem = false }) => {
     const isActive = router.pathname === item.href;
+    const hasSubItems = item.subItems && item.subItems.length > 0;
+    const isExpanded = expandedItems[item.title];
     const Icon = item.icon;
+
+    const handleClick = async (e) => {
+      if (hasSubItems) {
+        e.preventDefault();
+        toggleExpanded(item.title);
+      }
+
+      if (!hasSubItems) {
+        onClose?.();
+        await router.push(item.href);
+      } else if (item.href && !isExpanded) {
+        await router.push(item.href);
+      }
+    };
 
     return (
       <div className="relative">
         <Link
           href={item.href}
-          className={`group flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all duration-300
+          onClick={handleClick}
+          className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 transition-all duration-300
             ${
               isActive
                 ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-400'
                 : 'text-gray-400 hover:bg-cyan-500/10 hover:text-cyan-300'
             }
-            sm:px-4 sm:py-3`}
-          onClick={() => onClose?.()}
+            ${isSubItem ? 'ml-6 text-sm' : 'sm:px-4 sm:py-3'}`}
         >
-          <span className="flex items-center transition-transform duration-200 group-hover:scale-110">
-            <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-          </span>
-          <span className="text-sm sm:text-base">{item.title}</span>
-          {isActive && (
+          {!isSubItem && (
+            <span className="flex items-center transition-transform duration-200 group-hover:scale-110">
+              <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+            </span>
+          )}
+
+          <span className="flex-1 text-left text-sm sm:text-base">{item.title}</span>
+
+          {hasSubItems && (
+            <ChevronDown
+              className={`h-4 w-4 transition-transform duration-200 ${
+                isExpanded ? 'rotate-180' : ''
+              }`}
+            />
+          )}
+
+          {isActive && !hasSubItems && (
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -78,15 +125,28 @@ const Navigation = ({ isOpen, onClose }) => {
               <ChevronRight className="h-3 w-3 animate-pulse text-cyan-400 sm:h-4 sm:w-4" />
             </motion.div>
           )}
-
-          {/* Tooltip */}
+        </Link>
+        {!isSubItem && (
           <div className="pointer-events-none absolute left-full top-0 z-50 hidden md:block">
             <div className="relative ml-2 rounded-md bg-[#0A0F1E] px-3 py-2 opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100">
               <div className="absolute -left-1 top-[50%] h-2 w-2 -translate-y-1/2 rotate-45 bg-[#0A0F1E]" />
               <p className="whitespace-nowrap text-sm text-cyan-100/60">{item.description}</p>
             </div>
           </div>
-        </Link>
+        )}
+
+        {hasSubItems && isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            {item.subItems.map((subItem) => (
+              <NavLink key={subItem.href} item={subItem} isSubItem />
+            ))}
+          </motion.div>
+        )}
       </div>
     );
   };
@@ -171,6 +231,10 @@ const Navigation = ({ isOpen, onClose }) => {
       </SheetContent>
     </Sheet>
   );
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>

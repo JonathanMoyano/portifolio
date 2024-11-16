@@ -1,11 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ScrollText, ArrowRight } from 'lucide-react';
+import { ScrollText, ArrowRight, Briefcase, GraduationCap, Code2, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const HomePage = () => {
+  const highlights = [
+    {
+      icon: <Briefcase className="h-5 w-5 text-cyan-400" />,
+      title: 'Analista de TI',
+      description: 'Colégio Jean Piaget',
+    },
+    {
+      icon: <GraduationCap className="h-5 w-5 text-cyan-400" />,
+      title: 'ADS',
+      description: '5º Semestre',
+    },
+    {
+      icon: <Code2 className="h-5 w-5 text-cyan-400" />,
+      title: 'Desenvolvimento',
+      description: 'Full Stack',
+    },
+    {
+      icon: <Shield className="h-5 w-5 text-cyan-400" />,
+      title: 'Infraestrutura',
+      description: 'Cloud & Security',
+    },
+  ];
+
   return (
     <div className="relative min-h-screen bg-[#0A0F1E]">
       <div className="absolute inset-0 bg-[url('/matrix.svg')] opacity-5" />
@@ -19,7 +43,7 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-5 sm:space-y-6"
             >
-              {/* Profile Image */}
+              {/* Profile Image Section - mantido como está */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -36,7 +60,7 @@ const HomePage = () => {
                 </div>
               </motion.div>
 
-              {/* Title and Subtitle */}
+              {/* Title and Subtitle - mantido como está */}
               <div className="space-y-2 sm:space-y-3">
                 <motion.h2
                   initial={{ opacity: 0 }}
@@ -70,14 +94,37 @@ const HomePage = () => {
                 </motion.p>
               </div>
 
-              {/* Action Buttons */}
+              {/* Highlights Section - NOVO */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
+                className="grid grid-cols-2 gap-3 sm:grid-cols-4"
+              >
+                {highlights.map((item, index) => (
+                  <Card
+                    key={index}
+                    className="border-cyan-500/20 bg-[#0A0F1E]/95 p-3 backdrop-blur-xl"
+                  >
+                    <div className="flex flex-col items-center gap-2">
+                      {item.icon}
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-white">{item.title}</p>
+                        <p className="text-xs text-cyan-100/60">{item.description}</p>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </motion.div>
+
+              {/* Action Buttons - mantido como está */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
                 className="flex flex-col gap-2 sm:flex-row sm:justify-center sm:gap-4"
               >
-                <Link href="/historia" className="w-full sm:w-auto">
+                <Link href="/sobre/historia" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     className="group relative w-full overflow-hidden bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 px-4 transition-all hover:scale-[1.02] sm:w-auto sm:px-6 md:px-8"
