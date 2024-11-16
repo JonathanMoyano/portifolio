@@ -154,43 +154,45 @@ const ExperiencePage = () => {
       },
     ],
   };
-
   const ExperienceCard = ({ exp }) => (
     <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/30">
-      <CardContent className="p-4 lg:p-6">
-        <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div className="space-y-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge className="bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30">
+      <CardContent className="p-3 sm:p-4 lg:p-6">
+        <div className="mb-3 flex flex-col gap-2 sm:mb-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="space-y-1.5 sm:space-y-2">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <Badge className="bg-cyan-500/20 text-xs text-cyan-400 hover:bg-cyan-500/30 sm:text-sm">
                 {exp.type}
               </Badge>
-              <Badge variant="outline" className="border-cyan-500/20 text-cyan-400">
+              <Badge
+                variant="outline"
+                className="border-cyan-500/20 text-xs text-cyan-400 sm:text-sm"
+              >
                 {exp.period}
               </Badge>
             </div>
-            <h3 className="text-lg font-semibold text-white lg:text-xl">{exp.title}</h3>
-            <p className="text-cyan-400">{exp.company}</p>
+            <h3 className="text-base font-semibold text-white sm:text-lg">{exp.title}</h3>
+            <p className="text-sm text-cyan-400 sm:text-base">{exp.company}</p>
           </div>
-          <Briefcase className="hidden h-5 w-5 text-cyan-400 sm:block sm:h-6 sm:w-6" />
+          <Briefcase className="hidden h-4 w-4 text-cyan-400 sm:block sm:h-5 sm:w-5" />
         </div>
 
-        <p className="mb-4 text-sm text-cyan-100/60 lg:text-base">{exp.description}</p>
+        <p className="mb-3 text-xs text-cyan-100/60 sm:mb-4 sm:text-sm">{exp.description}</p>
 
-        <div className="mb-4 grid grid-cols-3 gap-2 border-y border-cyan-500/20 py-4 sm:gap-3">
+        <div className="mb-3 grid grid-cols-3 gap-2 border-y border-cyan-500/20 py-3 sm:mb-4 sm:py-4">
           {exp.metrics.map((metric, i) => (
             <div key={i} className="flex flex-col items-center justify-center gap-1 text-center">
               <div className="text-cyan-400">{metric.icon}</div>
-              <div className="text-sm font-semibold text-white lg:text-base">{metric.value}</div>
-              <div className="text-xs text-cyan-100/60 lg:text-sm">{metric.label}</div>
+              <div className="text-xs font-semibold text-white sm:text-sm">{metric.value}</div>
+              <div className="text-[10px] text-cyan-100/60 sm:text-xs">{metric.label}</div>
             </div>
           ))}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           {exp.achievements.map((achievement, i) => (
-            <div key={i} className="flex items-start gap-2">
-              <ChevronRight className="mt-1 h-4 w-4 flex-shrink-0 text-cyan-400" />
-              <span className="text-sm text-cyan-100/60 lg:text-base">{achievement}</span>
+            <div key={i} className="flex items-start gap-1.5 sm:gap-2">
+              <ChevronRight className="mt-0.5 h-3 w-3 flex-shrink-0 text-cyan-400 sm:h-4 sm:w-4" />
+              <span className="text-xs text-cyan-100/60 sm:text-sm">{achievement}</span>
             </div>
           ))}
         </div>
@@ -198,74 +200,74 @@ const ExperiencePage = () => {
     </Card>
   );
   return (
-    <div className="relative min-h-screen w-full bg-[#0A0F1E]">
+    <div className="relative min-h-screen bg-[#0A0F1E]">
       <div className="absolute inset-0 bg-[url('/matrix.svg')] opacity-5" />
       <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-indigo-500/10 to-[#0A0F1E]" />
 
-      {/* Wrapper para centralização correta */}
-      <div className="mx-auto max-w-screen-2xl md:pl-64">
-        <main className="relative z-10 min-h-screen w-full px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-screen-2xl">
+        <main className="relative z-10 px-3 py-4 sm:px-4 sm:py-6 lg:px-8 lg:py-8">
           <div className="mx-auto max-w-6xl">
             {/* Header Section */}
-            <div className="mb-12">
+            <div className="mb-6 sm:mb-8 lg:mb-12">
               <div className="text-center">
-                <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400 sm:text-sm">
                   Portfólio Profissional
                 </h2>
-                <h1 className="font-display mt-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
+                <h1 className="font-display mt-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-2xl font-bold text-transparent sm:mt-3 sm:text-3xl lg:mt-4 lg:text-4xl xl:text-5xl">
                   Experiência Profissional
                 </h1>
-                <p className="mx-auto mt-4 max-w-2xl text-base text-cyan-100/60 lg:text-lg">
+                <p className="mx-auto mt-2 max-w-2xl text-sm text-cyan-100/60 sm:mt-3 sm:text-base lg:mt-4 lg:text-lg">
                   Bombeiro Civil Profissional & Analista de TI
                 </p>
               </div>
 
-              <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+              <div className="mt-6 grid grid-cols-2 gap-2 sm:mt-8 sm:gap-3 lg:mt-12 lg:grid-cols-4">
                 {stats.map((stat, index) => (
                   <Card
                     key={index}
                     className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/30"
                   >
-                    <CardContent className="flex flex-col items-center gap-2 p-3 text-center sm:p-4">
+                    <CardContent className="flex flex-col items-center gap-1.5 p-2 text-center sm:gap-2 sm:p-3 lg:p-4">
                       <div className="text-cyan-400">{stat.icon}</div>
-                      <div className="text-lg font-bold text-white sm:text-xl lg:text-2xl">
+                      <div className="text-base font-bold text-white sm:text-lg lg:text-xl xl:text-2xl">
                         {stat.value}
                       </div>
-                      <div className="text-xs text-cyan-100/60 sm:text-sm">{stat.label}</div>
+                      <div className="text-[10px] text-cyan-100/60 sm:text-xs lg:text-sm">
+                        {stat.label}
+                      </div>
                     </CardContent>
                   </Card>
                 ))}
               </div>
             </div>
-
             {/* Experience Tabs */}
             <Tabs defaultValue="all" className="w-full">
-              <div className="overflow-x-auto">
-                <TabsList className="mb-8 flex w-full justify-center gap-2 bg-transparent p-0 min-[400px]:flex-row">
+              <div className="-mx-3 overflow-x-auto px-3 sm:mx-0 sm:px-0">
+                <TabsList className="mb-6 flex w-full justify-start gap-2 bg-transparent p-0 sm:mb-8 sm:justify-center">
                   <TabsTrigger
                     value="all"
-                    className="min-w-[120px] border border-cyan-500/20 bg-[#0A0F1E]/95 px-4 py-2 text-sm backdrop-blur-xl transition-all duration-300 data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 sm:min-w-[150px] sm:text-base"
+                    className="min-w-[100px] whitespace-nowrap border border-cyan-500/20 bg-[#0A0F1E]/95 px-3 py-1.5 text-xs backdrop-blur-xl transition-all duration-300 data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 sm:min-w-[120px] sm:px-4 sm:py-2 sm:text-sm lg:min-w-[150px]"
                   >
                     Todas Experiências
                   </TabsTrigger>
                   <TabsTrigger
                     value="bombeiro"
-                    className="min-w-[120px] border border-cyan-500/20 bg-[#0A0F1E]/95 px-4 py-2 text-sm backdrop-blur-xl transition-all duration-300 data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 sm:min-w-[150px] sm:text-base"
+                    className="min-w-[100px] whitespace-nowrap border border-cyan-500/20 bg-[#0A0F1E]/95 px-3 py-1.5 text-xs backdrop-blur-xl transition-all duration-300 data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 sm:min-w-[120px] sm:px-4 sm:py-2 sm:text-sm lg:min-w-[150px]"
                   >
                     Bombeiro Civil
                   </TabsTrigger>
                   <TabsTrigger
                     value="ti"
-                    className="min-w-[120px] border border-cyan-500/20 bg-[#0A0F1E]/95 px-4 py-2 text-sm backdrop-blur-xl transition-all duration-300 data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 sm:min-w-[150px] sm:text-base"
+                    className="min-w-[100px] whitespace-nowrap border border-cyan-500/20 bg-[#0A0F1E]/95 px-3 py-1.5 text-xs backdrop-blur-xl transition-all duration-300 data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400 sm:min-w-[120px] sm:px-4 sm:py-2 sm:text-sm lg:min-w-[150px]"
                   >
                     Tecnologia
                   </TabsTrigger>
                 </TabsList>
               </div>
 
-              <div className="mt-6">
+              <div className="mt-4 sm:mt-6">
                 <TabsContent value="all">
-                  <div className="space-y-4 sm:space-y-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {[...experience.bombeiro, ...experience.ti]
                       .sort(
                         (a, b) =>
@@ -278,7 +280,7 @@ const ExperiencePage = () => {
                 </TabsContent>
 
                 <TabsContent value="bombeiro">
-                  <div className="space-y-4 sm:space-y-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {experience.bombeiro.map((exp, index) => (
                       <ExperienceCard key={index} exp={exp} />
                     ))}
@@ -286,7 +288,7 @@ const ExperiencePage = () => {
                 </TabsContent>
 
                 <TabsContent value="ti">
-                  <div className="space-y-4 sm:space-y-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {experience.ti.map((exp, index) => (
                       <ExperienceCard key={index} exp={exp} />
                     ))}
