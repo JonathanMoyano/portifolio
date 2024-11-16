@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
   }, [router]);
 
   // Menu button só aparece em mobile e não na home
-  const showMenuButton = !isHomePage && isMounted;
+  const showMenuButton = isMounted;
 
   return (
     <div className="relative min-h-screen bg-[#0A0F1E]">
