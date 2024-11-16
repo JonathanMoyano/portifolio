@@ -29,7 +29,7 @@ const ProjetosIndexPage = () => {
       image: '/images/portfolio.png',
       tags: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
       href: '/projetos/portfolio',
-      status: 'Em Desenvolvimento',
+      status: 'Concluido',
       statusColor: 'bg-cyan-500/20 text-cyan-400',
       highlights: ['Design Responsivo', 'Animações Fluidas', 'Interface Moderna'],
     },

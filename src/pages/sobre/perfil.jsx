@@ -95,11 +95,10 @@ const ProfilePage = () => {
 
                       <p className="text-sm leading-relaxed text-cyan-100/60 sm:text-base">
                         Profissional proativo com mais de 2 anos de experiência em infraestrutura de
-                        TI, especializado em otimização de sistemas, resolução de problemas
-                        complexos e implementação de soluções tecnológicas inovadoras. Atualmente,
-                        lidero a equipe de TI do Colégio Jean Piaget em Santos, onde sou responsável
-                        pela gestão do parque tecnológico e implementação de sistemas de rede e
-                        segurança.
+                        TI, especializado em resolução de problemas complexos e implementação de
+                        soluções tecnológicas inovadoras. Atualmente, Apoio na liderança da equipe
+                        de TI do Colégio Jean Piaget em Santos. Sou responsável pelo gerenciamento
+                        de agendamentos, eventos internos e Suporte N2.
                       </p>
 
                       <p className="text-sm leading-relaxed text-cyan-100/60 sm:text-base">
