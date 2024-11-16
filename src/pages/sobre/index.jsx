@@ -7,16 +7,15 @@ import Link from 'next/link';
 const SobrePage = () => {
   const sections = [
     {
-      title: 'Perfil',
-      titleEn: 'Profile',
+      title: 'Meu Perfil',
       description: 'Conheça mais sobre minha formação, experiências e competências profissionais.',
       icon: User,
       href: '/sobre/perfil',
       gradient: 'from-cyan-500 to-blue-500',
     },
     {
-      title: 'História',
-      titleEn: 'History',
+      title: 'Minha História',
+
       description:
         'Uma jornada de descobertas, desafios e realizações que moldaram minha trajetória.',
       icon: History,

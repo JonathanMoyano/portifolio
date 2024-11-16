@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Linkedin, Github, MessageSquare, Send, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, MessageSquare, Send, ExternalLink } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -50,21 +50,6 @@ const ContatoPage = () => {
     },
   ];
 
-  const socialLinks = [
-    {
-      name: 'LinkedIn',
-      icon: Linkedin,
-      url: 'https://br.linkedin.com/in/jonathansouzamoyano',
-      color: 'bg-[#0077B5]',
-    },
-    {
-      name: 'GitHub',
-      icon: Github,
-      url: 'https://github.com/JonathanPolezel',
-      color: 'bg-[#333]',
-    },
-  ];
-
   const ContactCard = ({ card }) => (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="h-full">
       <Card
@@ -105,21 +90,6 @@ const ContatoPage = () => {
     </motion.div>
   );
 
-  const SocialButton = ({ social }) => (
-    <motion.a
-      href={social.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className={`group flex items-center gap-3 rounded-lg ${social.color} p-4 transition-all duration-300 hover:opacity-90`}
-    >
-      <social.icon className="h-5 w-5 text-white" />
-      <span className="text-sm font-medium text-white">{social.name}</span>
-      <ExternalLink className="h-4 w-4 text-white opacity-0 transition-opacity group-hover:opacity-100" />
-    </motion.a>
-  );
-
   return (
     <div className="relative min-h-screen bg-[#0A0F1E]">
       <div className="absolute inset-0 bg-[url('/matrix.svg')] opacity-5" />
@@ -153,20 +123,6 @@ const ContatoPage = () => {
                     <ContactCard key={index} card={card} />
                   ))}
                 </div>
-
-                {/* Cards Adicionais */}
-                <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl">
-                  <CardContent className="p-6 sm:p-8">
-                    <h3 className="mb-4 text-center text-lg font-semibold text-white">
-                      Redes Sociais e Profissionais
-                    </h3>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {socialLinks.map((social, index) => (
-                        <SocialButton key={index} social={social} />
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
 
               {/* Rodapé */}

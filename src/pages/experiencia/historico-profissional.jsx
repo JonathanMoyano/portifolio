@@ -157,12 +157,12 @@ const ExperiencePage = () => {
         company: 'Colégio Jean Piaget - Santos',
         period: 'Janeiro 2024 - Presente',
         type: 'TI',
-        description: 'Liderança da equipe de TI e gestão da infraestrutura tecnológica.',
+        description:
+          'Apoio na Liderança da equipe de TI e na gestão da infraestrutura tecnológica.',
         achievements: [
-          'Liderança e gestão da equipe de TI',
-          'Implementação de sistemas de rede e segurança',
+          'Apoio na Liderança e na gestão da equipe de TI',
+          'Apoio na melhorias de sistemas de rede e segurança',
           'Desenvolvimento de processos para otimização do suporte',
-          'Gestão do parque tecnológico',
         ],
         metrics: [
           { icon: <Clock className="h-5 w-5" />, value: '30%', label: 'Redução de Tempo' },
@@ -175,11 +175,11 @@ const ExperiencePage = () => {
         company: 'Colégio Jean Piaget - Santos',
         period: 'Outubro 2023 - Janeiro 2024',
         type: 'TI',
-        description: 'Modernização e implementação de sistemas de segurança e infraestrutura.',
+        description: 'Apoio na modernização de CFTV na segurança e infraestrutura.',
         achievements: [
           'Modernização do sistema CFTV (+40% cobertura)',
-          'Implementação de controle de inventário',
-          'Redução de 30% no tempo de resposta',
+          'Controle de inventário',
+          'Redução de 30% no tempo de resposta nos chamados',
         ],
         metrics: [
           { icon: <Shield className="h-5 w-5" />, value: '40%', label: 'Aumento CFTV' },
