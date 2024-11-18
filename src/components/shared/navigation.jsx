@@ -1,4 +1,3 @@
-// components/shared/navigation.jsx
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -7,7 +6,6 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-// Definição dos itens do menu
 const menuItems = [
   {
     title: 'Início',
@@ -53,7 +51,6 @@ const menuItems = [
   },
 ];
 
-// Componente NavLink
 const NavLink = ({ item, isSubItem = false, onClose }) => {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -61,14 +58,17 @@ const NavLink = ({ item, isSubItem = false, onClose }) => {
   const hasSubItems = item.subItems && item.subItems.length > 0;
   const Icon = item.icon;
 
-  const handleClick = async (e) => {
-    if (hasSubItems) {
-      e.preventDefault();
-      setIsExpanded(!isExpanded);
-    } else {
+  const handleTitleClick = async () => {
+    if (!isSubItem) {
       onClose?.();
       await router.push(item.href);
     }
+  };
+
+  const handleExpandClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsExpanded(!isExpanded);
   };
 
   const linkClasses = cn(
@@ -80,8 +80,8 @@ const NavLink = ({ item, isSubItem = false, onClose }) => {
   );
 
   return (
-    <div className="relative">
-      <Link href={item.href} onClick={handleClick} className={linkClasses}>
+    <div className="relative mb-2">
+      <Link href={item.href} onClick={handleTitleClick} className={linkClasses}>
         {!isSubItem && (
           <span className="flex items-center transition-transform duration-200 group-hover:scale-110">
             <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -91,9 +91,14 @@ const NavLink = ({ item, isSubItem = false, onClose }) => {
         <span className="flex-1 text-left text-sm sm:text-base">{item.title}</span>
 
         {hasSubItems && (
-          <ChevronDown
-            className={cn('h-4 w-4 transition-transform duration-200', isExpanded && 'rotate-180')}
-          />
+          <button onClick={handleExpandClick} className="rounded-full p-1 hover:bg-cyan-500/10">
+            <ChevronDown
+              className={cn(
+                'h-4 w-4 transition-transform duration-200',
+                isExpanded && 'rotate-180'
+              )}
+            />
+          </button>
         )}
 
         {isActive && !hasSubItems && (
@@ -108,7 +113,6 @@ const NavLink = ({ item, isSubItem = false, onClose }) => {
         )}
       </Link>
 
-      {/* Tooltip de descrição */}
       {!isSubItem && (
         <div className="pointer-events-none absolute left-full top-0 z-50 hidden md:block">
           <div className="relative ml-2 rounded-md bg-[#0A0F1E] px-3 py-2 opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100">
@@ -118,13 +122,12 @@ const NavLink = ({ item, isSubItem = false, onClose }) => {
         </div>
       )}
 
-      {/* SubItems */}
       {hasSubItems && isExpanded && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          className="overflow-hidden"
+          className="mt-1 overflow-hidden"
         >
           {item.subItems.map((subItem) => (
             <NavLink key={subItem.href} item={subItem} isSubItem onClose={onClose} />
@@ -134,14 +137,12 @@ const NavLink = ({ item, isSubItem = false, onClose }) => {
     </div>
   );
 };
-
-// Componente Desktop Navigation
 const DesktopNav = () => (
   <nav className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col border-r border-cyan-500/20 bg-[#0A0F1E]/95 p-4 backdrop-blur-xl transition-all duration-300 md:flex lg:p-6">
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mb-6 space-y-2 lg:mb-8"
+      className="mb-8 space-y-3" // Aumentado o mb-6 para mb-8 e space-y-2 para space-y-3
     >
       <h1 className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-lg font-bold text-transparent lg:text-xl">
         Jonathan Souza Moyano
@@ -153,7 +154,7 @@ const DesktopNav = () => (
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2 }}
-      className="flex-1 space-y-0.5 sm:space-y-1"
+      className="flex-1 space-y-1.5" // Aumentado space-y-0.5 para space-y-1.5
     >
       {menuItems.map((item, index) => (
         <motion.div
@@ -171,7 +172,7 @@ const DesktopNav = () => (
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.8 }}
-      className="mt-4 border-t border-cyan-500/20 pt-4"
+      className="mt-6 border-t border-cyan-500/20 pt-4" // Aumentado mt-4 para mt-6
     >
       <p className="text-center text-[10px] text-cyan-100/30 sm:text-xs">
         © 2024 Jonathan Souza Moyano
@@ -180,7 +181,6 @@ const DesktopNav = () => (
   </nav>
 );
 
-// Componente Mobile Navigation
 const MobileNav = ({ isOpen, onClose }) => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
@@ -188,7 +188,9 @@ const MobileNav = ({ isOpen, onClose }) => (
       className="w-[280px] border-r border-cyan-500/20 bg-[#0A0F1E]/95 p-0 backdrop-blur-xl sm:w-[300px]"
     >
       <SheetHeader className="border-b border-cyan-500/20 p-4 sm:p-6">
-        <SheetTitle className="space-y-1">
+        <SheetTitle className="space-y-2">
+          {' '}
+          {/* Aumentado space-y-1 para space-y-2 */}
           <h2 className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-left text-lg font-bold text-transparent">
             Menu Principal
           </h2>
@@ -196,7 +198,7 @@ const MobileNav = ({ isOpen, onClose }) => (
         </SheetTitle>
       </SheetHeader>
       <motion.div
-        className="flex flex-col gap-1 p-3 sm:p-4"
+        className="flex flex-col gap-2 p-4 sm:p-6" // Aumentado gap-1 para gap-2 e ajustado padding
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
@@ -216,7 +218,6 @@ const MobileNav = ({ isOpen, onClose }) => (
   </Sheet>
 );
 
-// Componente Navigation Principal
 const Navigation = ({ isOpen, onClose }) => {
   const [mounted, setMounted] = useState(false);
 

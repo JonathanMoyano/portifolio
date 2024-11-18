@@ -1,4 +1,6 @@
 // components/ui/layout.jsx
+
+import { cn } from '@/lib/utils';
 export const PageLayout = ({ children, className }) => (
   <div className="relative min-h-screen bg-[#0A0F1E]">
     <div className="absolute inset-0 bg-[url('/matrix.svg')] opacity-5" />

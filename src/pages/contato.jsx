@@ -64,12 +64,6 @@ const fadeInUp = {
   transition: { duration: 0.5 },
 };
 
-const fadeIn = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.5 },
-};
-
 // Componente do Status Online
 const OnlineStatus = () => (
   <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2">

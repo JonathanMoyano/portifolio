@@ -63,7 +63,7 @@ const ProfileImage = () => (
 );
 
 // Componente do Cartão de Destaque
-const HighlightCard = ({ highlight, index }) => (
+const HighlightCard = ({ highlight }) => (
   <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 p-3 backdrop-blur-xl">
     <div className="flex flex-col items-center gap-2">
       {highlight.icon}
@@ -92,6 +92,7 @@ const ActionButton = ({ href, variant = 'default', children }) => (
     </Button>
   </Link>
 );
+
 // Componente do Header
 const Header = () => (
   <div className="space-y-2 sm:space-y-3">
@@ -180,15 +181,18 @@ const MainContent = () => (
     <ActionButtons />
   </motion.div>
 );
+
 // Componente Principal
 const HomePage = () => {
   return (
-    <PageLayout className="px-3 sm:px-6 lg:px-8">
-      <main className="relative z-10 mx-auto flex min-h-screen items-start justify-center pt-12 sm:pt-16 md:pt-20">
-        <div className="mx-auto w-full max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <MainContent />
-        </div>
-      </main>
+    <PageLayout>
+      <div className="mx-auto max-w-4xl">
+        <main className="flex min-h-[80vh] flex-col items-center justify-center py-8 sm:py-12">
+          <div className="mx-auto w-full max-w-3xl px-4 text-center sm:px-6">
+            <MainContent />
+          </div>
+        </main>
+      </div>
     </PageLayout>
   );
 };

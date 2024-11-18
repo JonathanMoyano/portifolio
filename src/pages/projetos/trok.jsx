@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { PageLayout } from '@/components/ui/layout';
-import { PageHeader } from '@/components/ui/page-header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -90,7 +89,7 @@ const features = [
   },
 ];
 
-const techStack = ['React Native', 'Next.js', 'Capacitor.js', 'Supabase', 'Vercel'];
+// const techStack = ['React Native', 'Next.js', 'Capacitor.js', 'Supabase', 'Vercel'];
 
 // Componentes Reutilizáveis
 const AchievementCard = ({ achievement }) => (
@@ -167,7 +166,7 @@ const HeroImage = () => (
             <p className="text-lg font-bold text-white sm:text-xl lg:text-2xl">
               Seu Negócio na <span className="text-orange-500">Palma da Mão</span>
             </p>
-            <div className="flex flex-wrap justify-center gap-1.5 px-2 sm:gap-2">
+            {/* <div className="flex flex-wrap justify-center gap-1.5 px-2 sm:gap-2">
               {techStack.map((tech, index) => (
                 <Badge
                   key={index}
@@ -177,7 +176,7 @@ const HeroImage = () => (
                   {tech}
                 </Badge>
               ))}
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </motion.div>
