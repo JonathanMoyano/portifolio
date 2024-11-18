@@ -70,7 +70,10 @@ const ProfilePage = () => {
                       <Image
                         src="/jonathan.jpg"
                         alt="Jonathan Souza Moyano"
+                        width={224} // 56 * 4 (correspondente ao sm:w-56)
+                        height={224} // 56 * 4 (correspondente ao sm:h-56)
                         className="h-full w-full object-cover"
+                        priority
                       />
                     </div>
                   </div>

@@ -1,7 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { School, GraduationCap, Award, BookOpen, FileCheck } from 'lucide-react';
+import {
+  School,
+  GraduationCap,
+  Award,
+  BookOpen,
+  FileCheck,
+  Download,
+  BookOpenCheck,
+} from 'lucide-react';
 import Link from 'next/link';
 
 const FormacaoIndexPage = () => {
@@ -29,7 +37,8 @@ const FormacaoIndexPage = () => {
       highlights: [
         'AWS Amazon Cloud Computing',
         'Google Cloud Associate Engineer',
-        'Azure Data Fundamentals',
+        'Microsoft Azure Data Fundamentals (DP-900)',
+        'Google Cloud Fundamentals: Core Infrastructure',
       ],
     },
     {
@@ -39,7 +48,12 @@ const FormacaoIndexPage = () => {
       icon: <FileCheck className="h-5 w-5" />,
       href: '/formacao/desenvolvimento',
       gradient: 'from-green-500 to-yellow-500',
-      highlights: ['Desenvolvimento Full Stack', 'Oracle SQL Developer', 'HTML5 e CSS3'],
+      highlights: [
+        'Linguagem de Programação C - UNIBR e UNIP',
+        'Linguagem de Programação Python - Udemy',
+        'Lógica de Programação - Udemy',
+        'HTML5 e CSS3 - DIO',
+      ],
     },
     {
       title: 'AI & Data Science',
@@ -49,12 +63,32 @@ const FormacaoIndexPage = () => {
       href: '/formacao/ai-data-science',
       gradient: 'from-yellow-500 to-purple-500',
       highlights: [
-        'Ciência de Dados 3.0',
-        'Engenharia de Prompts na AWS',
+        'Ciência de Dados 3.0 - Data Science Academy',
+        'Engenharia de Prompts na AWS com Claude - Nexa',
+        'Formação Fundamentos de IA',
         'CC50 - Introdução à Ciência da Computação',
       ],
     },
+    {
+      title: 'Cursos Complementares',
+      titleEn: 'Additional Courses',
+      description: 'Cursos extras e especializações complementares.',
+      icon: <BookOpenCheck className="h-5 w-5" />,
+      href: '/formacao/complementares',
+      gradient: 'from-purple-500 to-pink-500',
+      highlights: [
+        'Banco de Dados Oracle e SQL Avançado',
+        'Reparo Avançado em Placas e Circuito Eletrônico',
+        'IT Service Management (ITSM/GSTI)',
+        'Sistemas Operacionais e Redes',
+      ],
+    },
   ];
+
+  const handleDownloadCV = () => {
+    const cvPath = '/curriculos/tecnologia/curriculo.pdf';
+    window.open(cvPath, '_blank');
+  };
 
   return (
     <div className="relative min-h-screen bg-[#0A0F1E]">
@@ -98,6 +132,19 @@ const FormacaoIndexPage = () => {
                   certificações especializadas. Busco constantemente me atualizar com as últimas
                   tecnologias e melhores práticas do mercado.
                 </p>
+
+                {/* Download CV Button */}
+                <div className="mt-4 flex justify-center">
+                  <motion.button
+                    onClick={handleDownloadCV}
+                    className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-sm font-semibold text-white transition-all hover:from-cyan-600 hover:to-blue-600 sm:w-auto"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Download className="h-4 w-4" />
+                    Download Currículo PDF
+                  </motion.button>
+                </div>
               </Card>
             </motion.div>
 

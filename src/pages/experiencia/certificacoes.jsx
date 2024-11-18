@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { School, Cloud, Code, BookOpen } from 'lucide-react';
+import { School, Cloud, Code, BookOpen, Cpu, Network } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -48,6 +48,14 @@ const FormacaoPage = () => {
           skills: ['Azure SQL', 'Cosmos DB', 'Data Lake', 'Power BI'],
           color: 'text-cyan-400',
         },
+        {
+          title: 'Google Cloud Fundamentals',
+          institution: 'Google Cloud',
+          date: '2023',
+          icon: <Cloud className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['Core Infrastructure', 'Cloud Security', 'Networking', 'Cloud Storage'],
+          color: 'text-blue-400',
+        },
       ],
       development: [
         {
@@ -60,11 +68,27 @@ const FormacaoPage = () => {
         },
         {
           title: 'Oracle SQL Developer',
-          institution: 'Oracle',
+          institution: 'Oracle e UNIBR',
           date: '2023',
           icon: <Code className="h-4 w-4 sm:h-5 sm:w-5" />,
           skills: ['SQL', 'PL/SQL', 'Database Design', 'Performance Tuning'],
           color: 'text-red-400',
+        },
+        {
+          title: 'Desenvolvimento Web',
+          institution: 'DIO',
+          date: '2023',
+          icon: <Code className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+          color: 'text-yellow-400',
+        },
+        {
+          title: 'Programação Básica',
+          institution: 'UNIBR e Udemy',
+          date: '2023',
+          icon: <Code className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['Lógica de Programação', 'Python', 'C', 'Algoritmos'],
+          color: 'text-green-400',
         },
       ],
       ai: [
@@ -77,12 +101,54 @@ const FormacaoPage = () => {
           color: 'text-purple-400',
         },
         {
-          title: 'Engenharia de Prompts',
-          institution: 'AWS',
+          title: 'Engenharia de Prompts na AWS',
+          institution: 'Nexa',
           date: '2023',
           icon: <BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />,
           skills: ['Claude AI', 'GPT', 'Prompt Engineering', 'AI Integration'],
           color: 'text-yellow-400',
+        },
+        {
+          title: 'CC50 - Ciência da Computação',
+          institution: 'Harvard/Fundação Estudar',
+          date: '2023',
+          icon: <BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['Algoritmos', 'Estrutura de Dados', 'C', 'Python'],
+          color: 'text-blue-400',
+        },
+      ],
+      tech: [
+        {
+          title: 'Reparo em Circuitos Eletrônicos',
+          institution: 'MasterNet',
+          date: '2023',
+          icon: <Cpu className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['Placas Eletrônicas', 'Circuitos', 'Reparo Avançado', 'Diagnóstico'],
+          color: 'text-red-400',
+        },
+        {
+          title: 'IT Service Management',
+          institution: 'Udemy',
+          date: '2023',
+          icon: <Network className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['ITSM', 'GSTI', 'Gestão de Serviços', 'Processos'],
+          color: 'text-green-400',
+        },
+        {
+          title: 'Sistemas e Redes',
+          institution: 'UNIBR',
+          date: '2023',
+          icon: <Network className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['Sistemas Operacionais', 'Redes', 'Infraestrutura', 'Segurança'],
+          color: 'text-blue-400',
+        },
+        {
+          title: 'Microsoft Excel Avançado',
+          institution: 'Udemy',
+          date: '2023',
+          icon: <BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />,
+          skills: ['Fórmulas Avançadas', 'Macros', 'VBA', 'Dashboard'],
+          color: 'text-green-400',
         },
       ],
     },
@@ -146,6 +212,7 @@ const FormacaoPage = () => {
                 Aprendizado contínuo e especialização em tecnologias modernas
               </p>
             </motion.div>
+
             {/* Academic Section */}
             <motion.section
               initial={{ opacity: 0, y: 20 }}
@@ -204,6 +271,7 @@ const FormacaoPage = () => {
                       { value: 'cloud', label: 'Cloud Computing' },
                       { value: 'development', label: 'Desenvolvimento' },
                       { value: 'ai', label: 'IA & Data Science' },
+                      { value: 'tech', label: 'Tecnologia' },
                     ].map((tab) => (
                       <TabsTrigger
                         key={tab.value}
