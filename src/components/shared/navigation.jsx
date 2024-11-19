@@ -29,7 +29,7 @@ const menuItems = [
     href: '/projetos',
     description: 'Meus projetos',
     subItems: [
-      { title: 'TROK!', href: '/projetos/trok' },
+      { title: 'TroK!', href: '/projetos/trok' },
       { title: 'Portfólio', href: '/projetos/portfolio' },
     ],
   },

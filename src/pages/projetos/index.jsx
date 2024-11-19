@@ -26,7 +26,7 @@ const projects = [
   },
   {
     title: 'Portfólio Profissional',
-    description: 'Website pessoal com design moderno e interativo para apresentação profissional',
+    description: 'Website pessoal com design moderno e interativo.',
     image: '/images/portfolio.png',
     tags: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
     href: '/projetos/portfolio',

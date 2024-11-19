@@ -21,7 +21,14 @@ import { cn } from '@/lib/utils';
 
 // Dados do Projeto
 const projectData = {
-  title: 'TROK! - Revolucionando Serviços',
+  titleMain: (
+    <span className="mb-2 block text-center text-5xl font-bold text-orange-500">TROK!</span>
+  ),
+  titleSecondary: (
+    <span className="block text-2xl">
+      Seu Negócio na <span className="text-orange-500">Palma da Mão</span>
+    </span>
+  ),
   badge: 'Projeto Premiado 🏆',
   description:
     'Uma plataforma inovadora que conecta profissionais e clientes, promovendo a economia colaborativa e sustentável.',
@@ -34,7 +41,7 @@ const projectData = {
           precisam de seus serviços, criando um ecossistema de benefício mútuo.`,
 };
 
-// Dados das conquistas, features e stack
+// Dados das conquistas, features e stack tecnológica
 const achievements = [
   {
     icon: Trophy,
@@ -89,7 +96,20 @@ const features = [
   },
 ];
 
-// const techStack = ['React Native', 'Next.js', 'Capacitor.js', 'Supabase', 'Vercel'];
+const techStack = [
+  {
+    category: 'Frontend',
+    technologies: ['React Native', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Capacitor.js'],
+  },
+  {
+    category: 'Backend',
+    technologies: ['Supabase', 'PostgreSQL', 'Node.js'],
+  },
+  {
+    category: 'DevOps',
+    technologies: ['Vercel', 'GitHub Actions'],
+  },
+];
 
 // Componentes Reutilizáveis
 const AchievementCard = ({ achievement }) => (
@@ -108,7 +128,6 @@ const AchievementCard = ({ achievement }) => (
     </div>
   </motion.div>
 );
-
 const FeatureCard = ({ feature, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
@@ -128,6 +147,21 @@ const FeatureCard = ({ feature, index }) => (
   </motion.div>
 );
 
+const TechStackCard = ({ stack }) => (
+  <Card>
+    <CardContent className="p-4">
+      <h3 className="mb-3 font-semibold text-white">{stack.category}</h3>
+      <div className="flex flex-wrap gap-2">
+        {stack.technologies.map((tech, index) => (
+          <Badge key={index} variant="outline" className="border-cyan-500/20 text-cyan-100/60">
+            {tech}
+          </Badge>
+        ))}
+      </div>
+    </CardContent>
+  </Card>
+);
+
 const HeroImage = () => (
   <div className="relative h-[160px] w-full overflow-hidden rounded-t-xl sm:h-[240px] lg:h-[320px]">
     <Image
@@ -143,46 +177,11 @@ const HeroImage = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="flex h-full flex-col items-center justify-center pt-4 text-center"
-      >
-        <div className="space-y-3">
-          <motion.h2
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{
-              type: 'spring',
-              stiffness: 200,
-              damping: 10,
-            }}
-            className="text-3xl font-bold text-orange-500 drop-shadow-lg sm:text-4xl lg:text-5xl"
-          >
-            TROK!
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="space-y-2"
-          >
-            <p className="text-lg font-bold text-white sm:text-xl lg:text-2xl">
-              Seu Negócio na <span className="text-orange-500">Palma da Mão</span>
-            </p>
-            {/* <div className="flex flex-wrap justify-center gap-1.5 px-2 sm:gap-2">
-              {techStack.map((tech, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="border-orange-500/20 text-xs text-orange-400 sm:text-sm"
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </div> */}
-          </motion.div>
-        </div>
-      </motion.div>
+      ></motion.div>
     </div>
   </div>
 );
+
 // Componente Principal
 const ProjectsPage = () => {
   return (
@@ -195,9 +194,10 @@ const ProjectsPage = () => {
           className="mb-8 text-center sm:mb-12"
         >
           <Badge className="mb-4 bg-orange-500/20 text-orange-400">{projectData.badge}</Badge>
-          <h1 className="font-display bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
-            {projectData.title}
-          </h1>
+          <div className="font-display">
+            {projectData.titleMain}
+            {projectData.titleSecondary}
+          </div>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-cyan-100/60 sm:text-base lg:text-lg">
             {projectData.description}
           </p>
@@ -237,6 +237,18 @@ const ProjectsPage = () => {
               </div>
             </section>
 
+            {/* Stack Tecnológica Section */}
+            <section className="mb-8">
+              <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
+                Stack Tecnológica
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {techStack.map((stack, index) => (
+                  <TechStackCard key={index} stack={stack} />
+                ))}
+              </div>
+            </section>
+
             {/* Descrição e Links */}
             <div className="space-y-6">
               {/* About Card */}
@@ -253,25 +265,13 @@ const ProjectsPage = () => {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
                 <Button
                   className={cn(
-                    'group bg-gradient-to-r from-orange-500 to-orange-600',
-                    'px-6 transition-all hover:scale-105'
+                    'group bg-gradient-to-r from-cyan-500 to-blue-500 px-6',
+                    'transition-all hover:scale-105'
                   )}
                   onClick={() => window.open(projectData.website, '_blank')}
                 >
                   Acessar o TROK!
                   <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-
-                <Button
-                  variant="outline"
-                  className={cn(
-                    'group border-cyan-500/20 px-6 text-cyan-400',
-                    'transition-all hover:scale-105 hover:bg-cyan-500/10'
-                  )}
-                  onClick={() => window.open(projectData.appDownload, '_blank')}
-                >
-                  Download App
-                  <Phone className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>
             </div>
