@@ -14,7 +14,7 @@ const profileData = {
     first: 'JONATHAN SOUZA',
     last: 'MOYANO',
   },
-  role: 'Analista de TI especializado em infraestrutura, segurança e otimização de sistemas.',
+  role: 'Analista de Suporte N2 - TI especializado em infraestrutura, segurança e otimização de sistemas.',
   education: 'Estudante de Análise e Desenvolvimento de Sistemas.',
   image: '/jonathan.jpg',
 };
@@ -23,7 +23,7 @@ const profileData = {
 const highlights = [
   {
     icon: <Briefcase className="h-5 w-5 text-cyan-400" />,
-    title: 'Analista de TI',
+    title: 'Analista de Suporte N2 - TI',
     description: 'Colégio Jean Piaget',
   },
   {

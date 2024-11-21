@@ -37,7 +37,7 @@ const strengths = [
   },
   {
     icon: <Settings className="h-5 w-5 sm:h-6 sm:w-6" />,
-    title: 'Gestão de Infraestrutura',
+    title: 'Apoio na gestão de Infraestrutura',
     description: 'Expertise em manutenção e otimização de ambientes tecnológicos',
   },
   {
@@ -156,7 +156,7 @@ const experience = {
   // Histórico em TI
   ti: [
     {
-      title: 'Analista de TI',
+      title: 'Analista de suporte N2 - TI',
       company: 'Colégio Jean Piaget - Santos',
       period: 'Janeiro 2024 - Presente',
       type: 'TI',
@@ -173,7 +173,7 @@ const experience = {
       ],
     },
     {
-      title: 'Assistente de TI',
+      title: 'Assistente de Suporte N1 - TI',
       company: 'Colégio Jean Piaget - Santos',
       period: 'Outubro 2023 - Janeiro 2024',
       type: 'TI',
