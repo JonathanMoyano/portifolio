@@ -161,7 +161,7 @@ const SectionCard = ({ section }) => (
 );
 const FormacaoIndexPage = () => {
   const handleDownloadCV = () => {
-    const cvPath = '/curriculos/tecnologia/curriculo.pdf';
+    const cvPath = '/curriculos/curriculo.pdf';
     window.open(cvPath, '_blank');
   };
 
