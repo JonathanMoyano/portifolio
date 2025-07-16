@@ -7,11 +7,25 @@ import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
-// Dados dos projetos
+// Dados dos projetos (com o novo projeto adicionado)
 const projects = [
   {
+    title: 'Currículo Interativo',
+    description: 'Single-page application com um design moderno e tecnológico para apresentar meu currículo de forma dinâmica.',
+    image: '/images/cv-interativo.png', // IMPORTANTE: Veja o Passo 2 abaixo
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
+    href: '/projetos/cv', // Link para a própria página inicial
+    status: 'Versão Atual',
+    statusColor: 'bg-green-500/20 text-green-400',
+    highlights: [
+      'Layout "Bento Grid"',
+      'Animações com Framer Motion',
+      'Design Responsivo',
+    ],
+  },
+  {
     title: 'TROK!',
-    description: 'Plataforma de conexão entre profissionais e clientes para troca de serviços',
+    description: 'Plataforma de conexão entre profissionais e clientes para troca de serviços.',
     image: '/images/trokinho.png',
     tags: ['React Native', 'Next.js', 'Capacitor.js', 'Supabase'],
     href: '/projetos/trok',
@@ -24,8 +38,8 @@ const projects = [
     ],
   },
   {
-    title: 'Portfólio Profissional',
-    description: 'Website pessoal com design moderno e interativo.',
+    title: 'Portfólio Profissional (v1)',
+    description: 'Versão anterior do website pessoal com design moderno e interativo.',
     image: '/images/portfolio.png',
     tags: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
     href: '/projetos/portfolio',
@@ -37,59 +51,55 @@ const projects = [
 
 // Componente do Card de Projeto
 const ProjectCard = ({ project }) => (
-  <Link href={project.href}>
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
-      {/* Imagem do Projeto */}
-      <div className="relative h-48 w-full">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0F1E]" />
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={400}
-          height={300}
-          className="h-full w-full object-cover"
-        />
-      </div>
-
-      <CardContent className="p-6">
-        {/* Header */}
-        <div className="mb-4">
-          <Badge className={project.statusColor}>{project.status}</Badge>
-          <h3 className="mt-2 text-xl font-semibold text-white">{project.title}</h3>
-          <p className="mt-1 text-sm text-cyan-100/60">{project.description}</p>
+  <Link href={project.href} legacyBehavior>
+    <a className="block h-full">
+      <Card className="group h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 hover:-translate-y-1">
+        <div className="relative h-48 w-full">
+          <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-transparent to-[#0A0F1E]" />
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
         </div>
 
-        {/* Tags */}
-        <div className="mb-4 flex flex-wrap gap-2">
-          {project.tags.map((tag, i) => (
-            <Badge key={i} variant="outline" className="border-cyan-500/20 text-cyan-100/60">
-              {tag}
-            </Badge>
-          ))}
-        </div>
+        <CardContent className="p-4">
+          <div className="mb-4">
+            <Badge className={project.statusColor}>{project.status}</Badge>
+            <h3 className="mt-2 text-lg font-semibold text-white">{project.title}</h3>
+            <p className="mt-1 text-sm text-slate-400">{project.description}</p>
+          </div>
 
-        {/* Highlights */}
-        <div className="space-y-2">
-          {project.highlights.map((highlight, i) => (
-            <div key={i} className="flex items-center gap-2 text-sm text-cyan-100/60">
-              <div className="h-1.5 w-1.5 rounded-full bg-cyan-500/40" />
-              {highlight}
-            </div>
-          ))}
-        </div>
+          <div className="mb-4 flex flex-wrap gap-2">
+            {project.tags.map((tag, i) => (
+              <Badge key={i} variant="outline" className="border-slate-700 text-slate-400">
+                {tag}
+              </Badge>
+            ))}
+          </div>
 
-        {/* View More */}
-        <div className="mt-4 flex items-center justify-end text-cyan-400">
-          <span className="text-sm">Ver Detalhes</span>
-          <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </div>
-      </CardContent>
-    </Card>
+          <ul className="space-y-2">
+            {project.highlights.map((highlight, i) => (
+              <li key={i} className="flex items-center gap-2 text-sm text-slate-400">
+                <div className="h-1.5 w-1.5 rounded-full bg-cyan-500/40" />
+                {highlight}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-4 flex items-center justify-end text-cyan-400">
+            <span className="text-sm font-semibold">Ver Detalhes</span>
+            <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </div>
+        </CardContent>
+      </Card>
+    </a>
   </Link>
 );
 
-// Parte 2 - Componente Principal
 
+// Componente Principal
 const ProjetosIndexPage = () => {
   return (
       <div className="mx-auto max-w-6xl">
@@ -99,14 +109,13 @@ const ProjetosIndexPage = () => {
           description="Conheça os projetos que desenvolvi, combinando tecnologia e inovação"
         />
 
-        {/* Grid de Projetos */}
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
               key={project.href}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + index * 0.1 }}
+              transition={{ delay: 0.1 + index * 0.1 }}
             >
               <ProjectCard project={project} />
             </motion.div>
