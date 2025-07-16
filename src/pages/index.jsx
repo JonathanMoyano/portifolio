@@ -118,7 +118,7 @@ const TechSection = () => (
 const ActionButtons = () => (
   <motion.div variants={itemVariants} className="flex flex-col gap-3 sm:flex-row">
     <Button asChild size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/10 transition-transform hover:scale-105">
-      <Link href="/experiencia/historico-profissional">
+      <Link href="/experiencias/historico-profissional">
         <span className="flex items-center justify-center">Minha Trajetória</span>
       </Link>
     </Button>
