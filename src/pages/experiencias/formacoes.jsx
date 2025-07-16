@@ -5,7 +5,6 @@ import {
   GraduationCap,
   Award,
   Cpu,
-  Database,
   BrainCircuit,
   Network,
   Cloud,

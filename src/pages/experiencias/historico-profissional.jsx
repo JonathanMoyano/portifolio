@@ -10,7 +10,6 @@ import {
   Briefcase,
   Brain,
   Network,
-  Lock,
   Terminal,
   Server,
   Settings,
@@ -23,7 +22,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
 
-// --- DADOS ---
 
 const strengths = [
   {

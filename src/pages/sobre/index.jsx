@@ -93,7 +93,6 @@ const SectionCard = ({ section }) => {
 // Componente Principal
 const SobrePage = () => {
   return (
-    <PageLayout>
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <PageHeader
@@ -124,7 +123,6 @@ const SobrePage = () => {
           ))}
         </motion.div>
       </div>
-    </PageLayout>
   );
 };
 

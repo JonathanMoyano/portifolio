@@ -162,7 +162,6 @@ const SectionCard = ({ section }) => (
   </Link>
 );
 
-// --- COMPONENTE PRINCIPAL DA PÁGINA ---
 const FormacaoIndexPage = () => {
   const handleDownloadCV = () => {
     const cvPath = '/curriculos/curriculo.pdf';
@@ -170,7 +169,6 @@ const FormacaoIndexPage = () => {
   };
 
   return (
-    <PageLayout>
       <div className="mx-auto max-w-4xl">
         <PageHeader
           overline="Jornada Profissional"
@@ -191,7 +189,6 @@ const FormacaoIndexPage = () => {
           ))}
         </div>
       </div>
-    </PageLayout>
   );
 };
 

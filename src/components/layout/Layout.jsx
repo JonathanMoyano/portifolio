@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import Navigation from '../shared/navigation';
 import MatrixRain from '../shared/MatrixRain';
 import { useRouter } from 'next/router';
@@ -13,8 +13,8 @@ import { cn } from '@/lib/utils';
 const Layout = ({ children }) => {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [isLoading] = useState(false);
+  const [isMounted] = useState(false);
 
   const isHomePage = router.pathname === '/';
 

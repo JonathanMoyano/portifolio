@@ -1,4 +1,4 @@
-// src/pages/index.jsx
+
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -9,7 +9,6 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 
 // --- DADOS ---
 const profileData = {
@@ -36,7 +35,6 @@ const technologies = [
   { name: 'Inteligência Artificial', icon: <Bot /> },
 ];
 
-// --- ANIMAÇÕES ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -50,7 +48,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 };
 
-// --- COMPONENTES DA PÁGINA ---
 
 const ProfileImage = () => (
   <motion.div variants={itemVariants} className="relative mx-auto h-32 w-32 md:h-40 md:w-40 lg:h-48 lg:w-48">

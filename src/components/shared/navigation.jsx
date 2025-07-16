@@ -71,7 +71,7 @@ const NavLink = ({ item, isSubItem = false, onClose }) => {
 
   const Icon = item.icon;
 
-  const handleLinkClick = (e) => {
+  const handleLinkClick = () => {
     if (onClose) onClose();
   };
 
