@@ -1,23 +1,28 @@
-// components/ui/badge.jsx
+// src/components/ui/badge.jsx
+
 import * as React from 'react';
+import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-// Variantes do badge com as classes Tailwind
-const badgeVariants = {
-  // Estilo padrão - usado para status/tags principais
-  default: 'bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30',
-  // Estilo secundário - usado para informações complementares
-  secondary: 'bg-[#0A0F1E]/95 text-cyan-100/60',
-  // Estilo outline - usado para destacar sem cor de fundo
-  outline: 'border border-cyan-500/20 text-cyan-400',
-};
+const badgeVariants = cva(
+  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'border-transparent bg-primary text-primary-foreground hover:bg-primary/80',
+        secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        destructive: 'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
+        outline: 'text-foreground',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
 
-function Badge({ className, variant = 'default', ...props }) {
-  // Classes base que todos os badges terão
-  const baseClasses =
-    'inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold transition-colors';
-
-  return <div className={cn(baseClasses, badgeVariants[variant], className)} {...props} />;
+function Badge({ className, variant, ...props }) {
+  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
 }
 
 export { Badge, badgeVariants };

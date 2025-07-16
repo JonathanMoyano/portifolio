@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PageLayout } from '@/components/ui/layout';
 import { PageHeader } from '@/components/ui/page-header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -8,33 +7,25 @@ import { Mail, Linkedin, Github, Phone } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
-// Dados do perfil
+// --- DADOS ATUALIZADOS ---
 const profileData = {
   name: 'Jonathan Souza Moyano',
-  role: 'Analista de TI | Infraestrutura',
-  experience: '2+ anos de experiência',
+  role: 'Especialista de TI | DevOps & Infraestrutura',
+  experience: '17+ anos de experiência',
   image: '/jonathan.jpg',
   bio: {
-    primary: `Profissional proativo com mais de 2 anos de experiência em infraestrutura de 
-              TI, especializado em resolução de problemas complexos e implementação de 
-              soluções tecnológicas inovadoras. Atualmente, Apoio na liderança da equipe 
-              de TI do Colégio Jean Piaget em Santos. Sou responsável pelo gerenciamento 
-              de agendamentos, eventos internos e Suporte N2.`,
-    secondary: `Minha trajetória única, que inclui experiência como bombeiro civil, me 
-                proporcionou uma perspectiva diferenciada na resolução de problemas e gestão 
-                de crises. Essa combinação de habilidades técnicas e experiência prática me 
-                permite oferecer soluções eficientes e inovadoras para os desafios 
-                tecnológicos do dia a dia.`,
+    primary: `Profissional de TI com mais de 17 anos de experiência consolidada em infraestrutura, manutenção de hardware e suporte técnico N1/N2. Atualmente, aprofundando conhecimentos em DevOps e Arquitetura Cloud através de uma Pós-Graduação na FIAP, com foco em automação, escalabilidade e metodologias ágeis para otimizar operações e resolver desafios complexos.`,
+    secondary: `Minha trajetória única, que inclui uma valiosa experiência como bombeiro civil, me proporcionou uma resiliência e uma capacidade ímpar de gestão de crises. Essa perspectiva me permite abordar os desafios tecnológicos com calma, precisão e um foco incansável na solução, combinando habilidades técnicas com uma forte capacidade de liderança e resolução de problemas sob pressão.`,
   },
 };
 
-// Dados de contato
+// Dados de contato com e-mail atualizado
 const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'jsouza1993@gmail.com',
-    link: 'mailto:jsouza1993@gmail.com',
+    value: 'jonathan.moyano@outlook.com.br',
+    link: 'mailto:jonathan.moyano@outlook.com.br',
   },
   {
     icon: Phone,
@@ -45,7 +36,7 @@ const contactInfo = [
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    value: 'linkedin.com/jonathansouzamoyano',
+    value: 'linkedin.com/in/jonathansouzamoyano',
     link: 'https://linkedin.com/in/jonathansouzamoyano',
   },
   {
@@ -56,18 +47,22 @@ const contactInfo = [
   },
 ];
 
-// Lista de competências
+// Lista de competências atualizada e expandida
 const skills = [
   'Infraestrutura de Redes',
   'Suporte Técnico N1/N2',
+  'DevOps',
+  'Arquitetura Cloud',
+  'CI/CD',
   'Segurança da Informação',
+  'Metodologias Ágeis',
+  'Liderança Técnica',
+  'Gestão de Crises',
   'Otimização de Sistemas',
-  'Gestão de Projetos',
-  'Liderança de Equipes',
-  'Comunicação Técnica',
 ];
 
-// Componentes
+// --- COMPONENTES (sem alterações na estrutura) ---
+
 const ProfileImage = () => (
   <div className="flex justify-center lg:col-span-1">
     <div className="relative h-48 w-48 overflow-hidden rounded-xl sm:h-56 sm:w-56">
@@ -91,15 +86,12 @@ const ProfileInfo = () => (
         <h2 className="text-2xl font-bold text-white sm:text-3xl">{profileData.name}</h2>
         <p className="mt-1 text-lg text-cyan-400">{profileData.role}</p>
       </div>
-
       <div className="space-y-2">
         <Badge className="bg-cyan-500/20 text-cyan-400">{profileData.experience}</Badge>
       </div>
-
       <p className="text-sm leading-relaxed text-cyan-100/60 sm:text-base">
         {profileData.bio.primary}
       </p>
-
       <p className="text-sm leading-relaxed text-cyan-100/60 sm:text-base">
         {profileData.bio.secondary}
       </p>
@@ -133,15 +125,13 @@ const SkillBadge = ({ skill }) => (
     {skill}
   </Badge>
 );
-// Componente Principal
+
+// --- COMPONENTE PRINCIPAL DA PÁGINA ---
 const ProfilePage = () => {
   return (
-    <PageLayout>
       <div className="mx-auto max-w-4xl">
-        {/* Header */}
         <PageHeader overline="Portfólio Profissional" title="Perfil" />
 
-        {/* Profile Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -157,7 +147,6 @@ const ProfilePage = () => {
           </Card>
         </motion.div>
 
-        {/* Contact Information */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -176,7 +165,6 @@ const ProfilePage = () => {
           </Card>
         </motion.div>
 
-        {/* Technical Skills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -195,7 +183,6 @@ const ProfilePage = () => {
           </Card>
         </motion.div>
       </div>
-    </PageLayout>
   );
 };
 

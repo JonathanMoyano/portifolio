@@ -1,6 +1,15 @@
-// components/ui/page-header.jsx
+// src/components/ui/page-header.jsx
+
+import { motion } from 'framer-motion';
+
+// Adicionamos a animação diretamente no componente
 export const PageHeader = ({ overline, title, description }) => (
-  <div className="mb-8 text-center sm:mb-12">
+  <motion.div
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="mb-8 text-center sm:mb-12"
+  >
     <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400 sm:text-sm">
       {overline}
     </h2>
@@ -12,18 +21,5 @@ export const PageHeader = ({ overline, title, description }) => (
         {description}
       </p>
     )}
-  </div>
+  </motion.div>
 );
-
-// Definição das cores padrão do tema
-export const themeColors = {
-  primary: 'cyan',
-  secondary: 'indigo',
-  accent: 'blue',
-  background: '[#0A0F1E]',
-  text: {
-    primary: 'white',
-    secondary: 'cyan-100/60',
-    accent: 'cyan-400',
-  },
-};

@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { PageLayout } from '@/components/ui/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -185,7 +184,6 @@ const HeroImage = () => (
 // Componente Principal
 const ProjectsPage = () => {
   return (
-    <PageLayout>
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <motion.div
@@ -278,7 +276,6 @@ const ProjectsPage = () => {
           </div>
         </motion.div>
       </div>
-    </PageLayout>
   );
 };
 

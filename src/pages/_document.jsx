@@ -1,17 +1,15 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+// src/pages/_document.js
+
+import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="pt-BR">
-      <Head>
-        <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.jpeg" />
-        {/* Outras meta tags e links */}
-      </Head>
+    <Html lang="pt-BR" className="dark"> {/* <-- MUDANÇA IMPORTANTE AQUI */}
+      <Head />
       <body>
         <Main />
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }

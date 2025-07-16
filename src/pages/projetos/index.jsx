@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PageLayout } from '@/components/ui/layout';
 import { PageHeader } from '@/components/ui/page-header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -93,7 +92,6 @@ const ProjectCard = ({ project }) => (
 
 const ProjetosIndexPage = () => {
   return (
-    <PageLayout>
       <div className="mx-auto max-w-6xl">
         <PageHeader
           overline="Portfólio Profissional"
@@ -115,7 +113,6 @@ const ProjetosIndexPage = () => {
           ))}
         </div>
       </div>
-    </PageLayout>
   );
 };
 

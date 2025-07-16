@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PageLayout } from '@/components/ui/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -126,7 +125,6 @@ const ProjectHeader = () => (
 // Componente Principal
 const PortfolioProjectPage = () => {
   return (
-    <PageLayout>
       <div className="mx-auto max-w-6xl">
         <ProjectHeader />
 
@@ -200,7 +198,6 @@ const PortfolioProjectPage = () => {
           </div>
         </motion.div>
       </div>
-    </PageLayout>
   );
 };
 
