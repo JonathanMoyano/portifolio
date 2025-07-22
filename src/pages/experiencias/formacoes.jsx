@@ -16,8 +16,6 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
-// --- DADOS 100% ATUALIZADOS E REESTRUTURADOS ---
-
 const educationData = {
   // Adicionada a Pós-Graduação como destaque principal
   postgraduate: {
@@ -36,7 +34,22 @@ const educationData = {
     skills: ['Lógica de Programação', 'Engenharia de Software', 'Banco de Dados SQL', 'Desenvolvimento Web', 'Gestão de Projetos'],
   },
   // Cursos agora em uma lista única, com categorias, facilitando a manutenção
+ 
   courses: [
+    {
+      title: 'Redes: Construindo um projeto com Vlans, politicas de acesso e conexão com internet',
+      institution: 'Alura',
+      date: 'Jul/2025',
+      hours: '8h',
+      category: 'Infraestrutura',
+    },
+    {
+      title: 'Redes: dos conceitos iniciais à criação de uma intranet',
+      institution: 'Alura',
+      date: 'Jul/2025',
+      hours: '12h',
+      category: 'Infraestrutura',
+    },
     {
       title: 'Gestão de Infraestrutura de TI',
       institution: 'FIAP (Nano Course)',
