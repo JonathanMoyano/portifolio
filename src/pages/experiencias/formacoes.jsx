@@ -9,6 +9,7 @@ import {
   Network,
   Cloud,
   Code,
+  EthernetPort,
 } from 'lucide-react';
 import { PageHeader } from '@/components/ui/page-header';
 import { Card, CardContent } from '@/components/ui/card';
@@ -41,14 +42,14 @@ const educationData = {
       institution: 'Alura',
       date: 'Jul/2025',
       hours: '8h',
-      category: 'Infraestrutura',
+      category: 'Redes',
     },
     {
       title: 'Redes: dos conceitos iniciais à criação de uma intranet',
       institution: 'Alura',
       date: 'Jul/2025',
       hours: '12h',
-      category: 'Infraestrutura',
+      category: 'Redes',
     },
     {
       title: 'Gestão de Infraestrutura de TI',
@@ -180,10 +181,11 @@ const EducationCard = ({ education, icon: Icon, isPostGrad = false }) => (
 const CourseCard = ({ course }) => {
   const categoryInfo = {
     Cloud: { icon: Cloud, color: 'text-blue-400' },
-    Infraestrutura: { icon: Network, color: 'text-green-400' },
+    Infraestrutura: { icon: Network, color: 'text-orange-400' },
     'Dados & IA': { icon: BrainCircuit, color: 'text-purple-400' },
     Desenvolvimento: { icon: Code, color: 'text-yellow-400' },
     Hardware: { icon: Cpu, color: 'text-red-400' },
+    Redes: { icon: EthernetPort, color: 'text-green-400' },
   };
   const Icon = categoryInfo[course.category]?.icon || Award;
   const color = categoryInfo[course.category]?.color || 'text-cyan-400';
@@ -208,7 +210,7 @@ const CourseCard = ({ course }) => {
 
 // Seção de Cursos Complementares com abas (ESTILO CORRIGIDO)
 const CoursesSection = ({ courses }) => {
-  const categories = ['Todos', 'Cloud', 'Infraestrutura', 'Dados & IA', 'Desenvolvimento', 'Hardware'];
+  const categories = ['Todos', 'Cloud', 'Redes', 'Infraestrutura', 'Dados & IA', 'Desenvolvimento', 'Hardware'];
 
   return (
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
@@ -216,7 +218,7 @@ const CoursesSection = ({ courses }) => {
       <Tabs defaultValue="Todos" className="w-full">
         <div className="flex justify-center">
           {/* O painel de fundo que define o contêiner das abas */}
-          <TabsList className="mb-8 grid h-auto grid-cols-3 rounded-lg bg-slate-800/90 p-1 sm:grid-cols-6">
+          <TabsList className="mb-8 h-auto flex-wrap justify-center rounded-lg bg-slate-800/90 p-1">
             {categories.map((category) => (
               <TabsTrigger
                 key={category}
