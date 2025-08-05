@@ -24,8 +24,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'contato@jonathansouzamoyano.com.br',
-    link: 'contato@jonathansouzamoyano.com.br',
+    value: 'contato@jonathanmoyano.com.br',
+    link: 'contato@jonathanmoyano.com.br',
   },
   {
     icon: Phone,
