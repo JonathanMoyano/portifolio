@@ -43,7 +43,7 @@ const contactInfo = [
     icon: Github,
     label: 'GitHub',
     value: 'github.com/JonathanPolezel',
-    link: 'https://github.com/JonathanPolezel',
+    link: 'https://github.com/JonathanMoyano',
   },
 ];
 
