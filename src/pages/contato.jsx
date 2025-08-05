@@ -13,7 +13,7 @@ const contactInfo = {
   phone: '5513974124438', 
   location: 'São Vicente - SP, Brasil', 
   linkedInUrl: 'https://www.linkedin.com/in/jonathansouzamoyano/', 
-  githubUrl: 'https://github.com/JonathanPolezel', 
+  githubUrl: 'https://github.com/JonathanMoyano', 
 };
 
 
