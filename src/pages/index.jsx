@@ -16,7 +16,7 @@ const profileData = {
     first: 'JONATHAN SOUZA',
     last: 'MOYANO',
   },
-  summary: `Profissional de TI com mais de 17 anos de experiência, combinando sólida base técnica em infraestrutura, suporte N1/N2 e hardware com formação em Análise e Desenvolvimento de Sistemas. Atualmente, aprofundo meus conhecimentos em uma Pós-Graduação em DevOps & Arquitetura Cloud na FIAP, buscando aplicar práticas modernas de automação e escalabilidade.`,
+  summary: `Profissional de TI com mais de 17 anos de experiência, combinando sólida base técnica em infraestrutura, suporte N1/N2 e hardware com formação em Análise e Desenvolvimento de Sistemas.
   image: '/jonathan.jpg',
 };
 
