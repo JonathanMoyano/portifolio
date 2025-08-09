@@ -24,8 +24,8 @@ const educationData = {
     title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
     institution: 'FIAP',
     status: 'Cursando',
-    // CORREÇÃO: String agora usa crases (template literal) para maior robustez.
-    description: `Especialização focada em práticas de DevOps, automação, CI/CD, e arquitetura de soluções escaláveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.`,
+    // CORREÇÃO: String reescrita para remover quaisquer caracteres ocultos.
+    description: `Especializacao focada em praticas de DevOps, automacao, CI/CD, e arquitetura de solucoes escalaveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.`,
     skills: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Infraestrutura como Código (IaC)'],
   },
   */
@@ -34,8 +34,8 @@ const educationData = {
     title: 'Análise e Desenvolvimento de Sistemas',
     institution: 'UNIBR - Faculdade de São Vicente',
     status: 'Concluído', // Atualizado
-    // CORREÇÃO: String agora usa crases (template literal) para maior robustez.
-    description: `Formação superior que forneceu a base sólida em engenharia de software, banco de dados, redes e desenvolvimento de aplicações.`,
+    // CORREÇÃO: String reescrita para remover quaisquer caracteres ocultos.
+    description: `Formacao superior que forneceu a base solida em engenharia de software, banco de dados, redes e desenvolvimento de aplicacoes.`,
     skills: ['Lógica de Programação', 'Engenharia de Software', 'Banco de Dados SQL', 'Desenvolvimento Web', 'Gestão de Projetos'],
   },
   // Cursos agora em uma lista única, com categorias, facilitando a manutenção
