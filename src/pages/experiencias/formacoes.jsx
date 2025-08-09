@@ -270,9 +270,9 @@ const FormacaoPage = () => {
           description="Minha jornada de aprendizado contínuo, combinando formação acadêmica robusta com especializações em tecnologias de ponta."
         />
         <div className="space-y-12">
-          {/*{educationData.postgraduate && (
+          {{educationData.postgraduate && (
             <EducationCard education={educationData.postgraduate} icon={GraduationCap} isPostGrad />
-          )}*/}
+          )}
           <EducationCard education={educationData.academic} icon={School} />
           <CoursesSection courses={educationData.courses} />
         </div>
