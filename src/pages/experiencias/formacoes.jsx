@@ -19,13 +19,13 @@ import { cn } from '@/lib/utils';
 
 const educationData = {
   // Adicionada a Pós-Graduação como destaque principal
-  postgraduate: {
+ {/* postgraduate: {
     title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
     institution: 'FIAP',
     status: 'Cursando',
     description: 'Especialização focada em práticas de DevOps, automação, CI/CD, e arquitetura de soluções escaláveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.',
     skills: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Infraestrutura como Código (IaC)'],
-  },
+  },*/}
   // Graduação atualizada conforme o currículo
   academic: {
     title: 'Análise e Desenvolvimento de Sistemas',
