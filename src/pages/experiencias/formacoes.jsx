@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   School,
+  GraduationCap,
   Award,
   Cpu,
   BrainCircuit,
@@ -17,15 +18,24 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
 const educationData = {
+  // Adicionada a Pós-Graduação como destaque principal
+  postgraduate: {
+    title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
+    institution: 'FIAP',
+    status: 'Cursando',
+    description: 'Especialização focada em práticas de DevOps, automação, CI/CD, e arquitetura de soluções escaláveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.',
+    skills: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Infraestrutura como Código (IaC)'],
+  },
   // Graduação atualizada conforme o currículo
   academic: {
     title: 'Análise e Desenvolvimento de Sistemas',
     institution: 'UNIBR - Faculdade de São Vicente',
     status: 'Concluído', // Atualizado
-    description: `Formacao superior que forneceu a base solida em engenharia de software, banco de dados, redes e desenvolvimento de aplicacoes.`,
+    description: 'Formação superior que forneceu a base sólida em engenharia de software, banco de dados, redes e desenvolvimento de aplicações.',
     skills: ['Lógica de Programação', 'Engenharia de Software', 'Banco de Dados SQL', 'Desenvolvimento Web', 'Gestão de Projetos'],
   },
   // Cursos agora em uma lista única, com categorias, facilitando a manutenção
+ 
   courses: [
     {
       title: 'Redes: Construindo um projeto com Vlans, politicas de acesso e conexão com internet',
@@ -207,6 +217,7 @@ const CoursesSection = ({ courses }) => {
       <h2 className="mb-4 text-2xl font-bold text-white">Cursos e Formação Complementar</h2>
       <Tabs defaultValue="Todos" className="w-full">
         <div className="flex justify-center">
+          {/* O painel de fundo que define o contêiner das abas */}
           <TabsList className="mb-8 h-auto flex-wrap justify-center rounded-lg bg-slate-800/90 p-1">
             {categories.map((category) => (
               <TabsTrigger
@@ -214,7 +225,9 @@ const CoursesSection = ({ courses }) => {
                 value={category}
                 className={cn(
                   'px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-sm',
+                  // Estilo para abas INATIVAS: texto claro e visível
                   'text-slate-300 hover:text-white',
+                  // Estilo para aba ATIVA: alto contraste
                   'data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-md'
                 )}
               >
@@ -257,6 +270,9 @@ const FormacaoPage = () => {
           description="Minha jornada de aprendizado contínuo, combinando formação acadêmica robusta com especializações em tecnologias de ponta."
         />
         <div className="space-y-12">
+          {educationData.postgraduate && (
+            <EducationCard education={educationData.postgraduate} icon={GraduationCap} isPostGrad />
+          )}
           <EducationCard education={educationData.academic} icon={School} />
           <CoursesSection courses={educationData.courses} />
         </div>
