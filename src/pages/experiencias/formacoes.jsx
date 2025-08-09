@@ -18,13 +18,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
 const educationData = {
-  // Adicionada a Pós-Graduação como destaque principal
- // postgraduate: {
-  //  title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
-  //  institution: 'FIAP',
- //   status: 'Cursando',
-  //  description: 'Especialização focada em práticas de DevOps, automação, CI/CD, e arquitetura de soluções escaláveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.',
- //   skills: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Infraestrutura como Código (IaC)'],
+   Adicionada a Pós-Graduação como destaque principal
+  postgraduate: {
+    title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
+    institution: 'FIAP',
+    status: 'Cursando',
+    description: 'Especialização focada em práticas de DevOps, automação, CI/CD, e arquitetura de soluções escaláveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.',
+    skills: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Infraestrutura como Código (IaC)'],
   },
   // Graduação atualizada conforme o currículo
   academic: {
@@ -270,9 +270,9 @@ const FormacaoPage = () => {
           description="Minha jornada de aprendizado contínuo, combinando formação acadêmica robusta com especializações em tecnologias de ponta."
         />
         <div className="space-y-12">
-          {educationData.postgraduate && (
+          {/*{educationData.postgraduate && (
             <EducationCard education={educationData.postgraduate} icon={GraduationCap} isPostGrad />
-          )}
+          )}*/}
           <EducationCard education={educationData.academic} icon={School} />
           <CoursesSection courses={educationData.courses} />
         </div>
