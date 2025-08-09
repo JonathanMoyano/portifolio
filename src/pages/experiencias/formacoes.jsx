@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   School,
-  // GraduationCap, // Ícone comentado pois não está em uso
   Award,
   Cpu,
   BrainCircuit,
@@ -18,23 +17,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
 const educationData = {
-  /* Seção da Pós-Graduação temporariamente desativada.
-     Para reativar, remova os marcadores de comentário '/*' e '*/' deste bloco.
-  postgraduate: {
-    title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
-    institution: 'FIAP',
-    status: 'Cursando',
-    // CORREÇÃO: String reescrita para remover quaisquer caracteres ocultos.
-    description: `Especializacao focada em praticas de DevOps, automacao, CI/CD, e arquitetura de solucoes escalaveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.`,
-    skills: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Infraestrutura como Código (IaC)'],
-  },
-  */
   // Graduação atualizada conforme o currículo
   academic: {
     title: 'Análise e Desenvolvimento de Sistemas',
     institution: 'UNIBR - Faculdade de São Vicente',
     status: 'Concluído', // Atualizado
-    // CORREÇÃO: String reescrita para remover quaisquer caracteres ocultos.
     description: `Formacao superior que forneceu a base solida em engenharia de software, banco de dados, redes e desenvolvimento de aplicacoes.`,
     skills: ['Lógica de Programação', 'Engenharia de Software', 'Banco de Dados SQL', 'Desenvolvimento Web', 'Gestão de Projetos'],
   },
@@ -270,11 +257,6 @@ const FormacaoPage = () => {
           description="Minha jornada de aprendizado contínuo, combinando formação acadêmica robusta com especializações em tecnologias de ponta."
         />
         <div className="space-y-12">
-          {/* Este bloco será renderizado apenas se 'educationData.postgraduate' existir.
-              Como o objeto foi comentado acima, esta condição será falsa e o card não aparecerá. */}
-          {educationData.postgraduate && (
-            <EducationCard education={educationData.postgraduate} icon={GraduationCap} isPostGrad />
-          )}
           <EducationCard education={educationData.academic} icon={School} />
           <CoursesSection courses={educationData.courses} />
         </div>
