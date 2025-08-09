@@ -18,7 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
 const educationData = {
-   Adicionada a Pós-Graduação como destaque principal
+  // Adicionada a Pós-Graduação como destaque principal
   postgraduate: {
     title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
     institution: 'FIAP',
