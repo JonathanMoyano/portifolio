@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   School,
-  GraduationCap,
+  //GraduationCap,
   Award,
   Cpu,
   BrainCircuit,
@@ -20,7 +20,7 @@ import { cn } from '@/lib/utils';
 const educationData = {
   // Pós-Graduação adicionada novamente
   postgraduate: {
-    title: 'Pós-Graduação em DevOps & Arquitetura Cloud',
+    title: 'Pós-Graduação em Fu',
     institution: 'FIAP',
     status: 'Cursando',
     description: `Especialização focada em práticas de DevOps, automação, CI/CD, e arquitetura de soluções escaláveis nas principais plataformas de nuvem, preparando para os desafios da infraestrutura moderna.`,
@@ -266,9 +266,10 @@ const FormacaoPage = () => {
           description="Minha jornada de aprendizado contínuo, combinando formação acadêmica robusta com especializações em tecnologias de ponta."
         />
         <div className="space-y-12">
-          {educationData.postgraduate && (
+          {/* O bloco da Pós-Graduação está comentado e não será renderizado */}
+          {/* {educationData.postgraduate && (
             <EducationCard education={educationData.postgraduate} icon={GraduationCap} isPostGrad />
-          )}
+          )} */}
           <EducationCard education={educationData.academic} icon={School} />
           <CoursesSection courses={educationData.courses} />
         </div>
