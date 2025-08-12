@@ -10,11 +10,11 @@ import { cn } from '@/lib/utils';
 // --- DADOS ATUALIZADOS ---
 const profileData = {
   name: 'Jonathan Souza Moyano',
-  role: 'Especialista de TI | DevOps & Infraestrutura',
-  experience: '17+ anos de experiência',
+  role: 'Analista de Suporte N2 | Infraestrutura',
+  experience: '10+ anos de experiência',
   image: '/jonathan.jpg',
   bio: {
-    primary: 'Profissional de TI com mais de 17 anos de experiência consolidada em infraestrutura, manutenção de hardware e suporte técnico N1/N2.',
+    primary: 'Profissional de TI com mais de 10 anos de experiência consolidada em infraestrutura, manutenção de hardware e suporte técnico N1/N2.',
     secondary: 'Minha trajetória única, que inclui uma valiosa experiência como bombeiro civil, me proporcionou uma resiliência e uma capacidade ímpar de gestão de crises. Essa perspectiva me permite abordar os desafios tecnológicos com calma, precisão e um foco incansável na solução, combinando habilidades técnicas com uma forte capacidade de liderança e resolução de problemas sob pressão.',
   },
 };
