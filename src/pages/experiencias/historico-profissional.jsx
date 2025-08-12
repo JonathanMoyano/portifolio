@@ -79,7 +79,7 @@ const skills = [
 ];
 
 const stats = [
-  { icon: <Briefcase className="h-6 w-6" />, value: '17+', label: 'Anos em TI' },
+  { icon: <Briefcase className="h-6 w-6" />, value: '10+', label: 'Anos em TI' },
   { icon: <Award className="h-6 w-6" />, value: '10+', label: 'Cursos Concluídos' },
   { icon: <Users className="h-6 w-6" />, value: '4+', label: 'Anos em Liderança' },
   { icon: <HeartPulse className="h-6 w-6" />, value: '4', label: 'Anos como Bombeiro' },
