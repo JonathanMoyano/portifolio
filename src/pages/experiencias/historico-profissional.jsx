@@ -115,18 +115,18 @@ const experience = {
       description: 'Atendimento técnico nível 2, manutenção da infraestrutura de rede, elaboração de laudos e suporte ao sistema ERP GVDasa.',
       achievements: [
         'Suporte técnico especializado (N2) e apoio a usuários.',
-        'Manutenção da infraestrutura de rede, servidores e equipamentos de rack.'
-        'Elaboração de laudos técnicos e documentação de sistemas.'
-        'Realizar cadastro e gerenciamento de usuários no Active Directory, Google Admin, ClassApp, Matific e ERP.'
-        'Monitorar o sistema Zabbix, direcionando alertas aos responsáveis.'
-        'Suporte ao sistema ERP GVDasa.'
-        'Troca e passagem de cabeamento de rede.'
-        'Manutenção corretiva de qualquer equipamento eletronico que apresentar problemas.'
-        'Suporte em Help Desk para toda a comunidade acadêmica.'
-        'Organização dos equipamentos de TI.'
-        'Solicitação de compras para reposição de equipamentos de TI.'
-        'Instalação e manutenção do Hyper-V.'
-        'Configuração do PFSense e configuração do Proxy Transparente com Squid e Squid Guard.'
+        'Manutenção da infraestrutura de rede, servidores e equipamentos de rack.',
+        'Elaboração de laudos técnicos e documentação de sistemas.',
+        'Realizar cadastro e gerenciamento de usuários no Active Directory, Google Admin, ClassApp, Matific e ERP.',
+        'Monitorar o sistema Zabbix, direcionando alertas aos responsáveis.',
+        'Suporte ao sistema ERP GVDasa.',
+        'Troca e passagem de cabeamento de rede.',
+        'Manutenção corretiva de qualquer equipamento eletronico que apresentar problemas.',
+        'Suporte em Help Desk para toda a comunidade acadêmica.',
+        'Organização dos equipamentos de TI.',
+        'Solicitação de compras para reposição de equipamentos de TI.',
+        'Instalação e manutenção do Hyper-V.',
+        'Configuração do PFSense e configuração do Proxy Transparente com Squid e Squid Guard.',
       ],
       metrics: [
         { icon: <Server />, value: 'N2', label: 'Suporte' },
@@ -147,7 +147,7 @@ const experience = {
         'Entregas de Chromebooks.',
         'Controle de saida e entrada de materiais.',
         'Organização dos equipamentos de TI.',
-       ' Solicitação de compras e reposição de equipamentos de TI.'.
+       ' Solicitação de compras e reposição de equipamentos de TI.',
       ],
       metrics: [
         { icon: <Settings />, label: 'Hardware' },
@@ -186,7 +186,7 @@ const experience = {
         'Instalação e configurações de impressoras.',
         'Configuração e manutenção em Redes e Roteadores.',
         'Suporte via TeamViewer aos clientes.',
-        'Upgrade em desktop e Notebooks.'
+        'Upgrade em desktop e Notebooks.',
       ],
       metrics: [
         { icon: <Settings />, label: 'Hardware' },
