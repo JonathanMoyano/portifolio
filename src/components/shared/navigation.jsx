@@ -137,6 +137,7 @@ const DesktopNav = () => (
     <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 px-2">
       <h1 className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-xl font-bold text-transparent">
         Jonathan S. Moyano
+    </h1>  
  
 
     </motion.div>
