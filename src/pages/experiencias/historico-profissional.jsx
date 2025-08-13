@@ -183,10 +183,10 @@ const experience = {
         'Diagnóstico e reparo avançado em placas eletrônicas.',
         'Instalação e configuração de sistemas operacionais e software.',
         'Recuperação de dados e remoção de vírus.',
-        'Instalaçao e configurações de impressoras.',
+        'Instalação e configurações de impressoras.',
         'Configuração e manutenção em Redes e Roteadores.',
         'Suporte via TeamViewer aos clientes.',
-        'Upgrade em desktop e Notebooks.'.
+        'Upgrade em desktop e Notebooks.'
       ],
       metrics: [
         { icon: <Settings />, label: 'Hardware' },
