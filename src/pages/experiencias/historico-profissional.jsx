@@ -173,12 +173,10 @@ const experience = {
         { icon: <Server />, label: 'Servidor' },
       ],
     },
-  ],
-};
 {
       title: 'Tecnico de Informatica',
       company: 'Autonomo - São Vicente, SP',
-      period: 'Janeiro 2015 - Janeiro 2023',
+      period: 'Janeiro 2010 - Janeiro 2023',
       type: 'TI',
       description: 'Manutenção de hardware, infraestrutura e suporte em Help Desk',
       achievements: [
@@ -196,6 +194,8 @@ const experience = {
         { icon: <Network />, label: 'Infra' },
       ],
     },
+  ],
+};
 
 // --- COMPONENTES ---
 
