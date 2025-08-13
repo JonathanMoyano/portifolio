@@ -114,10 +114,19 @@ const experience = {
       type: 'TI',
       description: 'Atendimento técnico nível 2, manutenção da infraestrutura de rede, elaboração de laudos e suporte ao sistema ERP GVDasa.',
       achievements: [
-        'Suporte especializado a usuários por telefone e presencialmente.',
-        'Elaboração de relatórios e laudos técnicos detalhados para sistemas.',
-        'Manutenção da infraestrutura de rede cabeada e equipamentos de rack.',
-        'Suporte ao ERP GVDasa e sistemas operacionais Windows.',
+        'Suporte técnico especializado (N2) e apoio a usuários.',
+        'Manutenção da infraestrutura de rede, servidores e equipamentos de rack.'
+        'Elaboração de laudos técnicos e documentação de sistemas.'
+        'Realizar cadastro e gerenciamento de usuários no Active Directory, Google Admin, ClassApp, Matific e ERP.'
+        'Monitorar o sistema Zabbix, direcionando alertas aos responsáveis.'
+        'Suporte ao sistema ERP GVDasa.'
+        'Troca e passagem de cabeamento de rede.'
+        'Manutenção corretiva de qualquer equipamento eletronico que apresentar problemas.'
+        'Suporte em Help Desk para toda a comunidade acadêmica.'
+        'Organização dos equipamentos de TI.'
+        'Solicitação de compras para reposição de equipamentos de TI.'
+        'Instalação e manutenção do Hyper-V.'
+        'Configuração do PFSense e configuração do Proxy Transparente com Squid e Squid Guard.'
       ],
       metrics: [
         { icon: <Server />, value: 'N2', label: 'Suporte' },
@@ -132,10 +141,13 @@ const experience = {
       type: 'TI',
       description: 'Manutenção de hardware, suporte em Help Desk para toda a comunidade acadêmica e auxílio na infraestrutura de eventos e rede.',
       achievements: [
-        'Análise de sistema de CFTV e controle de inventário de materiais.',
         'Manutenção preventiva e corretiva de computadores, Chromebooks e notebooks.',
-        'Suporte em Help Desk para pais, alunos e funcionários.',
-        'Auxílio na manutenção de rede e montagem de infra para eventos.',
+        'Suporte em Help Desk para toda a comunidade acadêmica.',
+        'Análise e modernização do sistema de CFTV.',
+        'Entregas de Chromebooks.',
+        'Controle de saida e entrada de materiais.',
+        'Organização dos equipamentos de TI.',
+       ' Solicitação de compras e reposição de equipamentos de TI.'.
       ],
       metrics: [
         { icon: <Settings />, label: 'Hardware' },
@@ -163,6 +175,27 @@ const experience = {
     },
   ],
 };
+{
+      title: 'Tecnico de Informatica',
+      company: 'Autonomo - São Vicente, SP',
+      period: 'Janeiro 2015 - Janeiro 2023',
+      type: 'TI',
+      description: 'Manutenção de hardware, infraestrutura e suporte em Help Desk',
+      achievements: [
+        'Diagnóstico e reparo avançado em placas eletrônicas.',
+        'Instalação e configuração de sistemas operacionais e software.',
+        'Recuperação de dados e remoção de vírus.',
+        'Instalaçao e configurações de impressoras.',
+        'Configuração e manutenção em Redes e Roteadores.',
+        'Suporte via TeamViewer aos clientes.',
+        'Upgrade em desktop e Notebooks.'.
+      ],
+      metrics: [
+        { icon: <Settings />, label: 'Hardware' },
+        { icon: <Clock />, label: 'Help Desk' },
+        { icon: <Network />, label: 'Infra' },
+      ],
+    },
 
 // --- COMPONENTES ---
 
