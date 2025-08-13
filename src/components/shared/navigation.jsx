@@ -137,10 +137,7 @@ const DesktopNav = () => (
     <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 px-2">
       <h1 className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-xl font-bold text-transparent">
         Jonathan S. Moyano
-      </h1>
-      <p className="text-xs text-slate-500">Analista de Infraestrutura </p> 
-      <p className="text-xs text-slate-500">Suporte N2</p>
-      <p className="text-xs text-slate-500">Desenvolvedor Jr. </p>  
+ 
 
     </motion.div>
     <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.05 }}}} className="flex-1 space-y-2">
