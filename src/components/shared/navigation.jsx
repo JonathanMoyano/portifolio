@@ -138,7 +138,7 @@ const DesktopNav = () => (
       <h1 className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-xl font-bold text-transparent">
         Jonathan S. Moyano
       </h1>
-      <p className="text-xs text-slate-500">Portfólio de TI & DevOps</p>
+      <p className="text-xs text-slate-500">Analista de Infraestrutura & Suporte N2</p>
     </motion.div>
     <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.05 }}}} className="flex-1 space-y-2">
       {menuItems.map((item) => (
