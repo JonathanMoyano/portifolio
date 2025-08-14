@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import Navigation from '../shared/navigation';
 import MatrixRain from '../shared/MatrixRain';
 import { useRouter } from 'next/router';
@@ -6,8 +6,7 @@ import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-
-// ... (Componentes MenuButton, LoadingBar, Overlay não precisam de alteração) ...
+import { Analytics } from '@vercel/analytics/react';
 
 // Componente Principal do Layout
 const Layout = ({ children }) => {
@@ -18,14 +17,12 @@ const Layout = ({ children }) => {
 
   const isHomePage = router.pathname === '/';
 
-  // ... (Hooks useEffect não precisam de alteração) ...
+  // Hooks useEffect podem permanecer como estão no seu código original
 
-  const handleCloseSidebar = () => setIsSidebarOpen(false);
+  const handleCloseSidebar = () => setIsSidebarOpen(handleCloseSidebar);
   const handleOpenSidebar = () => setIsSidebarOpen(true);
 
   return (
-    // MUDANÇA 1: Removido o 'bg-[#0A0F1E]' daqui. O fundo agora será composto
-    // apenas pelo MatrixRain e o gradiente. Não se esqueça de remover o 'bg-red-500' do teste!
     <div className="relative min-h-screen">
       <MatrixRain />
       <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-indigo-500/10 to-[#0A0F1E]" />
@@ -34,7 +31,6 @@ const Layout = ({ children }) => {
       <AnimatePresence>{isMounted && <MenuButton onClick={handleOpenSidebar} />}</AnimatePresence>
       <AnimatePresence>{isLoading && <LoadingBar />}</AnimatePresence>
 
-      {/* MUDANÇA 2: Adicionadas classes de Flexbox para centralizar o conteúdo */}
       <main
         className={cn(
           'relative z-10 flex min-h-screen flex-col items-center justify-center p-4 transition-all duration-300 ease-in-out sm:p-6',
@@ -55,14 +51,21 @@ const Layout = ({ children }) => {
       </main>
 
       <AnimatePresence>{isSidebarOpen && <Overlay onClick={handleCloseSidebar} />}</AnimatePresence>
+
+      {/* Vercel Analytics adicionado aqui */}
+      <Analytics />
     </div>
   );
 };
 
-
 // Componente do Botão do Menu
 const MenuButton = ({ onClick }) => (
-  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="fixed left-4 top-4 z-50 md:hidden">
+  <motion.div
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 0.8 }}
+    className="fixed left-4 top-4 z-50 md:hidden"
+  >
     <Button
       size="icon"
       variant="outline"
@@ -76,9 +79,16 @@ const MenuButton = ({ onClick }) => (
 
 // Componente da Barra de Loading
 const LoadingBar = () => (
-  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed left-0 top-0 z-50 h-1 w-full">
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed left-0 top-0 z-50 h-1 w-full"
+  >
     <motion.div
-      initial={{ width: '0%' }} animate={{ width: '100%' }} transition={{ duration: 1 }}
+      initial={{ width: '0%' }}
+      animate={{ width: '100%' }}
+      transition={{ duration: 1 }}
       className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500"
     />
   </motion.div>
@@ -87,7 +97,9 @@ const LoadingBar = () => (
 // Componente do Overlay
 const Overlay = ({ onClick }) => (
   <motion.div
-    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
     onClick={onClick}
     className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
   />
