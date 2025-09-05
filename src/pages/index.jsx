@@ -16,7 +16,7 @@ const profileData = {
     first: 'JONATHAN SOUZA',
     last: 'MOYANO',
   },
-  summary: 'Profissional de TI com mais de 10 anos de experiência, combinando sólida base técnica em infraestrutura, suporte N1/N2 e hardware com formação em Análise e Desenvolvimento de Sistemas.',
+  summary: 'Profissional de TI com mais de 10 anos de experiência, combinando sólida base técnica em infraestrutura, suporte N2/N3 e hardware com formação em Análise e Desenvolvimento de Sistemas.',
   image: '/jonathan.jpg',
 };
 
