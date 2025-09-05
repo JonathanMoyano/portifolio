@@ -83,7 +83,7 @@ const goals = [
     prazo: 'Curto Prazo',
     icon: Rocket,
     items: [
-      'Concluir a Pós-Graduação em DevOps & Cloud com excelência, aplicando os conhecimentos em projetos práticos.',
+      'Concluir a Pós-Graduação em Cloud com excelência, aplicando os conhecimentos em projetos práticos.',
       'Atingir um nível avançado em automação de infraestrutura (IaC) com ferramentas como Terraform e Ansible.',
       'Obter uma certificação de nível fundamental em Cloud (AWS, Azure ou GCP) para validar o conhecimento adquirido.',
     ],
@@ -92,7 +92,7 @@ const goals = [
     prazo: 'Médio Prazo',
     icon: Target,
     items: [
-      'Alcançar a senioridade como Engenheiro DevOps, tornando-me uma referência técnica na resolução de problemas complexos.',
+      'Alcançar a senioridade como Engenheiro Cloud, tornando-me uma referência técnica na resolução de problemas complexos.',
       'Conquistar uma posição que ofereça modelo de trabalho remoto, colaborando com equipes e projetos de alcance global.',
       'Buscar certificações de nível profissional (Professional/Specialty) para aprofundar a especialização em uma plataforma de nuvem.',
     ],
