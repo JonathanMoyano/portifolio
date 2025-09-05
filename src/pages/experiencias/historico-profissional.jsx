@@ -108,7 +108,7 @@ const experience = {
   ],
   ti: [
     {
-      title: 'Analista de Suporte de TI N2',
+      title: 'Analista de Suporte de TI N2/N3',
       company: 'Colégio Jean Piaget - Santos, SP',
       period: 'Janeiro 2024 - Presente',
       type: 'TI',
@@ -129,13 +129,13 @@ const experience = {
         'Configuração do PFSense e configuração do Proxy Transparente com Squid e Squid Guard.',
       ],
       metrics: [
-        { icon: <Server />, value: 'N2', label: 'Suporte' },
+        { icon: <Server />, value: 'N2/N3', label: 'Suporte' },
         { icon: <Network />, label: 'Infra' },
         { icon: <Users />, label: 'Educação' },
       ],
     },
     {
-      title: 'Assistente de Suporte de TI',
+      title: 'Assistente de Suporte de TI ',
       company: 'Colégio Jean Piaget - Santos, SP',
       period: 'Outubro 2023 - Janeiro 2024',
       type: 'TI',
