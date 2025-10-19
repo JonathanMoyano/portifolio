@@ -15,7 +15,7 @@ const projectData = {
     'Implementação completa de solução de proxy corporativo com controle granular de acesso à internet, integrado ao Active Directory.',
   previewImage: '/images/squid-proxy.png',
   githubUrl: '#',
-  documentationUrl: 'https://docs.google.com/document/d/1Dktzx8XuNYAcPWkQAlqCp4Ni4GrcdCtiytFl9jW5ysc/edit?usp=sharing',
+  documentationUrl: 'https://docs.google.com/document/d/1zG3bL8-VzoRRK3PSGzvAXiKrCuSFW92F/edit?usp=sharing&ouid=115043327202870382104&rtpof=true&sd=true',
   about: `Sistema robusto de proxy desenvolvido para ambiente educacional, permitindo controle 
          e auditoria completa do tráfego web. A solução foi implementada compilando o Squid 7.1 
          diretamente do código fonte, garantindo máxima customização e performance. Integração 
