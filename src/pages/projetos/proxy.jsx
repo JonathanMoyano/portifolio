@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Lock, Users, Database, FileText, Server, Network, Globe, Eye, Filter, AlertCircle, CheckCircle } from 'lucide-react';
+import { Shield, Lock, Users, FileText, Server, Network, Globe, Eye, Filter, AlertCircle, CheckCircle } from 'lucide-react';
 
 // Dados do projeto
 const projectData = {
