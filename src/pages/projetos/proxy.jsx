@@ -25,13 +25,6 @@ const projectData = {
          políticas diferenciadas por grupos de usuários. O sistema inclui interceptação SSL/TLS 
          com geração dinâmica de certificados, filtragem avançada de conteúdo com SquidGuard, 
          e logs centralizados para compliance e auditoria.`,
-  institution: 'Colégio Jean Piaget - Santos',
-  period: 'Jan/2024 - Atual',
-  metrics: [
-    { label: 'Usuários Atendidos', value: '800+' },
-    { label: 'Categorias de Filtro', value: '10+' },
-    { label: 'Uptime', value: '99.9%' },
-  ]
 };
 
 // Features do sistema
