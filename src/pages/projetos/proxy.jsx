@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Shield, Lock, Users, Database, FileText, Server, Network, Globe, Eye, Filter, AlertCircle, CheckCircle } from 'lucide-react';
-import Image from 'next/image'; // ✅ ADICIONADO
+// Image não é necessário - usando apenas ícones do Lucide
 
 // Dados do projeto
 const projectData = {
