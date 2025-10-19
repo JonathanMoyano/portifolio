@@ -1,5 +1,4 @@
-// src/pages/projetos/proxy.jsx
-// CÓDIGO FINAL CORRIGIDO
+
 
 import React from 'react';
 import { motion } from 'framer-motion';
