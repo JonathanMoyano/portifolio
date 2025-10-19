@@ -9,7 +9,7 @@ import { Mail, Linkedin, Github, Send, MapPin } from 'lucide-react';
 
 
 const contactInfo = {
-  email: 'contato@jonathanmoyano.com.br', 
+  email: 'jonathan.moyano@outlook.com.br', 
   phone: '5513974124438', 
   location: 'São Vicente - SP, Brasil', 
   linkedInUrl: 'https://www.linkedin.com/in/jonathansouzamoyano/', 
