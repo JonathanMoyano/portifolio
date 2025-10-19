@@ -1,17 +1,21 @@
+// src/pages/projetos/proxy.jsx
+// CÓDIGO CORRIGIDO E REVISADO
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Shield, Lock, Users, Database, FileText, Server, Network, Globe, Eye, Filter, AlertCircle, CheckCircle } from 'lucide-react';
+import Image from 'next/image'; // ✅ ADICIONADO
 
 // Dados do projeto
 const projectData = {
   title: 'Sistema de Proxy Corporativo',
-  badge: 'Infraestrutura de TI',
+  badge: 'Projeto Profissional', // ✅ CORRIGIDO
   description:
     'Implementação completa de solução de proxy corporativo com controle granular de acesso à internet, integrado ao Active Directory.',
-  previewImage: '/api/placeholder/1200/600',
+  previewImage: '/images/squid-proxy.png', // ✅ CORRIGIDO
   githubUrl: '#',
   documentationUrl: '#',
   about: `Sistema robusto de proxy desenvolvido para ambiente educacional, permitindo controle 
@@ -138,7 +142,7 @@ const FeatureCard = ({ feature }) => (
       </div>
       <div>
         <h3 className="font-semibold text-white">{feature.title}</h3>
-        <p className="text-sm text-cyan-100/60">{feature.description}</p>
+        <p className="text-sm text-slate-400">{feature.description}</p> {/* ✅ CORRIGIDO */}
       </div>
     </div>
   </motion.div>
@@ -150,7 +154,7 @@ const TechStackCard = ({ stack }) => (
       <h3 className="mb-3 font-semibold text-white">{stack.category}</h3>
       <div className="flex flex-wrap gap-2">
         {stack.technologies.map((tech, index) => (
-          <Badge key={index} variant="outline" className="border-cyan-500/20 text-cyan-100/60">
+          <Badge key={index} variant="outline" className="border-slate-700 text-slate-400"> {/* ✅ CORRIGIDO */}
             {tech}
           </Badge>
         ))}
@@ -176,7 +180,7 @@ const ImplementationCard = ({ impl }) => {
       </div>
       <ul className="space-y-2">
         {impl.items.map((item, index) => (
-          <li key={index} className="flex items-center gap-2 text-sm text-cyan-100/70">
+          <li key={index} className="flex items-center gap-2 text-sm text-slate-400"> {/* ✅ CORRIGIDO */}
             <CheckCircle className="h-4 w-4 text-green-400" />
             {item}
           </li>
@@ -189,7 +193,7 @@ const ImplementationCard = ({ impl }) => {
 const MetricCard = ({ metric }) => (
   <div className="rounded-lg border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-4 text-center backdrop-blur-xl">
     <div className="text-3xl font-bold text-cyan-400">{metric.value}</div>
-    <div className="text-sm text-cyan-100/60">{metric.label}</div>
+    <div className="text-sm text-slate-400">{metric.label}</div> {/* ✅ CORRIGIDO */}
   </div>
 );
 
@@ -206,10 +210,10 @@ const ProjectHeader = () => (
     <h1 className="font-display bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
       {projectData.title}
     </h1>
-    <p className="mx-auto mt-4 max-w-2xl text-sm text-cyan-100/60 sm:text-base lg:text-lg">
+    <p className="mx-auto mt-4 max-w-2xl text-sm text-slate-400 sm:text-base lg:text-lg"> {/* ✅ CORRIGIDO */}
       {projectData.description}
     </p>
-    <div className="mt-4 flex flex-col gap-1 text-sm text-cyan-100/50">
+    <div className="mt-4 flex flex-col gap-1 text-sm text-slate-500"> {/* ✅ CORRIGIDO */}
       <span className="flex items-center justify-center gap-2">
         <Server className="h-4 w-4" />
         {projectData.institution}
@@ -222,137 +226,135 @@ const ProjectHeader = () => (
 // Componente Principal
 const SquidProxyProjectPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0F1E] via-[#0D1426] to-[#0A0F1E] p-4 sm:p-6 lg:p-8">
-      <div className="mx-auto max-w-6xl">
-        <ProjectHeader />
+    <div className="mx-auto max-w-6xl"> {/* ✅ CORRIGIDO - Removido wrapper com background */}
+      <ProjectHeader />
 
-        {/* Métricas */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-8 grid gap-4 sm:grid-cols-3"
-        >
-          {projectData.metrics.map((metric, index) => (
-            <MetricCard key={index} metric={metric} />
-          ))}
-        </motion.div>
+      {/* Métricas */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="mb-8 grid gap-4 sm:grid-cols-3"
+      >
+        {projectData.metrics.map((metric, index) => (
+          <MetricCard key={index} metric={metric} />
+        ))}
+      </motion.div>
 
-        {/* Preview e Conteúdo */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-8 overflow-hidden rounded-xl border border-cyan-500/20 bg-[#0A0F1E]/95 shadow-2xl backdrop-blur-xl sm:mb-12"
-        >
-          {/* Banner Técnico */}
-          <div className="relative h-[200px] w-full overflow-hidden bg-gradient-to-br from-cyan-900/20 via-blue-900/20 to-indigo-900/20 sm:h-[250px]">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <Server className="mx-auto h-20 w-20 text-cyan-400/40 sm:h-24 sm:w-24" />
-                <div className="mt-4 text-xl font-bold text-cyan-400/60 sm:text-2xl">
-                  Squid 7.1 + SquidGuard
+      {/* Preview e Conteúdo */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="mb-8 overflow-hidden rounded-xl border border-cyan-500/20 bg-[#0A0F1E]/95 shadow-2xl backdrop-blur-xl sm:mb-12"
+      >
+        {/* Banner Técnico */}
+        <div className="relative h-[200px] w-full overflow-hidden bg-gradient-to-br from-cyan-900/20 via-blue-900/20 to-indigo-900/20 sm:h-[250px]">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center">
+              <Server className="mx-auto h-20 w-20 text-cyan-400/40 sm:h-24 sm:w-24" />
+              <div className="mt-4 text-xl font-bold text-cyan-400/60 sm:text-2xl">
+                Squid 7.1 + SquidGuard
+              </div>
+              <div className="text-sm text-slate-400">Compilado do código fonte</div> {/* ✅ CORRIGIDO */}
+            </div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0F1E]/50 to-[#0A0F1E]" />
+        </div>
+
+        <div className="p-6 lg:p-8">
+          {/* Seção de Features */}
+          <section className="mb-8">
+            <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
+              Recursos Principais
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {features.map((feature, index) => (
+                <FeatureCard key={index} feature={feature} />
+              ))}
+            </div>
+          </section>
+
+          {/* Implementações */}
+          <section className="mb-8">
+            <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
+              Funcionalidades Implementadas
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {implementations.map((impl, index) => (
+                <ImplementationCard key={index} impl={impl} />
+              ))}
+            </div>
+          </section>
+
+          {/* Categorias de Filtro */}
+          <section className="mb-8">
+            <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
+              Categorias de Filtro
+            </h2>
+            <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl">
+              <CardContent className="p-6">
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {blockedCategories.map((category, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 rounded-lg border border-slate-700 bg-[#0A0F1E]/50 p-3" /* ✅ CORRIGIDO */
+                    >
+                      {category.blocked ? (
+                        <AlertCircle className="h-4 w-4 text-red-400" />
+                      ) : (
+                        <CheckCircle className="h-4 w-4 text-green-400" />
+                      )}
+                      <span className="text-sm text-slate-400">{category.name}</span> {/* ✅ CORRIGIDO */}
+                    </div>
+                  ))}
                 </div>
-                <div className="text-sm text-cyan-100/40">Compilado do código fonte</div>
-              </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Stack Tecnológica */}
+          <section className="mb-8">
+            <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
+              Stack Tecnológica
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {techStack.map((stack, index) => (
+                <TechStackCard key={index} stack={stack} />
+              ))}
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0F1E]/50 to-[#0A0F1E]" />
+          </section>
+
+          {/* Sobre o Projeto */}
+          <section className="mb-8">
+            <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl">
+              <CardContent className="p-6">
+                <h3 className="mb-4 text-lg font-semibold text-white">Sobre o Projeto</h3>
+                <p className="text-sm leading-relaxed text-slate-400">{projectData.about}</p> {/* ✅ CORRIGIDO */}
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Links do Projeto */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+            <Button
+              className="group bg-gradient-to-r from-cyan-500 to-blue-500 px-6 transition-all hover:scale-105"
+              onClick={() => window.open(projectData.documentationUrl, '_blank')}
+            >
+              Ver Documentação
+              <FileText className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button
+              variant="outline"
+              className="border-slate-700 px-6 text-slate-300 hover:bg-slate-800 hover:text-white" /* ✅ CORRIGIDO */
+              onClick={() => window.open(projectData.githubUrl, '_blank')}
+            >
+              Detalhes Técnicos
+              <Database className="ml-2 h-4 w-4" />
+            </Button>
           </div>
-
-          <div className="p-6 lg:p-8">
-            {/* Seção de Features */}
-            <section className="mb-8">
-              <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
-                Recursos Principais
-              </h2>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {features.map((feature, index) => (
-                  <FeatureCard key={index} feature={feature} />
-                ))}
-              </div>
-            </section>
-
-            {/* Implementações */}
-            <section className="mb-8">
-              <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
-                Funcionalidades Implementadas
-              </h2>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {implementations.map((impl, index) => (
-                  <ImplementationCard key={index} impl={impl} />
-                ))}
-              </div>
-            </section>
-
-            {/* Categorias de Filtro */}
-            <section className="mb-8">
-              <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
-                Categorias de Filtro
-              </h2>
-              <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl">
-                <CardContent className="p-6">
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    {blockedCategories.map((category, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center gap-2 rounded-lg border border-cyan-500/10 bg-[#0A0F1E]/50 p-3"
-                      >
-                        {category.blocked ? (
-                          <AlertCircle className="h-4 w-4 text-red-400" />
-                        ) : (
-                          <CheckCircle className="h-4 w-4 text-green-400" />
-                        )}
-                        <span className="text-sm text-cyan-100/70">{category.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Stack Tecnológica */}
-            <section className="mb-8">
-              <h2 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
-                Stack Tecnológica
-              </h2>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {techStack.map((stack, index) => (
-                  <TechStackCard key={index} stack={stack} />
-                ))}
-              </div>
-            </section>
-
-            {/* Sobre o Projeto */}
-            <section className="mb-8">
-              <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl">
-                <CardContent className="p-6">
-                  <h3 className="mb-4 text-lg font-semibold text-white">Sobre o Projeto</h3>
-                  <p className="text-sm leading-relaxed text-cyan-100/60">{projectData.about}</p>
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Links do Projeto */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-              <Button
-                className="group bg-gradient-to-r from-cyan-500 to-blue-500 px-6 transition-all hover:scale-105"
-                onClick={() => window.open(projectData.documentationUrl, '_blank')}
-              >
-                Ver Documentação
-                <FileText className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-cyan-500/30 px-6 text-cyan-400 hover:bg-cyan-500/10"
-                onClick={() => window.open(projectData.githubUrl, '_blank')}
-              >
-                Detalhes Técnicos
-                <Database className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
