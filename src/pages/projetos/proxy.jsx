@@ -1,5 +1,5 @@
 // src/pages/projetos/proxy.jsx
-// CÓDIGO CORRIGIDO E REVISADO
+// CÓDIGO FINAL CORRIGIDO
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -7,15 +7,14 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Shield, Lock, Users, Database, FileText, Server, Network, Globe, Eye, Filter, AlertCircle, CheckCircle } from 'lucide-react';
-// Image não é necessário - usando apenas ícones do Lucide
 
 // Dados do projeto
 const projectData = {
   title: 'Sistema de Proxy Corporativo',
-  badge: 'Projeto Profissional', // ✅ CORRIGIDO
+  badge: 'Projeto Profissional',
   description:
     'Implementação completa de solução de proxy corporativo com controle granular de acesso à internet, integrado ao Active Directory.',
-  previewImage: '/images/squid-proxy.png', // ✅ CORRIGIDO
+  previewImage: '/images/squid-proxy.png',
   githubUrl: '#',
   documentationUrl: 'https://docs.google.com/document/d/1Dktzx8XuNYAcPWkQAlqCp4Ni4GrcdCtiytFl9jW5ysc/edit?usp=sharing',
   about: `Sistema robusto de proxy desenvolvido para ambiente educacional, permitindo controle 
@@ -135,7 +134,7 @@ const FeatureCard = ({ feature }) => (
       </div>
       <div>
         <h3 className="font-semibold text-white">{feature.title}</h3>
-        <p className="text-sm text-slate-400">{feature.description}</p> {/* ✅ CORRIGIDO */}
+        <p className="text-sm text-slate-400">{feature.description}</p>
       </div>
     </div>
   </motion.div>
@@ -147,7 +146,7 @@ const TechStackCard = ({ stack }) => (
       <h3 className="mb-3 font-semibold text-white">{stack.category}</h3>
       <div className="flex flex-wrap gap-2">
         {stack.technologies.map((tech, index) => (
-          <Badge key={index} variant="outline" className="border-slate-700 text-slate-400"> {/* ✅ CORRIGIDO */}
+          <Badge key={index} variant="outline" className="border-slate-700 text-slate-400">
             {tech}
           </Badge>
         ))}
@@ -173,7 +172,7 @@ const ImplementationCard = ({ impl }) => {
       </div>
       <ul className="space-y-2">
         {impl.items.map((item, index) => (
-          <li key={index} className="flex items-center gap-2 text-sm text-slate-400"> {/* ✅ CORRIGIDO */}
+          <li key={index} className="flex items-center gap-2 text-sm text-slate-400">
             <CheckCircle className="h-4 w-4 text-green-400" />
             {item}
           </li>
@@ -182,7 +181,6 @@ const ImplementationCard = ({ impl }) => {
     </motion.div>
   );
 };
-
 
 // Componentes de Seção
 const ProjectHeader = () => (
@@ -197,16 +195,9 @@ const ProjectHeader = () => (
     <h1 className="font-display bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
       {projectData.title}
     </h1>
-    <p className="mx-auto mt-4 max-w-2xl text-sm text-slate-400 sm:text-base lg:text-lg"> {/* ✅ CORRIGIDO */}
+    <p className="mx-auto mt-4 max-w-2xl text-sm text-slate-400 sm:text-base lg:text-lg">
       {projectData.description}
     </p>
-    <div className="mt-4 flex flex-col gap-1 text-sm text-slate-500"> {/* ✅ CORRIGIDO */}
-      <span className="flex items-center justify-center gap-2">
-        <Server className="h-4 w-4" />
-        {projectData.institution}
-      </span>
-      <span>{projectData.period}</span>
-    </div>
   </motion.div>
 );
 
@@ -231,7 +222,7 @@ const SquidProxyProjectPage = () => {
               <div className="mt-4 text-xl font-bold text-cyan-400/60 sm:text-2xl">
                 Squid 7.1 + SquidGuard
               </div>
-              <div className="text-sm text-slate-400">Compilado do código fonte</div> 
+              <div className="text-sm text-slate-400">Compilado do código fonte</div>
             </div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0F1E]/50 to-[#0A0F1E]" />
@@ -273,14 +264,14 @@ const SquidProxyProjectPage = () => {
                   {blockedCategories.map((category, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-2 rounded-lg border border-slate-700 bg-[#0A0F1E]/50 p-3" 
+                      className="flex items-center gap-2 rounded-lg border border-slate-700 bg-[#0A0F1E]/50 p-3"
                     >
                       {category.blocked ? (
                         <AlertCircle className="h-4 w-4 text-red-400" />
                       ) : (
                         <CheckCircle className="h-4 w-4 text-green-400" />
                       )}
-                      <span className="text-sm text-slate-400">{category.name}</span> 
+                      <span className="text-sm text-slate-400">{category.name}</span>
                     </div>
                   ))}
                 </div>
@@ -318,12 +309,6 @@ const SquidProxyProjectPage = () => {
             >
               Ver Documentação
               <FileText className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button
-              variant="outline"
-              className="border-slate-700 px-6 text-slate-300 hover:bg-slate-800 hover:text-white" 
-              onClick={() => window.open(projectData.githubUrl, '_blank')}
-            >
             </Button>
           </div>
         </div>
