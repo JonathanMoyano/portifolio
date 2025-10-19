@@ -17,7 +17,7 @@ const projectData = {
     'Implementação completa de solução de proxy corporativo com controle granular de acesso à internet, integrado ao Active Directory.',
   previewImage: '/images/squid-proxy.png', // ✅ CORRIGIDO
   githubUrl: '#',
-  documentationUrl: '#',
+  documentationUrl: 'https://docs.google.com/document/d/1Dktzx8XuNYAcPWkQAlqCp4Ni4GrcdCtiytFl9jW5ysc/edit?usp=sharing',
   about: `Sistema robusto de proxy desenvolvido para ambiente educacional, permitindo controle 
          e auditoria completa do tráfego web. A solução foi implementada compilando o Squid 7.1 
          diretamente do código fonte, garantindo máxima customização e performance. Integração 
@@ -183,12 +183,6 @@ const ImplementationCard = ({ impl }) => {
   );
 };
 
-const MetricCard = ({ metric }) => (
-  <div className="rounded-lg border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-4 text-center backdrop-blur-xl">
-    <div className="text-3xl font-bold text-cyan-400">{metric.value}</div>
-    <div className="text-sm text-slate-400">{metric.label}</div> {/* ✅ CORRIGIDO */}
-  </div>
-);
 
 // Componentes de Seção
 const ProjectHeader = () => (
@@ -219,20 +213,8 @@ const ProjectHeader = () => (
 // Componente Principal
 const SquidProxyProjectPage = () => {
   return (
-    <div className="mx-auto max-w-6xl"> {/* ✅ CORRIGIDO - Removido wrapper com background */}
+    <div className="mx-auto max-w-6xl">
       <ProjectHeader />
-
-      {/* Métricas */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="mb-8 grid gap-4 sm:grid-cols-3"
-      >
-        {projectData.metrics.map((metric, index) => (
-          <MetricCard key={index} metric={metric} />
-        ))}
-      </motion.div>
 
       {/* Preview e Conteúdo */}
       <motion.div
@@ -249,7 +231,7 @@ const SquidProxyProjectPage = () => {
               <div className="mt-4 text-xl font-bold text-cyan-400/60 sm:text-2xl">
                 Squid 7.1 + SquidGuard
               </div>
-              <div className="text-sm text-slate-400">Compilado do código fonte</div> {/* ✅ CORRIGIDO */}
+              <div className="text-sm text-slate-400">Compilado do código fonte</div> 
             </div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0F1E]/50 to-[#0A0F1E]" />
@@ -291,14 +273,14 @@ const SquidProxyProjectPage = () => {
                   {blockedCategories.map((category, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-2 rounded-lg border border-slate-700 bg-[#0A0F1E]/50 p-3" /* ✅ CORRIGIDO */
+                      className="flex items-center gap-2 rounded-lg border border-slate-700 bg-[#0A0F1E]/50 p-3" 
                     >
                       {category.blocked ? (
                         <AlertCircle className="h-4 w-4 text-red-400" />
                       ) : (
                         <CheckCircle className="h-4 w-4 text-green-400" />
                       )}
-                      <span className="text-sm text-slate-400">{category.name}</span> {/* ✅ CORRIGIDO */}
+                      <span className="text-sm text-slate-400">{category.name}</span> 
                     </div>
                   ))}
                 </div>
@@ -323,7 +305,7 @@ const SquidProxyProjectPage = () => {
             <Card className="border-cyan-500/20 bg-[#0A0F1E]/95 backdrop-blur-xl">
               <CardContent className="p-6">
                 <h3 className="mb-4 text-lg font-semibold text-white">Sobre o Projeto</h3>
-                <p className="text-sm leading-relaxed text-slate-400">{projectData.about}</p> {/* ✅ CORRIGIDO */}
+                <p className="text-sm leading-relaxed text-slate-400">{projectData.about}</p>
               </CardContent>
             </Card>
           </section>
@@ -339,11 +321,9 @@ const SquidProxyProjectPage = () => {
             </Button>
             <Button
               variant="outline"
-              className="border-slate-700 px-6 text-slate-300 hover:bg-slate-800 hover:text-white" /* ✅ CORRIGIDO */
+              className="border-slate-700 px-6 text-slate-300 hover:bg-slate-800 hover:text-white" 
               onClick={() => window.open(projectData.githubUrl, '_blank')}
             >
-              Detalhes Técnicos
-              <Database className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>
